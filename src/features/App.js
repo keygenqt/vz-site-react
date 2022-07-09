@@ -1,15 +1,18 @@
 import logo from '../static/images/logo.svg';
 import '../static/css/common.css';
 import {Button} from "@mui/material";
+import HomeIcon from '@mui/icons-material/Delete';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        <HomeIcon />
+        <HomeIcon color="primary" />
+        <HomeIcon color="secondary" />
+        <HomeIcon color="success" />
+        <HomeIcon color="action" />
+        <HomeIcon color="disabled" />
 
         <Button
             href="https://reactjs.org"
@@ -19,7 +22,6 @@ function App() {
           Learn React
         </Button>
 
-      </header>
     </div>
   );
 }
