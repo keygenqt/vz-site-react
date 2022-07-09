@@ -1,5 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../static/images/logo.svg';
+import '../static/css/common.css';
+import {Button} from "@mui/material";
 
 function App() {
   return (
@@ -9,14 +10,15 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <Button
+            href="https://reactjs.org"
+            target="_blank"
+            variant="contained"
         >
           Learn React
-        </a>
+        </Button>
+
       </header>
     </div>
   );

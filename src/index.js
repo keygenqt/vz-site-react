@@ -1,8 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import './static/css/about.css';
+import './static/css/about-media.css';
+import './static/css/blog.css';
+import './static/css/blog-media.css';
+import './static/css/common.css';
+import './static/css/common-media.css';
+import './static/css/utils.css';
+import './static/css/utils-media.css';
+import './static/css/works.css';
+import './static/css/works-media.css';
+
+import App from './features/App';
+import reportWebVitals from './tests/reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
