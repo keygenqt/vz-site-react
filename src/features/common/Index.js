@@ -1,11 +1,29 @@
 import Container from "@mui/material/Container";
-import {Alert, ButtonGroup, Collapse, Fab, Grid, IconButton, TextField} from "@mui/material";
+import {
+    Alert,
+    AlertTitle,
+    ButtonGroup,
+    CardActionArea,
+    Collapse,
+    Fab,
+    Grid,
+    IconButton,
+    TextField
+} from "@mui/material";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import {WindowHeight} from '../utils/helpers'
 import {Email, ExpandMore, Telegram, Twitter} from "@mui/icons-material";
 import CloseIcon from '@mui/icons-material/Close';
 import {useState, useRef} from 'react';
+
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+
+import contemplativeReptile from '../../static/images/index/contemplative-reptile.jpg'
 
 function Index() {
 
@@ -22,7 +40,7 @@ function Index() {
     };
 
     const myRef = useRef(null)
-    const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const executeScroll = () => myRef.current.scrollIntoView({behavior: 'smooth', block: 'start'})
 
     return (
         <Container maxWidth="lg" className={"Index"}>
@@ -106,7 +124,7 @@ function Index() {
                 </div>
             </div>
 
-            <div ref={myRef} style={{height: height-479 /* todo */ }} className={"AboutBlock"}>
+            <div ref={myRef} className={"AboutBlock"}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                         <div className={"Title"}>
@@ -150,6 +168,409 @@ function Index() {
                         </ButtonGroup>
                     </Grid>
                 </Grid>
+            </div>
+
+            <div className={"CardsBlock"}>
+                <Grid container spacing={4}>
+                    <Grid item xs={12} sm={4}>
+                        <Card>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image={contemplativeReptile}
+                                alt="green iguana"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Lizard
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Lizards are a widespread group of squamate reptiles, with over 6,000
+                                    species, ranging across all continents except Antarctica
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Share</Button>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                        <Card>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image={contemplativeReptile}
+                                alt="green iguana"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Lizard
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Lizards are a widespread group of squamate reptiles, with over 6,000
+                                    species, ranging across all continents except Antarctica
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Share</Button>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                        <Card>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image={contemplativeReptile}
+                                alt="green iguana"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Lizard
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Lizards are a widespread group of squamate reptiles, with over 6,000
+                                    species, ranging across all continents except Antarctica
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Share</Button>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </div>
+
+            <div className={"Resume"}>
+                <Container maxWidth="md">
+
+                    <div className={"Title"}>
+                        Brief Resume
+                    </div>
+
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={6}>
+                            <div className={"ItemTitle"}>
+                                Professional UX design
+                            </div>
+                            <div className={"ItemTime"}>
+                                2015 - Present
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <div className={"ItemText"}>
+                                Cursus in hac habitasse platea dictumst. Maecenas volutpat blandit aliquam etiam erat
+                                velit.
+                            </div>
+                        </Grid>
+                    </Grid>
+
+                    <div className={"Line"}/>
+
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={6}>
+                            <div className={"ItemTitle"}>
+                                Professional UX design
+                            </div>
+                            <div className={"ItemTime"}>
+                                2015 - Present
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <div className={"ItemText"}>
+                                Cursus in hac habitasse platea dictumst. Maecenas volutpat blandit aliquam etiam erat
+                                velit.
+                            </div>
+                        </Grid>
+                    </Grid>
+
+                    <div className={"Line"}/>
+
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={6}>
+                            <div className={"ItemTitle"}>
+                                Professional UX design
+                            </div>
+                            <div className={"ItemTime"}>
+                                2011 - 2015
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <div className={"ItemText"}>
+                                Cursus in hac habitasse platea dictumst. Maecenas volutpat blandit aliquam etiam erat
+                                velit.
+                            </div>
+                        </Grid>
+                    </Grid>
+
+                    <div className={"Line"}/>
+
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={6}>
+                            <div className={"ItemTitle"}>
+                                Professional UX design
+                            </div>
+                            <div className={"ItemTime"}>
+                                2010
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <div className={"ItemText"}>
+                                Cursus in hac habitasse platea dictumst. Maecenas volutpat blandit aliquam etiam erat
+                                velit.
+                            </div>
+                        </Grid>
+                    </Grid>
+
+
+                    <div className={"ButtonBlock"}>
+                        <Button
+                            onClick={() => {
+
+                            }}
+                            style={{"height": "55px"}}
+                            size="large"
+                            variant="outlined"
+                        >Learn More</Button>
+                    </div>
+
+
+                </Container>
+            </div>
+
+            <div className={"Projects"}>
+                <Grid container spacing={6}>
+                    <Grid item xs={12} sm={3}>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={contemplativeReptile}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={contemplativeReptile}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={contemplativeReptile}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={contemplativeReptile}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={contemplativeReptile}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={contemplativeReptile}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={contemplativeReptile}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={contemplativeReptile}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Lizard
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </div>
+
+            <div className={"Skills"}>
+
+                <div className={"Title"}>
+                    My Skills
+                </div>
+
+                <Grid container spacing={4}>
+                    <Grid item xs={12} sm={6}>
+                        <Alert severity="success">
+                            <AlertTitle>Success</AlertTitle>
+                            This is a success alert — <strong>check it out!</strong>
+                        </Alert>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Alert severity="success">
+                            <AlertTitle>Success</AlertTitle>
+                            This is a success alert — <strong>check it out!</strong>
+                        </Alert>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Alert severity="success">
+                            <AlertTitle>Success</AlertTitle>
+                            This is a success alert — <strong>check it out!</strong>
+                        </Alert>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Alert severity="success">
+                            <AlertTitle>Success</AlertTitle>
+                            This is a success alert — <strong>check it out!</strong>
+                        </Alert>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Alert severity="success">
+                            <AlertTitle>Success</AlertTitle>
+                            This is a success alert — <strong>check it out!</strong>
+                        </Alert>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Alert severity="success">
+                            <AlertTitle>Success</AlertTitle>
+                            This is a success alert — <strong>check it out!</strong>
+                        </Alert>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Alert severity="success">
+                            <AlertTitle>Success</AlertTitle>
+                            This is a success alert — <strong>check it out!</strong>
+                        </Alert>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Alert severity="success">
+                            <AlertTitle>Success</AlertTitle>
+                            This is a success alert — <strong>check it out!</strong>
+                        </Alert>
+                    </Grid>
+                </Grid>
+
             </div>
 
         </Container>

@@ -40,8 +40,7 @@ body, html, #root {
     display: table-cell;
     width: 100%;
     vertical-align: middle;
-    height: 200px;
-    background-color: #64C7FF;
+    background-color: #2298db;
     position: relative;
 }
 
@@ -137,9 +136,47 @@ body, html, #root {
     vertical-align: middle;
 }
 
-/** INDEX **/
-.Index .Hello {
+/** FOOTER **/
+.App .Footer {
+    padding-top: 80px;
+    padding-bottom: 60px;
+}
+
+.App .Footer .TextSmall {
     text-align: center;
-    font-size: 180px;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.App .Footer .TextSmall a {
     font-weight: bold;
+    color: white;
+    text-decoration-color: white;
+}
+
+.App .Footer .Text {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.App .Footer .Line {
+    height: 1px;
+    background-color: white;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    opacity: 0.2;
+}
+
+.App .Footer .Buttons {
+    text-align: right;
+}
+
+.App .Footer .Copy {
+    color: #ffffffd9;
+    font-size: 15px;
+    padding-top: 10px;
 }

@@ -79,6 +79,12 @@
 }
 
 /** INDEX **/
+.Index .Hello {
+    text-align: center;
+    font-size: 180px;
+    font-weight: bold;
+}
+
 .Index .AppTableCell {
     position: relative;
     padding-bottom: 145px;
@@ -93,6 +99,7 @@
     width: 50px;
 }
 
+/** INDEX MainBlock **/
 .Index .MainBlock .Hello {
     text-align: center;
     font-size: 180px;
@@ -119,8 +126,10 @@
     font-weight: lighter;
 }
 
+/** INDEX AboutBlock **/
 .Index .AboutBlock {
-    padding: 120px 0 160px;
+    padding-top: 120px;
+    padding-bottom: 120px;
     font-size: 20px;
 }
 
@@ -154,4 +163,82 @@
     margin-top: 40px;
     margin-bottom: 20px;
     font-size: 16px;
+}
+
+/** INDEX CardsBlock **/
+.Index .CardsBlock {
+    margin-bottom: 120px;
+}
+
+.Index .CardsBlock .MuiCardMedia-root {
+    height: 350px;
+}
+
+/** INDEX Resume **/
+.Index .Resume {
+    margin-bottom: 80px;
+}
+
+.Index .Resume .Title {
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.Index .Resume .ItemTitle {
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.Index .Resume .ItemTime {
+    color: #444444;
+}
+
+.Index .Resume .ItemText {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.Index .Resume .Line {
+    height: 1px;
+    background-color: #b1b1b1;
+    margin: 30px 0;
+}
+
+.Index .Resume .ButtonBlock {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 120px;
+}
+
+/** INDEX Projects **/
+.Index .Projects {
+    margin-bottom: 120px;
+}
+
+/** INDEX Skills **/
+.Index .Skills {
+    margin-bottom: 120px;
+}
+
+.Index .Skills .Title {
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.Index .Skills .MuiPaper-root {
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+
+.Index .Skills .MuiTypography-root {
+    text-transform: uppercase;
+    font-size: 22px;
+}
+
+.Index .Skills .MuiAlert-icon {
+    padding-top: 10px;
 }

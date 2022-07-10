@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import * as React from 'react';
 import RootAnimationBg from "../components/RootAnimationBg.js";
 import Index from "./common/Index";
+import AppFooter from "../components/AppFooter";
 
 function App() {
     return (
@@ -22,9 +23,7 @@ function App() {
                 </div>
                 <div className={"Root-row"}>
                     <footer>
-                        <Container maxWidth="lg">
-                            footer
-                        </Container>
+                        <AppFooter/>
                     </footer>
                 </div>
             </div>
