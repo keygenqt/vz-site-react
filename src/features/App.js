@@ -1,29 +1,35 @@
-import logo from '../static/images/logo.svg';
 import '../static/css/common.css';
-import {Button} from "@mui/material";
-import HomeIcon from '@mui/icons-material/Delete';
+
+import AppTopBar from "../components/AppTopBar";
+import Container from '@mui/material/Container';
+
+import * as React from 'react';
+import RootAnimationBg from "../components/RootAnimationBg.js";
+import Index from "./common/Index";
 
 function App() {
-  return (
-    <div className="App">
-
-        <HomeIcon />
-        <HomeIcon color="primary" />
-        <HomeIcon color="secondary" />
-        <HomeIcon color="success" />
-        <HomeIcon color="action" />
-        <HomeIcon color="disabled" />
-
-        <Button
-            href="https://reactjs.org"
-            target="_blank"
-            variant="contained"
-        >
-          Learn React
-        </Button>
-
-    </div>
-  );
+    return (
+        <React.Fragment>
+            <RootAnimationBg/>
+            <div className={"App Root-table"}>
+                <div className={"Root-row"}>
+                    <AppTopBar/>
+                </div>
+                <div className={"Root-row"}>
+                    <main>
+                        <Index/>
+                    </main>
+                </div>
+                <div className={"Root-row"}>
+                    <footer>
+                        <Container maxWidth="lg">
+                            footer
+                        </Container>
+                    </footer>
+                </div>
+            </div>
+        </React.Fragment>
+    );
 }
 
 export default App;

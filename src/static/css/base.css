@@ -1,4 +1,50 @@
-/** ROOT BG ANIMATION **/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+body, html, #root {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #E5F0FF;
+    font-family: 'Albert Sans', 'Roboto', sans-serif;
+}
+
+.App.Root-table {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.App.Root-table .Root-row {
+    display: table-row;
+}
+
+.App.Root-table header {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    height: 70px;
+    position: relative;
+    background-color: #5199FF;
+}
+
+.App.Root-table main {
+    display: table-cell;
+    width: 100%;
+    position: relative;
+    vertical-align: middle;
+}
+
+.App.Root-table footer {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+    height: 200px;
+    background-color: #64C7FF;
+    position: relative;
+}
+
 .Root-bg {
     position: absolute;
     top: 0;
