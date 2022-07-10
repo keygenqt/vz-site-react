@@ -7,7 +7,7 @@
     height: 100%;
     max-height: 1300px;
     overflow-x: hidden;
-    opacity: 0.12;
+    opacity: 0.2;
 }
 
 .Root-bg .Circle {
@@ -15,21 +15,21 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 35px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
 }
 
 .Root-bg .Square {
     position: absolute;
     width: 300px;
     height: 300px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 35px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
 }
 
 .Root-bg .Square-1 {
     width: 442px;
     height: 442px;
     right: -152px;
-    bottom: 309px;
+    bottom: 110px;
     transform: rotate(117deg);
     background-color: #51EAFF;
 }
@@ -37,50 +37,121 @@
 .Root-bg .Square-2 {
     width: 350px;
     height: 350px;
-    top: -103px;
+    top: -203px;
     right: -96px;
     left: 100px;
     margin: 0 auto;
     transform: rotate(242deg);
-    background-color: #76FEC5;
-}
-
-.Root-bg .Square-3 {
-    width: 480px;
-    height: 480px;
-    left: 143px;
-    bottom: 485px;
-    transform: rotate(76deg);
     background-color: #FFFCBB;
 }
 
+.Root-bg .Square-3 {
+    width: 300px;
+    height: 300px;
+    left: 200px;
+    top: 230px;
+    transform: rotate(76deg);
+    background-color: #76FEC5;
+}
+
 .Root-bg .Circle-1 {
-    width: 420px;
-    height: 420px;
-    left: 365px;
-    bottom: 313px;
+    width: 480px;
+    height: 480px;
+    left: -65px;
+    bottom: 100px;
     background-color: #FFCB8B;
 }
 
 .Root-bg .Circle-2 {
-    width: 250px;
-    height: 250px;
-    left: 50px;
-    top: 220px;
+    width: 150px;
+    height: 150px;
+    left: 100px;
+    top: 200px;
     background-color: #FFDFDC;
 }
 
 .Root-bg .Circle-3 {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     right: 110px;
-    top: 150px;
+    top: 35px;
     background-color: #FFBEED;
 }
 
 /** INDEX **/
-.Index .Hello {
+.Index .AppTableCell {
+    position: relative;
+    padding-bottom: 145px;
+}
+
+.Index .BottomButton {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50px;
+}
+
+.Index .MainBlock .Hello {
     text-align: center;
     font-size: 180px;
     font-weight: bold;
+    text-transform: uppercase;
+}
+
+.Index .MainBlock .Iam {
+    text-align: center;
+    font-size: 33px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.Index .MainBlock form {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.Index .MainBlock .GetResume {
+    text-align: left;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.Index .AboutBlock {
+    padding: 120px 0 160px;
+    font-size: 20px;
+}
+
+.Index .AboutBlock .Title {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.Index .AboutBlock .About {
+    text-transform: uppercase;
+    max-width: 330px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.Index .AboutBlock .Line {
+    height: 3px;
+    max-width: 30px;
+    background-color: red;
+}
+
+.Index .AboutBlock .Text p:first-child {
+    margin-top: 0;
+}
+
+.Index .AboutBlock .Follow {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 16px;
 }
