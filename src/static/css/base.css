@@ -1,42 +1,54 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
 
+/** Base **/
 body, html, #root {
     padding: 0;
     margin: 0;
     height: 100%;
     width: 100%;
-    background-color: #E5F0FF;
+    background-color: #c9e1ff0d;
     font-family: 'Albert Sans', 'Roboto', sans-serif;
 }
 
-.App.Root-table {
+/** TABLE **/
+.AppTable {
     display: table;
-    height: 100%;
     width: 100%;
+    height: 100%;
 }
 
-.App.Root-table .Root-row {
+.AppTableRow {
     display: table-row;
 }
 
-.App.Root-table header {
+.AppTableCell {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/** APP HEADER **/
+.App header {
     display: table-cell;
     width: 100%;
     vertical-align: middle;
     height: 70px;
     position: relative;
-    background-color: #5199FF;
 }
 
-.App.Root-table main {
+/** APP BODY **/
+.App main {
     display: table-cell;
     width: 100%;
     position: relative;
     vertical-align: middle;
+    padding-bottom: 130px;
 }
 
-.App.Root-table footer {
+/** FOOTER **/
+.App footer {
     display: table-cell;
     width: 100%;
     vertical-align: middle;
@@ -44,99 +56,6 @@ body, html, #root {
     position: relative;
 }
 
-.Root-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 100%;
-    max-height: 1300px;
-    overflow-x: hidden;
-    opacity: 0.12;
-}
-
-.Root-bg .Circle {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
-}
-
-.Root-bg .Square {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
-}
-
-.Root-bg .Square-1 {
-    width: 442px;
-    height: 442px;
-    right: -152px;
-    bottom: 309px;
-    transform: rotate(117deg);
-    background-color: #51EAFF;
-}
-
-.Root-bg .Square-2 {
-    width: 350px;
-    height: 350px;
-    top: -103px;
-    right: -96px;
-    left: 100px;
-    margin: 0 auto;
-    transform: rotate(242deg);
-    background-color: #76FEC5;
-}
-
-.Root-bg .Square-3 {
-    width: 480px;
-    height: 480px;
-    left: 143px;
-    bottom: 485px;
-    transform: rotate(76deg);
-    background-color: #FFFCBB;
-}
-
-.Root-bg .Circle-1 {
-    width: 420px;
-    height: 420px;
-    left: 365px;
-    bottom: 313px;
-    background-color: #FFCB8B;
-}
-
-.Root-bg .Circle-2 {
-    width: 250px;
-    height: 250px;
-    left: 50px;
-    top: 220px;
-    background-color: #FFDFDC;
-}
-
-.Root-bg .Circle-3 {
-    width: 200px;
-    height: 200px;
-    right: 110px;
-    top: 150px;
-    background-color: #FFBEED;
-}
-
-.App .AppTable {
-    display: table;
-    width: 100%;
-    height: 100%;
-}
-
-.App .AppTableCell {
-    display: table-cell;
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
-}
-
-/** FOOTER **/
 .App .Footer {
     padding-top: 80px;
     padding-bottom: 60px;
@@ -179,4 +98,13 @@ body, html, #root {
     color: #ffffffd9;
     font-size: 15px;
     padding-top: 10px;
+}
+
+/** Custom Mui **/
+.App .Page .MuiGrid-item {
+    margin: 0 auto;
+}
+
+.App .Page .GridLeft {
+    margin: initial;
 }

@@ -1,6 +1,24 @@
 import {useLayoutEffect, useState} from 'react';
 
 /**
+ * Open url with open new tab
+ *
+ * @param url
+ */
+export const openUrlInNewTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+};
+
+/**
+ * Open url for mailto it's work ok
+ *
+ * @param url
+ */
+export const openUrl = url => {
+    window.location.href = url
+};
+
+/**
  * Get windows size
  *
  * @returns {number[]}

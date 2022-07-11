@@ -7,7 +7,8 @@
     height: 100%;
     max-height: 1300px;
     overflow-x: hidden;
-    opacity: 0.2;
+    opacity: 0.15;
+    background-color: #8e8eff;
 }
 
 .Root-bg .Circle {
@@ -78,19 +79,13 @@
     background-color: #FFBEED;
 }
 
-/** INDEX **/
-.Index .Hello {
-    text-align: center;
-    font-size: 180px;
-    font-weight: bold;
-}
-
-.Index .AppTableCell {
+/** INDEX BlockMain **/
+.Index .BlockMain .AppTableCell {
     position: relative;
     padding-bottom: 145px;
 }
 
-.Index .BottomButton {
+.Index .BlockMain .BottomButton {
     position: absolute;
     bottom: 40px;
     left: 0;
@@ -99,146 +94,73 @@
     width: 50px;
 }
 
-/** INDEX MainBlock **/
-.Index .MainBlock .Hello {
-    text-align: center;
-    font-size: 180px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.Index .MainBlock .Iam {
-    text-align: center;
-    font-size: 33px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 25px;
-}
-
-.Index .MainBlock form {
-    margin-top: 15px;
-    margin-bottom: 20px;
-}
-
-.Index .MainBlock .GetResume {
-    text-align: left;
-    font-size: 16px;
-    font-weight: lighter;
-}
-
-/** INDEX AboutBlock **/
-.Index .AboutBlock {
-    padding-top: 120px;
-    padding-bottom: 120px;
-    font-size: 20px;
-}
-
-.Index .AboutBlock .Title {
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-.Index .AboutBlock .About {
-    text-transform: uppercase;
-    max-width: 330px;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.Index .AboutBlock .Line {
+/** INDEX BlockAbout **/
+.Index .BlockAbout .Line {
     height: 3px;
-    max-width: 30px;
-    background-color: red;
+    width: 40px;
+    background-color: #2298db;
 }
 
-.Index .AboutBlock .Text p:first-child {
-    margin-top: 0;
-}
-
-.Index .AboutBlock .Follow {
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-/** INDEX CardsBlock **/
-.Index .CardsBlock {
-    margin-bottom: 120px;
-}
-
-.Index .CardsBlock .MuiCardMedia-root {
+/** INDEX BlockCards **/
+.Index .BlockCards .MuiCardMedia-root {
     height: 350px;
 }
 
-/** INDEX Resume **/
-.Index .Resume {
-    margin-bottom: 80px;
-}
-
-.Index .Resume .Title {
+/** INDEX BlockResume **/
+.Index .BlockResume .Title {
     text-transform: uppercase;
     font-size: 24px;
     margin-bottom: 60px;
     text-align: center;
 }
 
-.Index .Resume .ItemTitle {
+.Index .BlockResume .ItemTitle {
     text-transform: uppercase;
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.Index .Resume .ItemTime {
+.Index .BlockResume .ItemTime {
     color: #444444;
 }
 
-.Index .Resume .ItemText {
+.Index .BlockResume .ItemText {
     font-size: 20px;
     font-weight: 300;
 }
 
-.Index .Resume .Line {
+.Index .BlockResume .Line {
     height: 1px;
     background-color: #b1b1b1;
     margin: 30px 0;
 }
 
-.Index .Resume .ButtonBlock {
+.Index .BlockResume .ButtonBlock {
     text-align: center;
     margin-top: 60px;
-    margin-bottom: 120px;
 }
 
-/** INDEX Projects **/
-.Index .Projects {
-    margin-bottom: 120px;
+/** INDEX BlockProjects **/
+.Index .BlockProjects {
 }
 
-/** INDEX Skills **/
-.Index .Skills {
-    margin-bottom: 120px;
-}
-
-.Index .Skills .Title {
+/** INDEX BlockSkills **/
+.Index .BlockSkills .Title {
     text-transform: uppercase;
     font-size: 24px;
     margin-bottom: 60px;
     text-align: center;
 }
 
-.Index .Skills .MuiPaper-root {
+.Index .BlockSkills .MuiPaper-root {
     box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
 }
 
-.Index .Skills .MuiTypography-root {
+.Index .BlockSkills .MuiTypography-root {
     text-transform: uppercase;
     font-size: 22px;
 }
 
-.Index .Skills .MuiAlert-icon {
+.Index .BlockSkills .MuiAlert-icon {
     padding-top: 10px;
 }
