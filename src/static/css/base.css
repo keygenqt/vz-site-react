@@ -108,3 +108,11 @@ body, html, #root {
 .App .Page .GridLeft {
     margin: initial;
 }
+
+.App .MuiAlert-icon {
+    padding-top: 10px;
+}
+
+.App .MuiAlert-action {
+    padding-top: 6px;
+}

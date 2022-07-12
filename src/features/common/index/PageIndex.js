@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {Container, Grid, useTheme, useMediaQuery} from "@mui/material";
+import {Container, Grid, useMediaQuery, useTheme} from "@mui/material";
 
 import BlockMain from "./BlockMain";
 import BlockAbout from "./BlockAbout";
-import BlockCards from "./BlockCards";
 import BlockResume from "./BlockResume";
 import BlockProjects from "./BlockProjects";
 import BlockSkills from "./BlockSkills";
@@ -28,7 +27,7 @@ function PageIndex() {
                 <Grid item xs={12}>
                     <BlockProjects/>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item md={9} sm={12} xs={12}>
                     <BlockResume/>
                 </Grid>
                 <Grid item xs={12}>

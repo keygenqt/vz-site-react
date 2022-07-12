@@ -43,7 +43,7 @@
     left: 100px;
     margin: 0 auto;
     transform: rotate(242deg);
-    background-color: #FFFCBB;
+    background-color: #a9ff9f;
 }
 
 .Root-bg .Square-3 {
@@ -52,7 +52,7 @@
     left: 200px;
     top: 230px;
     transform: rotate(76deg);
-    background-color: #76FEC5;
+    background-color: #fff68b;
 }
 
 .Root-bg .Circle-1 {
@@ -60,7 +60,7 @@
     height: 480px;
     left: -65px;
     bottom: 100px;
-    background-color: #FFCB8B;
+    background-color: #FFBEED;
 }
 
 .Root-bg .Circle-2 {
@@ -68,7 +68,7 @@
     height: 150px;
     left: 100px;
     top: 200px;
-    background-color: #FFDFDC;
+    background-color: #ff7be3;
 }
 
 .Root-bg .Circle-3 {
@@ -76,7 +76,7 @@
     height: 300px;
     right: 110px;
     top: 35px;
-    background-color: #FFBEED;
+    background-color: #fe7676;
 }
 
 /** INDEX BlockMain **/
@@ -107,60 +107,46 @@
 }
 
 /** INDEX BlockResume **/
-.Index .BlockResume .Title {
-    text-transform: uppercase;
-    font-size: 24px;
-    margin-bottom: 60px;
-    text-align: center;
-}
-
-.Index .BlockResume .ItemTitle {
-    text-transform: uppercase;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.Index .BlockResume .ItemTime {
-    color: #444444;
-}
-
-.Index .BlockResume .ItemText {
-    font-size: 20px;
-    font-weight: 300;
-}
-
 .Index .BlockResume .Line {
     height: 1px;
     background-color: #b1b1b1;
-    margin: 30px 0;
 }
 
-.Index .BlockResume .ButtonBlock {
-    text-align: center;
-    margin-top: 60px;
+.Index .BlockResume .WorksUL {
+    position: relative;
+    padding-left: 35px;
 }
 
-/** INDEX BlockProjects **/
-.Index .BlockProjects {
+.Index .BlockResume .WorksUL .WorksLI {
+    margin-bottom: 15px;
+    padding-left: 8px;
 }
 
-/** INDEX BlockSkills **/
-.Index .BlockSkills .Title {
-    text-transform: uppercase;
-    font-size: 24px;
-    margin-bottom: 60px;
-    text-align: center;
+.Index .BlockResume .WorksUL .WorksPoint {
+    position: relative;
+    content: "";
+    border-radius: 50%;
+    top: 14px;
+    left: -28px;
+    height: 10px;
+    width: 10px;
+    background-color: #b1b1b1;
 }
 
-.Index .BlockSkills .MuiPaper-root {
-    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+.Index .BlockResume .WorksUL .WorksLI::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 19px;
+    height: 73px;
+    width: 2px;
+    background-color: #b1b1b1;
 }
 
-.Index .BlockSkills .MuiTypography-root {
-    text-transform: uppercase;
-    font-size: 22px;
+.Index .BlockResume .WorksUL .WorksLI:last-child {
+    margin-bottom: 0;
 }
 
-.Index .BlockSkills .MuiAlert-icon {
-    padding-top: 10px;
+.Index .BlockResume .WorksUL .WorksLI:last-child::before {
+    display: none;
 }

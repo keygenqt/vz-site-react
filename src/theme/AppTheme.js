@@ -75,6 +75,9 @@ export const AppTheme = createTheme({
             fontSize: 20,
         },
         body2: {
+            fontSize: 18,
+        },
+        body3: {
             fontSize: 16,
         },
         button: {

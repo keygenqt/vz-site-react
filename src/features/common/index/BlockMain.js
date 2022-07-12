@@ -70,7 +70,9 @@ function BlockMain(prop) {
                                                 </IconButton>
                                             }
                                         >
-                                            Thank you for your interest! I will send as soon as possible.
+                                            <Typography gutterBottom variant="body3">
+                                                Thank you for your interest! I will send as soon as possible.
+                                            </Typography>
                                         </Alert>
                                     </Collapse>
 
@@ -90,7 +92,9 @@ function BlockMain(prop) {
                                                 </IconButton>
                                             }
                                         >
-                                            Please fill in your email so I can send
+                                            <Typography gutterBottom variant="body3">
+                                                Please fill in your email so I can send
+                                            </Typography>
                                         </Alert>
                                     </Collapse>
                                 </Grid>
@@ -114,7 +118,7 @@ function BlockMain(prop) {
                                             <Grid item sm={4}>
                                                 <Button
                                                     type="submit"
-                                                    style={{"height": "55px"}}
+                                                    style={{height: 60}}
                                                     fullWidth
                                                     size="large"
                                                     variant="outlined"
