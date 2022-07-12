@@ -1,73 +1,27 @@
 import * as React from 'react';
-import {Card, CardActionArea, CardContent, CardMedia, Grid, Typography} from "@mui/material";
+import {Card, CardContent, CardActions, Grid, Typography, Button} from "@mui/material";
 import {AppImages} from "../../../utils/AppImages";
 
 const listData = [
     {
-        title: "Operating System"
-    },
-    {
-        image: AppImages.index.imgJava,
+        image: AppImages.platform.android,
         title: "Android",
-        text: "My projects are new and old which I did on js"
+        text: "I am currently working as an android programmer. It's been like ~6 years now."
     },
     {
-        image: AppImages.index.imgJava,
+        image: AppImages.platform.apple,
         title: "iOS",
-        text: "My projects are new and old which I did on js"
+        text: "In free time I study SwiftUI. There is not much work yet, but it's not evening yet."
     },
     {
-        image: AppImages.index.imgJava,
+        image: AppImages.platform.web,
         title: "Web",
-        text: "My projects are new and old which I did on js"
+        text: "Connected with the web since 2013. For example, this site is written by me in React."
     },
     {
-        image: AppImages.index.imgJava,
+        image: AppImages.platform.pc,
         title: "PC",
-        text: "My projects are new and old which I did on js"
-    },
-    {
-        title: "Programming Language"
-    },
-    {
-        image: AppImages.index.imgKotlin,
-        title: "Kotlin",
-        text: "My projects are new and old which I did on js"
-    },
-    {
-        image: AppImages.index.imgJava,
-        title: "Java",
-        text: "My projects are new and old which I did on js"
-    },
-    {
-        image: AppImages.index.imgPhp,
-        title: "PHP",
-        text: "My projects are new and old which I did on js"
-    },
-    {
-        image: AppImages.index.imgJava,
-        title: "Python",
-        text: "My projects are new and old which I did on js"
-    },
-    {
-        image: AppImages.index.imgJs,
-        title: "Javascript",
-        text: "My projects are new and old which I did on js"
-    },
-    {
-        image: AppImages.index.imgJava,
-        title: "Swift",
-        text: "My projects are new and old which I did on js"
-    },
-    {
-        image: AppImages.index.imgJava,
-        title: "Bash",
-        text: "My projects are new and old which I did on js"
-    },
-    {
-        image: AppImages.index.imgJava,
-        title: "C++",
-        text: "My projects are new and old which I did on js"
+        text: "Sometimes I like to write some kind of Open source. I like linux and actively use it."
     },
 ]
 
@@ -76,42 +30,37 @@ function BlockProjects() {
     const cards = []
 
     listData.forEach((data, index) => {
-        if (data.image === undefined) {
-            cards.push(
-                <React.Fragment>
-                    <Grid item md={12} sm={12} xs={12} style={{display: index === 0 ? 'none' : 'block'}}/>
-                    <Grid item md={12} sm={12} xs={12} style={{display: index === 0 ? 'none' : 'block'}}/>
-                    <Grid item md={12} sm={12} xs={12}>
-                        <Typography align={"center"} gutterBottom variant="h3" component="div">
+        cards.push(
+            <Grid item md={3} sm={6} xs={12}>
+                <Card>
+                    <Grid container columns={12}>
+                        <Grid item sm={6} xs={6}>
+                            <img
+                                style={{
+                                    width: '100%',
+                                    marginTop: 65,
+                                    marginBottom: 25
+                                }}
+                                src={data.image} alt={data.title} />
+                        </Grid>
+                    </Grid>
+
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
                             {data.title}
                         </Typography>
-                    </Grid>
-                </React.Fragment>
-            )
-        } else {
-            cards.push(
-                <Grid item md={3} sm={6} xs={12}>
-                    <Card>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                height="140"
-                                image={data.image}
-                                alt="green iguana"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    {data.title}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {data.text}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </Grid>
-            )
-        }
+                        <Typography variant="body3" color="text.secondary">
+                            {data.text}
+                        </Typography>
+                    </CardContent>
+
+                    <CardActions>
+                        <Button size="small">Learn More</Button>
+                    </CardActions>
+
+                </Card>
+            </Grid>
+        )
     })
 
     return (
