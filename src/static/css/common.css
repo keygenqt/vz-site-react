@@ -150,3 +150,8 @@
 .Index .BlockResume .WorksUL .WorksLI:last-child::before {
     display: none;
 }
+
+/** INDEX BlockResume **/
+.Index .BlockSkills .SkillAlert .MuiAlert-icon {
+    padding-top: 12px;
+}

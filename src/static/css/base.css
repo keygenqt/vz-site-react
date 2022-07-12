@@ -110,9 +110,9 @@ body, html, #root {
 }
 
 .App .MuiAlert-icon {
-    padding-top: 10px;
+    padding-top: 7px;
 }
 
 .App .MuiAlert-action {
-    padding-top: 6px;
+    padding-top: 5px;
 }

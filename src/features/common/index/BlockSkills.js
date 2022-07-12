@@ -42,11 +42,11 @@ function BlockSkills() {
     listData.forEach((data, index) => {
         items.push(
             <Grid item md={6} sm={6} xs={12}>
-                <Alert icon={data.icon} severity="info">
+                <Alert icon={data.icon} severity="info" className={"SkillAlert"}>
                     <Typography gutterBottom variant="h5">
                         {data.title}
                     </Typography>
-                    <Typography gutterBottom variant="text2">
+                    <Typography component="div" gutterBottom variant="text2" style={{paddingBottom: 3}}>
                         {data.text}
                     </Typography>
                 </Alert>
