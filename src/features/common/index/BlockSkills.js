@@ -46,7 +46,7 @@ function BlockSkills() {
                     <Typography gutterBottom variant="h5">
                         {data.title}
                     </Typography>
-                    <Typography component="div" gutterBottom variant="text2" style={{paddingBottom: 3}}>
+                    <Typography component="div" gutterBottom variant="text2">
                         {data.text}
                     </Typography>
                 </Alert>
