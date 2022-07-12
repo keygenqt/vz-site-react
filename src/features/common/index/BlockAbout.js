@@ -31,19 +31,19 @@ function BlockAbout() {
                 <Grid item sm={6}>
                     <Grid container spacing={2}>
                         <Grid item sm={12} xs={12}>
-                            <Typography align={"left"} variant="body1">
+                            <Typography align={"left"} variant="text1">
                                 I have been a programmer for 10 years. Started as a PHP programmer writing features for
                                 Webasyst (CMS for stores).
                             </Typography>
                         </Grid>
                         <Grid item sm={12} xs={12}>
-                            <Typography align={"left"} variant="body1">
+                            <Typography align={"left"} variant="text1">
                                 Continued as a front-end developer on yii2. But the tasks often concerned the backend,
                                 in fact, did everything from the DB to the layout of the design.
                             </Typography>
                         </Grid>
                         <Grid item sm={12} xs={12}>
-                            <Typography align={"left"} variant="body1">
+                            <Typography align={"left"} variant="text1">
                                 I am currently writing android applications. Having fun with ios, python, react, spring,
                                 ktor and much more.
                             </Typography>

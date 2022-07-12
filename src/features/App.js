@@ -16,7 +16,10 @@ function App() {
             <React.Fragment>
                 <RootAnimationBg/>
                 <div className={"App AppTable"}>
-                    <div className={"AppTableRow"}>
+                    <div className={"AppTableRow"} style={{
+                        position: "relative",
+                        zIndex: 2,
+                    }}>
                         <AppTopBar/>
                     </div>
                     <div className={"AppTableRow"}>

@@ -49,7 +49,7 @@ function BlockProjects() {
                         <Typography gutterBottom variant="h5" component="div">
                             {data.title}
                         </Typography>
-                        <Typography variant="body3" color="text.secondary">
+                        <Typography variant="text3" color="text.secondary">
                             {data.text}
                         </Typography>
                     </CardContent>

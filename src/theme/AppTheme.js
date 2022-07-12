@@ -71,13 +71,13 @@ export const AppTheme = createTheme({
             },
         },
         subtitle2: {},
-        body1: {
+        text1: {
             fontSize: 20,
         },
-        body2: {
+        text2: {
             fontSize: 18,
         },
-        body3: {
+        text3: {
             fontSize: 16,
         },
         button: {
