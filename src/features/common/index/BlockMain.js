@@ -31,7 +31,7 @@ function BlockMain(prop) {
     };
 
     return (
-        <div style={{height: WindowHeight() - 70}} className={"BlockMain AppTable"}>
+        <div style={{height: WindowHeight()}} className={"BlockMain AppTable"}>
             <div className={"AppTableCell"}>
                 <Grid container columns={12} spacing={2.2}>
                     <Grid item sm={12}>

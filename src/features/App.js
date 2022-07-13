@@ -15,13 +15,8 @@ function App() {
         <ThemeProvider theme={AppTheme}>
             <React.Fragment>
                 <RootAnimationBg/>
+                <AppTopBar/>
                 <div className={"App AppTable"}>
-                    <div className={"AppTableRow"} style={{
-                        position: "relative",
-                        zIndex: 2,
-                    }}>
-                        <AppTopBar/>
-                    </div>
                     <div className={"AppTableRow"}>
                         <main>
                             <PageIndex/>

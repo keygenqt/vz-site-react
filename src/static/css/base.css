@@ -30,12 +30,12 @@ body, html, #root {
 }
 
 /** APP HEADER **/
-.App header {
-    display: table-cell;
-    width: 100%;
-    vertical-align: middle;
-    height: 70px;
-    position: relative;
+.AppTopBar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
 }
 
 /** APP BODY **/
