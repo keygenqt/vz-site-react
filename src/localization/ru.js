@@ -30,7 +30,7 @@ export const ruLocalization = {
             t_about_follow: "Преследовать",
             // BlockProjects
             t_projects_android_title: "Android",
-            t_projects_android_text: "На данный момент сейчас проффисионально занимаюсь Android разработкой. Ну и не проффисионально тоже.",
+            t_projects_android_text: "Около 6 лет занимаюсь Android разработкой. Год уже как пилю на Jetpack Compose по всем канонам.",
             t_projects_android_btn: "Заценить",
             t_projects_ios_title: "iOS",
             t_projects_ios_text: "Swift очень похож на Kotlin, а SwiftUI на Jetpack Compose так что я считаю что я вполне могу клепать iOS.",
@@ -59,7 +59,7 @@ export const ruLocalization = {
             t_skills_android_title: "Android",
             t_skills_android_text: "Более 7 лет работю андройд программистом. Помню те времена когда еще MVVM не были популярным и MVP вполне всех устраивал.",
             t_skills_ios_title: "iOS",
-            t_skills_ios_text: "Опыта не много, но он есть. Изучаю swiftUI. На досуге пишу KMM проект. Рзаработка очень схожа с jetpack compose на котором пишу уже год.",
+            t_skills_ios_text: "Опыта не много, но он есть. Изучаю swiftUI. На досуге пишу KMM проект. Рзаработка очень схожа с Jetpack Compose на котором пишу уже год.",
             t_skills_markup_title: "Markup",
             t_skills_markup_text: "Около 5 лет клепал сайты как пулемет. Сейчас только для себя и open source. Например этот я сделал сам, так же как и его дизайн.",
             t_skills_db_title: "Database",
