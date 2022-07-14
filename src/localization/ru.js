@@ -6,7 +6,7 @@ export const ruLocalization = {
             t_utils: "Утилиты",
         },
         footer: {
-            t_questions: "У тебя остались вопросы?",
+            t_questions: "Есть не закрытые вопросы?",
             t_say: "Не стесняйся напиши!",
             t_name: "Виталий Зарубин",
         },
