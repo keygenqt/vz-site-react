@@ -2,12 +2,15 @@ import * as React from 'react';
 import {Alert, Box, Button, Collapse, Container, Fab, Grid, IconButton, TextField, Typography} from "@mui/material";
 import {Close, ExpandMore} from "@mui/icons-material";
 import {WindowHeight} from "../../../utils/AppHelpers";
+import {useTranslation} from "react-i18next";
 
 function isBlankOrNull(string) {
     return typeof string !== 'string' || string.trim().length === 0
 }
 
 function BlockMain(prop) {
+
+    const {t, i18n} = useTranslation();
 
     const [collapseSuccess, setCollapseSuccess] = React.useState(null);
     const [collapseError, setCollapseError] = React.useState(null);
@@ -37,14 +40,14 @@ function BlockMain(prop) {
                     <Grid item sm={12}>
                         <Container maxWidth="lg">
                             <Grid container columns={12} spacing={1}>
-                                <Grid item sm={12}>
-                                    <Typography align={"center"} variant="h1">
-                                        Hello
+                                <Grid item sm={12} xs={12}>
+                                    <Typography align={"center"} variant="h1" className={"Title-" + i18n.language}>
+                                        {t("index.t_main_hello")}
                                     </Typography>
                                 </Grid>
-                                <Grid item sm={12}>
-                                    <Typography align={"center"} variant="h2">
-                                        I am a computer programmer
+                                <Grid item sm={12} xs={12}>
+                                    <Typography align={"center"} variant="h2" className={"Subtitle-" + i18n.language}>
+                                        {t("index.t_main_subtitle")}
                                     </Typography>
                                 </Grid>
                             </Grid>
@@ -71,7 +74,7 @@ function BlockMain(prop) {
                                             }
                                         >
                                             <Typography gutterBottom variant="text3">
-                                                Thank you for your interest! I will send as soon as possible.
+                                                {t("index.t_main_success")}
                                             </Typography>
                                         </Alert>
                                     </Collapse>
@@ -93,7 +96,7 @@ function BlockMain(prop) {
                                             }
                                         >
                                             <Typography gutterBottom variant="text3">
-                                                Please fill in your email so I can send
+                                                {t("index.t_main_error")}
                                             </Typography>
                                         </Alert>
                                     </Collapse>
@@ -112,7 +115,7 @@ function BlockMain(prop) {
                                                     required
                                                     fullWidth
                                                     id="email"
-                                                    label="Email Address"
+                                                    label={t("index.t_main_email_label")}
                                                 />
                                             </Grid>
                                             <Grid item sm={4}>
@@ -122,14 +125,16 @@ function BlockMain(prop) {
                                                     fullWidth
                                                     size="large"
                                                     variant="outlined"
-                                                >Get resume</Button>
+                                                >
+                                                    {t("index.t_main_btn")}
+                                                </Button>
                                             </Grid>
                                         </Grid>
                                     </Box>
                                 </Grid>
                                 <Grid item sm={12}>
                                     <Typography align={"left"} variant="subtitle1">
-                                        * Get my resume directly in your mailbox
+                                        {t("index.t_main_info")}
                                     </Typography>
                                 </Grid>
                             </Grid>

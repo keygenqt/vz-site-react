@@ -2,9 +2,12 @@
  * Apps constants
  */
 export const AppConstants = {
+    data: {
+        key: "@keygenqt",
+        email: "dev@keygenqt.com",
+    },
     links: {
         telegram: 'https://t.me/keygenqt',
-        email: 'mailto:dev@keygenqt.com',
         github: 'https://github.com/keygenqt',
     }
 };

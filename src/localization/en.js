@@ -1,0 +1,68 @@
+export const enLocalization = {
+    translation: {
+        menu: {
+            t_blog: "Blog",
+            t_projects: "Projects",
+            t_utils: "Utils",
+        },
+        footer: {
+            t_questions: "Do you have any questions?",
+            t_say: "Don't be Shy, Say Hello!",
+            t_name: "Vitaliy Zarubin",
+        },
+        index: {
+            // BlockMain
+            t_main_hello: "Hello",
+            t_main_subtitle: "I am a computer programmer",
+            t_main_email_label: "Email Address",
+            t_main_btn: "Get resume",
+            t_main_info: "* Get my resume directly in your mailbox",
+            t_main_error: "Please fill in your email so I can send",
+            t_main_success: "Thank you for your interest! I will send as soon as possible.",
+            // BlockAbout
+            t_about_title: "About Me",
+            t_about_me: "I'm a programmer",
+            t_about_text: "I have been a programmer for 10 years. Started as a PHP programmer writing features for Webasyst (CMS for stores). Continued as a front-end developer on yii2. But the tasks often concerned the backend, in fact, did everything from the DB to the layout of the design. I am currently writing android applications. Having fun with ios, python, react, spring, ktor and much more.",
+            t_about_follow: "Follow me",
+            // BlockProjects
+            t_projects_android_title: "Android",
+            t_projects_android_text: "I am currently working as an android programmer. It's been like ~6 years now.",
+            t_projects_android_btn: "Learn More",
+            t_projects_ios_title: "iOS",
+            t_projects_ios_text: "In free time I study SwiftUI. There is not much work yet, but it's not evening yet.",
+            t_projects_ios_btn: "Learn More",
+            t_projects_web_title: "Web",
+            t_projects_web_text: "Connected with the web since 2013. For example, this site is written by me in React.",
+            t_projects_web_btn: "Learn More",
+            t_projects_pc_title: "PC",
+            t_projects_pc_text: "Sometimes I like to write some kind of Open source. I like linux and actively use it.",
+            t_projects_pc_btn: "Learn More",
+            // BlockResume
+            t_resume_title: "Experience",
+            t_resume_role_android: "Android Developer",
+            t_resume_role_web: "Web Full-Stack",
+            t_resume_surf_text: "I am relatively new to this company. I work as a team leader. Here we close the project on jetpack compose, I write a little in php.",
+            t_resume_surf_date: "Aug 2021 - Present",
+            t_resume_clowder_text: "I have spent most of my career with this company. Started as a front-end developer and ended up as a tech lead android. I created tons of websites, admins, and later our flagship product Clowder",
+            t_resume_clowder_date1: "Aug 2015 - Aug 2021 · 6 yrs 1 mo",
+            t_resume_clowder_date2: "Sep 2014 - Aug 2015 · 1 yr",
+            t_resume_privezem_text: "We wrote websites for the sale of goods with delivery when it was not yet mainstream. Then I got acquainted with yii2. An excellent framework, except for the fact that it is outdated and yii3 is frozen and not a fact that it will be at all.",
+            t_resume_privezem_date: "Nov 2013 - Sep 2014 · 11 mos",
+            t_resume_agamaya_text: "My first job. It wasn't easy. Thanks guys for telling me what git is. I studied at such a pace that my head boiled, but I had to make features. And I tried my best.",
+            t_resume_agamaya_date: "May 2013 - Nov 2013 · 7 mos",
+            // BlockSkills
+            t_skills_android_title: "Android",
+            t_skills_android_text: "Более 7 лет работю андройд программистом. Помню те времена когда еще MVVM не были популярным и MVP вполне всех устраивал.",
+            t_skills_ios_title: "iOS",
+            t_skills_ios_text: "Опыта не много, но он есть. Изучаю swiftUI. На досуге пишу KMM проект. Рзаработка очень схожа с jetpack compose на котором пишу уже год.",
+            t_skills_markup_title: "Markup",
+            t_skills_markup_text: "Около 5 лет клепал сайты как пулемет. Сейчас только для себя и open source. Например этот я сделал сам, так же как и его дизайн.",
+            t_skills_db_title: "Database",
+            t_skills_db_text: "Моя любимая база с которой я работал больше всего - MySql. Много работал как с реляционными базами так и no noSql.",
+            t_skills_web_title: "Web",
+            t_skills_web_text: "Много писал сайтов на Yii2. Сейчас плотно изучаю React, к сожалению похоже на то что yii загибаеться и больше не пригодиться.",
+            t_skills_linux_title: "Linux",
+            t_skills_linux_text: "Я из тех барадатых любителей linux. Долгое время собирал gentoo пока не надоело. Пишу приложения на разных языках open source.",
+        }
+    },
+};

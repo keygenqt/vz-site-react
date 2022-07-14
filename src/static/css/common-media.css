@@ -1,0 +1,17 @@
+/** INDEX BlockMain **/
+@media (max-width: 700px) {
+    .Index .BlockMain .Title-ru {
+        font-size: 80px;
+    }
+}
+
+@media (max-width: 450px) {
+    .Index .BlockMain .Title-ru {
+        font-size: 64px;
+    }
+}
+@media (min-width: 700px) {
+    .Index .BlockMain .Subtitle-ru {
+        font-size: 32px;
+    }
+}

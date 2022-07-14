@@ -80,6 +80,10 @@
 }
 
 /** INDEX BlockMain **/
+.Index .BlockMain .Title-ru {
+    font-size: 135px;
+}
+
 .Index .BlockMain .AppTableCell {
     position: relative;
     padding-bottom: 145px;

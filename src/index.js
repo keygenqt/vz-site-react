@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import "./localization/Localization";
 
 import './static/css/base.css';
 import './static/css/base-media.css';

@@ -3,8 +3,12 @@ import {Button, ButtonGroup, Grid, Typography} from "@mui/material";
 import {Email, GitHub, Telegram} from "@mui/icons-material";
 import {AppConstants} from "../../../utils/AppConstants";
 import {openUrl, openUrlInNewTab} from "../../../utils/AppHelpers";
+import {useTranslation} from "react-i18next";
 
 function BlockAbout() {
+
+    const {t} = useTranslation();
+
     return (
         <React.Fragment>
             <Grid className={"BlockAbout"} container spacing={2}>
@@ -12,15 +16,13 @@ function BlockAbout() {
                     <Grid container spacing={2}>
                         <Grid item sm={12} xs={12}>
                             <Typography align={"left"} variant="h4">
-                                About Me
+                                {t("index.t_about_title")}
                             </Typography>
                         </Grid>
                         <Grid item sm={12} xs={12}/>
                         <Grid item sm={12} xs={12}>
-                            <Typography align={"left"} variant="h3">
-                                I'm a programmer
-                                <br/>
-                                In the broadest sense of the word
+                            <Typography align={"left"} variant="h3" style={{whiteSpace: "pre-wrap"}}>
+                                {t("index.t_about_me")}
                             </Typography>
                         </Grid>
                         <Grid className={"GridLeft"} item sm={12} xs={12}>
@@ -31,27 +33,14 @@ function BlockAbout() {
                 <Grid item sm={6}>
                     <Grid container spacing={2}>
                         <Grid item sm={12} xs={12}>
-                            <Typography align={"left"} variant="text1">
-                                I have been a programmer for 10 years. Started as a PHP programmer writing features for
-                                Webasyst (CMS for stores).
-                            </Typography>
-                        </Grid>
-                        <Grid item sm={12} xs={12}>
-                            <Typography align={"left"} variant="text1">
-                                Continued as a front-end developer on yii2. But the tasks often concerned the backend,
-                                in fact, did everything from the DB to the layout of the design.
-                            </Typography>
-                        </Grid>
-                        <Grid item sm={12} xs={12}>
-                            <Typography align={"left"} variant="text1">
-                                I am currently writing android applications. Having fun with ios, python, react, spring,
-                                ktor and much more.
+                            <Typography align={"left"} variant="text1" style={{whiteSpace: "pre-wrap"}}>
+                                {t("index.t_about_text")}
                             </Typography>
                         </Grid>
                         <Grid item sm={12} xs={12}/>
                         <Grid item sm={12} xs={12}>
                             <Typography align={"left"} variant="h4">
-                                Follow me
+                                {t("index.t_about_follow")}
                             </Typography>
                         </Grid>
                         <Grid item sm={12} xs={12}>
@@ -59,7 +48,7 @@ function BlockAbout() {
                                 <Button onClick={() => openUrlInNewTab(AppConstants.links.telegram)}>
                                     <Telegram/>
                                 </Button>
-                                <Button onClick={() => openUrl(AppConstants.links.email)}>
+                                <Button onClick={() => openUrl("mailto:" + AppConstants.data.email)}>
                                     <Email/>
                                 </Button>
                                 <Button onClick={() => openUrlInNewTab(AppConstants.links.github)}>

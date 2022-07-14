@@ -1,38 +1,50 @@
 import * as React from 'react';
 import {Card, CardContent, CardActions, Grid, Typography, Button} from "@mui/material";
 import {AppImages} from "../../../utils/AppImages";
+import {useTranslation} from "react-i18next";
+import {useState} from "react";
 
 const listData = [
     {
         image: AppImages.platform.android,
-        title: "Android",
-        text: "I am currently working as an android programmer. It's been like ~6 years now."
+        title: "index.t_projects_android_title",
+        text: "index.t_projects_android_text",
+        btn: "index.t_projects_android_btn"
     },
     {
         image: AppImages.platform.apple,
-        title: "iOS",
-        text: "In free time I study SwiftUI. There is not much work yet, but it's not evening yet."
+        title: "index.t_projects_ios_title",
+        text: "index.t_projects_ios_text",
+        btn: "index.t_projects_ios_btn"
     },
     {
         image: AppImages.platform.web,
-        title: "Web",
-        text: "Connected with the web since 2013. For example, this site is written by me in React."
+        title: "index.t_projects_web_title",
+        text: "index.t_projects_web_text",
+        btn: "index.t_projects_web_btn"
     },
     {
         image: AppImages.platform.pc,
-        title: "PC",
-        text: "Sometimes I like to write some kind of Open source. I like linux and actively use it."
+        title: "index.t_projects_pc_title",
+        text: "index.t_projects_pc_text",
+        btn: "index.t_projects_pc_btn"
     },
 ]
 
 function BlockProjects() {
 
+    const {t} = useTranslation();
+    const [isRaised, setIsRaised] = useState(-1);
+
     const cards = []
 
     listData.forEach((data, index) => {
         cards.push(
-            <Grid item md={3} sm={6} xs={12}>
-                <Card>
+            <Grid key={index + "item-projects"} item md={3} sm={6} xs={12}>
+                <Card raised={isRaised === index}
+                      onMouseEnter={() => setIsRaised(index)}
+                      onMouseLeave={() => setIsRaised(-1)}
+                >
                     <Grid container columns={12}>
                         <Grid item sm={6} xs={6}>
                             <img
@@ -47,15 +59,17 @@ function BlockProjects() {
 
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            {data.title}
+                            {t(data.title)}
                         </Typography>
                         <Typography variant="text3" color="text.secondary">
-                            {data.text}
+                            {t(data.text)}
                         </Typography>
                     </CardContent>
 
                     <CardActions>
-                        <Button size="small">Learn More</Button>
+                        <Button size="small">
+                            {t(data.btn)}
+                        </Button>
                     </CardActions>
 
                 </Card>

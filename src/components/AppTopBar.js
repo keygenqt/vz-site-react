@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { useTranslation } from "react-i18next";
 import {
     AppBar,
     Box,
     Button,
     Collapse,
     Container,
-    Divider,
     Grid,
     IconButton,
     ListItemIcon,
@@ -18,13 +18,27 @@ import {
     Typography,
 } from '@mui/material';
 
-import MenuIcon from '@mui/icons-material/Menu';
-import {Cloud, ContentCopy, ContentCut, ContentPaste} from "@mui/icons-material";
+import {Article, IntegrationInstructions, LightbulbCircle, Menu} from "@mui/icons-material";
+import {AppConstants} from "../utils/AppConstants";
 
-const pages = ['Blog', 'Projects', 'Utils'];
+const pages = [
+    {
+        title: "menu.t_blog",
+        icon: <Article fontSize="small"/>
+    },
+    {
+        title: "menu.t_projects",
+        icon: <IntegrationInstructions fontSize="small"/>
+    },
+    {
+        title: "menu.t_utils",
+        icon: <LightbulbCircle fontSize="small"/>
+    }
+];
 
 const AppTopBar = () => {
 
+    const { t } = useTranslation();
     const [collapseMenu, setCollapseMenu] = React.useState(false);
 
     return (
@@ -46,7 +60,7 @@ const AppTopBar = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            @keygenqt
+                            {AppConstants.data.key}
                         </Typography>
 
                         <Box sx={{flexGrow: 1}}/>
@@ -64,13 +78,14 @@ const AppTopBar = () => {
                                             display: {xs: 'flex', md: 'none', sm: 'none'},
                                         }}
                                     >
-                                        <MenuIcon/>
+                                        <Menu/>
                                     </IconButton>
                                 </Grid>
-                                {pages.map((page) => (
-                                    <Grid item sx={{display: {xs: 'none', md: 'block', sm: 'block'}}}>
+
+                                {pages.map((page, index) => (
+                                    <Grid key={index + "topBar-menu1-item"} item sx={{display: {xs: 'none', md: 'block', sm: 'block'}}}>
                                         <Button sx={{color: 'white'}}>
-                                            {page}
+                                            {t(page.title)}
                                         </Button>
                                     </Grid>
                                 ))}
@@ -81,44 +96,16 @@ const AppTopBar = () => {
                 </Container>
             </AppBar>
             <Collapse in={collapseMenu} sx={{
-                display: { md: 'none', sm: 'none'},
+                display: {md: 'none', sm: 'none'},
             }}>
                 <Paper sx={{width: '100%', maxWidth: '100%', borderRadius: 0}} elevation={1}>
                     <MenuList>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <ContentCut fontSize="small"/>
-                            </ListItemIcon>
-                            <ListItemText>Cut</ListItemText>
-                            <Typography variant="body2" color="text.secondary">
-                                ⌘X
-                            </Typography>
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <ContentCopy fontSize="small"/>
-                            </ListItemIcon>
-                            <ListItemText>Copy</ListItemText>
-                            <Typography variant="body2" color="text.secondary">
-                                ⌘C
-                            </Typography>
-                        </MenuItem>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <ContentPaste fontSize="small"/>
-                            </ListItemIcon>
-                            <ListItemText>Paste</ListItemText>
-                            <Typography variant="body2" color="text.secondary">
-                                ⌘V
-                            </Typography>
-                        </MenuItem>
-                        <Divider/>
-                        <MenuItem>
-                            <ListItemIcon>
-                                <Cloud fontSize="small"/>
-                            </ListItemIcon>
-                            <ListItemText>Web Clipboard</ListItemText>
-                        </MenuItem>
+                        {pages.map((page, index) => (
+                            <MenuItem key={index + "topBar-menu2-item"}>
+                                <ListItemIcon>{page.icon}</ListItemIcon>
+                                <ListItemText>{t(page.title)}</ListItemText>
+                            </MenuItem>
+                        ))}
                     </MenuList>
                 </Paper>
             </Collapse>
