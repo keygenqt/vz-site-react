@@ -98,7 +98,7 @@ function BlockResume() {
                     </Stack>
                 </Grid>
                 <Grid item md={6} sm={6} xs={12}>
-                    <Typography gutterBottom variant="text1">
+                    <Typography gutterBottom variant="text2">
                         {t(data.text)}
                     </Typography>
                 </Grid>

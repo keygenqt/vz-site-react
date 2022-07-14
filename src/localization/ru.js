@@ -17,7 +17,7 @@ export const ruLocalization = {
             t_main_email_label: "Емейл",
             t_main_btn: "Лан, давай",
             t_main_info: "* Получите мое резюме прямо в свой почтовый ящик",
-            t_main_error: "Пожалуйста, заполните почту чтобы не спамить всех подряд",
+            t_main_error: "Пожалуйста, заполните почту, она нужна для отправки",
             t_main_success: "Спасибо за Ваш интерес! Будет следано",
             // BlockAbout
             t_about_title: "Обо мне",
