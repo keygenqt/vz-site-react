@@ -60,7 +60,7 @@ function BlockSkills() {
     return (
         <React.Fragment>
             <Typography align={"center"} gutterBottom variant="h3" style={{marginBottom: 40}}>
-                My skills
+                {t("index.t_skills_title")}
             </Typography>
             <Grid className={"BlockSkills"} container spacing={3}>
                 {items}

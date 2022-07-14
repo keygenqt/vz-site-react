@@ -51,6 +51,7 @@ export const enLocalization = {
             t_resume_agamaya_text: "My first job. It wasn't easy. Thanks guys for telling me what git is. I studied at such a pace that my head boiled, but I had to make features. And I tried my best.",
             t_resume_agamaya_date: "May 2013 - Nov 2013 · 7 mos",
             // BlockSkills
+            t_skills_title: "My skills",
             t_skills_android_title: "Android",
             t_skills_android_text: "Более 7 лет работю андройд программистом. Помню те времена когда еще MVVM не были популярным и MVP вполне всех устраивал.",
             t_skills_ios_title: "iOS",
