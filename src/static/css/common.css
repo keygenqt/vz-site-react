@@ -84,6 +84,10 @@
     font-size: 135px;
 }
 
+.Index .BlockMain .Title-en {
+    font-size: 186px;
+}
+
 .Index .BlockMain .AppTableCell {
     position: relative;
     padding-bottom: 145px;
@@ -155,7 +159,11 @@
     display: none;
 }
 
-/** INDEX BlockResume **/
+/** INDEX BlockSkills **/
 .Index .BlockSkills .SkillAlert .MuiAlert-icon {
     padding-top: 12px;
+}
+
+.Index .BlockSkills {
+    padding-bottom: 130px;
 }

@@ -1,9 +1,15 @@
 export const ruLocalization = {
     translation: {
+        error: {
+            t_text: "Страница не найдена",
+            t_subtext: "Странно, а как это вы сюда попали? Не шпиен ли часом?",
+            t_btn: "Сотрудничать",
+        },
         menu: {
             t_blog: "Блог",
             t_projects: "Проекты",
             t_utils: "Утилиты",
+            t_locale: "Международный",
         },
         footer: {
             t_questions: "Есть не закрытые вопросы?",
@@ -31,16 +37,12 @@ export const ruLocalization = {
             // BlockProjects
             t_projects_android_title: "Android",
             t_projects_android_text: "Около 6 лет занимаюсь Android разработкой. Год уже как пилю на Jetpack Compose по всем канонам.",
-            t_projects_android_btn: "Заценить",
             t_projects_ios_title: "iOS",
             t_projects_ios_text: "Swift очень похож на Kotlin, а SwiftUI на Jetpack Compose так что я считаю что я вполне могу клепать iOS.",
-            t_projects_ios_btn: "Заценить",
             t_projects_web_title: "Web",
             t_projects_web_text: "Когда-то проекты на web кормили меня. Сейчас я пишу (как например этот сайт) для души и по кайфу.",
-            t_projects_web_btn: "Заценить",
             t_projects_pc_title: "PC",
             t_projects_pc_text: "Люблю я Linux и всю эту тему про свободу. По мере возможностей пишу Open Source для людей.",
-            t_projects_pc_btn: "Заценить",
             // BlockResume
             t_resume_title: "Мой путь",
             t_resume_role_android: "Android Developer",

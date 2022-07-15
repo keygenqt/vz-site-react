@@ -1,9 +1,15 @@
 export const enLocalization = {
     translation: {
+        error: {
+          t_text: "Page not found",
+          t_subtext: "The Page you are looking for doesn't exist.",
+          t_btn: "Go to Home",
+        },
         menu: {
             t_blog: "Blog",
             t_projects: "Projects",
             t_utils: "Utils",
+            t_locale: "International",
         },
         footer: {
             t_questions: "Do you have any questions?",

@@ -11,6 +11,11 @@ body, html, #root {
     font-family: 'Albert Sans', 'Roboto', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /** TABLE **/
 .AppTable {
     display: table;
@@ -44,7 +49,6 @@ body, html, #root {
     width: 100%;
     position: relative;
     vertical-align: middle;
-    padding-bottom: 130px;
 }
 
 /** FOOTER **/
@@ -54,10 +58,11 @@ body, html, #root {
     vertical-align: middle;
     background-color: #2298db;
     position: relative;
+    height: 0;
 }
 
 .App .Footer {
-    padding-top: 80px;
+    padding-top: 60px;
     padding-bottom: 60px;
 }
 
@@ -77,6 +82,7 @@ body, html, #root {
 .App .Footer .Text {
     text-align: center;
     color: white;
+    padding-top: 20px;
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 30px;

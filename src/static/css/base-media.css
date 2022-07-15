@@ -1,0 +1,8 @@
+@media (max-width: 600px) {
+    .App .Footer .Copy {
+        text-align: center;
+    }
+    .App .Footer .Buttons {
+        text-align: center;
+    }
+}

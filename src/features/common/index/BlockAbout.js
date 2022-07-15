@@ -12,7 +12,7 @@ function BlockAbout() {
     return (
         <React.Fragment>
             <Grid className={"BlockAbout"} container spacing={2}>
-                <Grid item sm={6}>
+                <Grid item sm={6} xs={12}>
                     <Grid container spacing={2}>
                         <Grid item sm={12} xs={12}>
                             <Typography align={"left"} variant="h4">
@@ -30,7 +30,7 @@ function BlockAbout() {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item sm={6}>
+                <Grid item sm={6} xs={12}>
                     <Grid container spacing={2}>
                         <Grid item sm={12} xs={12}>
                             <Typography align={"left"} variant="text1" style={{whiteSpace: "pre-wrap"}}>

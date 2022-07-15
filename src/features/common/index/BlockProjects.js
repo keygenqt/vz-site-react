@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Card, CardContent, CardActions, Grid, Typography, Button} from "@mui/material";
+import {Card, CardContent, CardActionArea, Grid, Typography} from "@mui/material";
 import {AppImages} from "../../../utils/AppImages";
 import {useTranslation} from "react-i18next";
 import {useState} from "react";
@@ -9,25 +9,21 @@ const listData = [
         image: AppImages.platform.android,
         title: "index.t_projects_android_title",
         text: "index.t_projects_android_text",
-        btn: "index.t_projects_android_btn"
     },
     {
         image: AppImages.platform.apple,
         title: "index.t_projects_ios_title",
         text: "index.t_projects_ios_text",
-        btn: "index.t_projects_ios_btn"
     },
     {
         image: AppImages.platform.web,
         title: "index.t_projects_web_title",
         text: "index.t_projects_web_text",
-        btn: "index.t_projects_web_btn"
     },
     {
         image: AppImages.platform.pc,
         title: "index.t_projects_pc_title",
         text: "index.t_projects_pc_text",
-        btn: "index.t_projects_pc_btn"
     },
 ]
 
@@ -45,32 +41,28 @@ function BlockProjects() {
                       onMouseEnter={() => setIsRaised(index)}
                       onMouseLeave={() => setIsRaised(-1)}
                 >
-                    <Grid container columns={12}>
-                        <Grid item sm={6} xs={6}>
-                            <img
-                                style={{
-                                    width: '100%',
-                                    marginTop: 65,
-                                    marginBottom: 25
-                                }}
-                                src={data.image} alt={data.title} />
+                    <CardActionArea>
+                        <Grid container columns={12}>
+                            <Grid item sm={6} xs={6}>
+                                <img
+                                    style={{
+                                        width: '100%',
+                                        marginTop: 65,
+                                        marginBottom: 25
+                                    }}
+                                    src={data.image} alt={data.title} />
+                            </Grid>
                         </Grid>
-                    </Grid>
 
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {t(data.title)}
-                        </Typography>
-                        <Typography variant="text3" color="text.secondary">
-                            {t(data.text)}
-                        </Typography>
-                    </CardContent>
-
-                    <CardActions>
-                        <Button size="small">
-                            {t(data.btn)}
-                        </Button>
-                    </CardActions>
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {t(data.title)}
+                            </Typography>
+                            <Typography variant="text3" color="text.secondary">
+                                {t(data.text)}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
 
                 </Card>
             </Grid>
