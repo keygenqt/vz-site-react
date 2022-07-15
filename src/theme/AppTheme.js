@@ -1,11 +1,10 @@
 import {createTheme} from '@mui/material/styles';
-import i18next from "i18next";
 
 export const AppTheme = createTheme({
     typography: {
         fontSize: 14,
         h1: {
-            fontSize: i18next.language === 'ru' ? 120 : 186,
+            fontSize: 110,
             fontWeight: 'bold',
             textTransform: "uppercase",
             fontFamily: [
