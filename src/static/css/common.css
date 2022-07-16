@@ -90,13 +90,12 @@
 
 .Index .BlockMain .AppTableCell {
     position: relative;
-    padding-bottom: 100px;
-    padding-top: 70px;
+    padding-bottom: 130px;
 }
 
 .Index .BlockMain .BottomButton {
     position: absolute;
-    bottom: 40px;
+    bottom: 100px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -161,6 +160,10 @@
 }
 
 /** INDEX BlockSkills **/
+.Index .BlockSkills .SkillAlert {
+    background-color: #def5ff;
+}
+
 .Index .BlockSkills .SkillAlert .MuiAlert-icon {
     padding-top: 12px;
 }

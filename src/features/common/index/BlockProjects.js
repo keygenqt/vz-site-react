@@ -58,7 +58,7 @@ function BlockProjects() {
                             <Typography gutterBottom variant="h5" component="div">
                                 {t(data.title)}
                             </Typography>
-                            <Typography variant="text3" color="text.secondary">
+                            <Typography variant="textCard">
                                 {t(data.text)}
                             </Typography>
                         </CardContent>

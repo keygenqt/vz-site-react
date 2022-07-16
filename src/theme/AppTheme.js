@@ -80,6 +80,16 @@ export const AppTheme = createTheme({
         text3: {
             fontSize: 16,
         },
+        textCard: {
+            color: "#00000099",
+            lineHeight: '22px',
+            fontSize: 16,
+            fontFamily: [
+                '"Albert Sans"',
+                'Roboto',
+                'sans-serif',
+            ].join(','),
+        },
         button: {
             whiteSpace: "nowrap"
         },
@@ -98,5 +108,5 @@ export const AppTheme = createTheme({
             main: 'rgba(255,255,255,0.6)',
             contrastText: 'rgba(255,255,255,0.6)',
         },
-    },
+    }
 });

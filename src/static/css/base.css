@@ -7,7 +7,6 @@ body, html, #root {
     margin: 0;
     height: 100%;
     width: 100%;
-    background-color: #c9e1ff0d;
     font-family: 'Albert Sans', 'Roboto', sans-serif;
 }
 
@@ -49,6 +48,13 @@ a {
     width: 100%;
     position: relative;
     vertical-align: middle;
+    padding-top: 70px;
+    background-color: #caf4ff0d;
+}
+
+.App .PagePaddings {
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 /** FOOTER **/
