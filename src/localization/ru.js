@@ -2,7 +2,7 @@ export const ruLocalization = {
     translation: {
         error: {
             t_text: "Страница не найдена",
-            t_subtext: "Странно, а как это вы сюда попали? Не шпиен ли часом ;)?",
+            t_subtext: "Странно, как это вы сюда попали... Не шпиен ли часом?",
             t_btn: "Сотрудничать",
         },
         menu: {

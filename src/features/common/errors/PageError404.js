@@ -12,6 +12,8 @@ function PageError404() {
         <Container maxWidth={"sm"} className={"Page UtilsList"}>
             <Stack alignItems={"center"} spacing={2}>
 
+                <Divider/>
+
                 <Zoom in={true} style={{ transitionDuration: '1000ms'}}>
                     <SentimentVeryDissatisfied sx={{ fontSize: 140 }} />
                 </Zoom>
@@ -22,7 +24,6 @@ function PageError404() {
                 <Typography align={"center"} variant="body1">
                     {t("error.t_subtext")}
                 </Typography>
-                <Divider/>
                 <Link to={"/"}>
                     <Button variant="outlined">
                         {t("error.t_btn")}
