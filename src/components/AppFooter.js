@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Container from "@mui/material/Container";
-import {ButtonGroup, Grid, Link} from "@mui/material";
-import Button from "@mui/material/Button";
-import {ArrowUpward, Email, GitHub, Telegram} from "@mui/icons-material";
+import {ButtonGroup, Grid, Link, Button} from "@mui/material";
+import {ArrowUpward, Email, GitHub, LinkedIn, Telegram} from "@mui/icons-material";
 import {openUrl, openUrlInNewTab} from "../utils/AppHelpers";
 import {AppConstants} from "../utils/AppConstants";
 import {useTranslation} from "react-i18next";
@@ -50,15 +49,19 @@ function AppFooter() {
                     </Grid>
                     <Grid className={"Buttons"} item xs={12} sm={6}>
                         <ButtonGroup color="white6" size="small" aria-label="small button group">
+                            <Button onClick={() => openUrlInNewTab(AppConstants.links.github)}>
+                                <GitHub style={{width: 20}}/>
+                            </Button>
+                            <Button onClick={() => openUrlInNewTab(AppConstants.links.linkedIn)}>
+                                <LinkedIn/>
+                            </Button>
                             <Button onClick={() => openUrlInNewTab(AppConstants.links.telegram)}>
                                 <Telegram/>
                             </Button>
                             <Button onClick={() => openUrl("mailto:" + AppConstants.data.email)}>
                                 <Email/>
                             </Button>
-                            <Button onClick={() => openUrlInNewTab(AppConstants.links.github)}>
-                                <GitHub/>
-                            </Button>
+
                             <Button onClick={scrollToTop}>
                                 <ArrowUpward/>
                             </Button>

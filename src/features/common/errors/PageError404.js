@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {Button, Container, Divider, Stack, Typography} from "@mui/material";
+import {Button, Container, Divider, Stack, Typography, Zoom} from "@mui/material";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {SentimentVeryDissatisfied} from "@mui/icons-material";
 
 function PageError404() {
 
@@ -10,9 +11,11 @@ function PageError404() {
     return (
         <Container maxWidth={"sm"} className={"Page UtilsList"}>
             <Stack alignItems={"center"} spacing={2}>
-                <Typography variant="h1">
-                    404
-                </Typography>
+
+                <Zoom in={true} style={{ transitionDuration: '1000ms'}}>
+                    <SentimentVeryDissatisfied sx={{ fontSize: 140 }} />
+                </Zoom>
+
                 <Typography variant="h3">
                     {t("error.t_text")}
                 </Typography>

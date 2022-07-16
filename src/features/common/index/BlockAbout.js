@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Button, ButtonGroup, Grid, Typography} from "@mui/material";
-import {Email, GitHub, Telegram} from "@mui/icons-material";
+import {Email, GitHub, LinkedIn, Telegram} from "@mui/icons-material";
 import {AppConstants} from "../../../utils/AppConstants";
 import {openUrl, openUrlInNewTab} from "../../../utils/AppHelpers";
 import {useTranslation} from "react-i18next";
@@ -45,14 +45,17 @@ function BlockAbout() {
                         </Grid>
                         <Grid item sm={12} xs={12}>
                             <ButtonGroup size="small" aria-label="small button group">
+                                <Button onClick={() => openUrlInNewTab(AppConstants.links.github)}>
+                                    <GitHub style={{width: 20}}/>
+                                </Button>
+                                <Button onClick={() => openUrlInNewTab(AppConstants.links.linkedIn)}>
+                                    <LinkedIn/>
+                                </Button>
                                 <Button onClick={() => openUrlInNewTab(AppConstants.links.telegram)}>
                                     <Telegram/>
                                 </Button>
                                 <Button onClick={() => openUrl("mailto:" + AppConstants.data.email)}>
                                     <Email/>
-                                </Button>
-                                <Button onClick={() => openUrlInNewTab(AppConstants.links.github)}>
-                                    <GitHub/>
                                 </Button>
                             </ButtonGroup>
                         </Grid>
