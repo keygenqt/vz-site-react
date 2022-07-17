@@ -34,7 +34,7 @@ const pages = [
     {
         title: "menu.t_projects",
         icon: <IntegrationInstructions fontSize="small"/>,
-        route: "/works"
+        route: "/projects"
     },
     {
         title: "menu.t_utils",

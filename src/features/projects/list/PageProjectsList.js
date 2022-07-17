@@ -31,7 +31,7 @@ const listData = [
     {},
 ]
 
-function PageBlogList() {
+function PageProjectsList() {
 
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
@@ -40,55 +40,48 @@ function PageBlogList() {
 
     listData.forEach((data, index) => {
         cards.push(
-            <Grid key={"item-blog-" + index} item md={4} sm={8} xs={12}>
+            <Grid key={"item-projects-" + index} item md={4} sm={8} xs={12}>
                 <Card raised={isRaised === index}
                     onMouseEnter={() => setIsRaised(index)}
                     onMouseLeave={() => setIsRaised(-1)}
                 >
                     <CardActionArea>
-                        <CardHeader
-                            title="Shrimp and Chorizo Paella"
-                            subheader="September 14, 2016"
-                        />
+
                         <CardMedia
                             component="img"
                             height="140"
                             image={AppImages.temp.blog_item}
                             alt="green iguana"
                         />
-                        <CardContent className={"BlogItemContent"}>
-                            <Typography className={"BlogItemSubtitle"} variant="textCard">
+                        <CardHeader
+                            title="Shrimp and Chorizo Paella"
+                            subheader="September 14, 2016"
+                        />
+                        <CardContent className={"ProjectsItemContent"}>
+                            <Typography className={"ProjectsItemSubtitle"} variant="textCard">
                                 Алгоритмы или очередной фреймворк? Во что вложиться? Для того, чтобы кодить, знание
                                 алгоритмизации не требуется, если ты знаешь инструмент который тебе поможет решить
                                 поставленную задачу.
                             </Typography>
                         </CardContent>
                     </CardActionArea>
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                            <Favorite/>
-                        </IconButton>
-                        <IconButton aria-label="share">
-                            <Share/>
-                        </IconButton>
-                    </CardActions>
                 </Card>
             </Grid>
         );
     })
 
     return (
-        <Container maxWidth="lg" className={"Page PagePaddings BlogList"}>
+        <Container maxWidth="lg" className={"Page PagePaddings ProjectsList"}>
             <Grid container spacing={isSmall ? 8 : 14}>
                 <Grid item xs={7}>
                     <Stack spacing={4}>
                         <Divider>
                             <Typography align={"center"} variant="h4">
-                                My Blog
+                                My Open Source
                             </Typography>
                         </Divider>
                         <Typography align={"center"} variant="h2">
-                            Знания и опыт в тексте
+                            Для развития и людей
                         </Typography>
                     </Stack>
                 </Grid>
@@ -108,4 +101,4 @@ function PageBlogList() {
     );
 }
 
-export default PageBlogList;
+export default PageProjectsList;

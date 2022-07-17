@@ -10,7 +10,7 @@ import {AppTheme} from "../theme/AppTheme";
 
 import PageBlogList from "./blog/list/PageBlogList";
 import PageIndex from "./common/index/PageIndex";
-import PageWorksList from "./works/list/PageWorksList";
+import PageProjectsList from "./projects/list/PageProjectsList";
 import PageUtilsList from "./utils/list/PageUtilsList";
 
 import {Route, Routes, useLocation} from "react-router-dom";
@@ -31,7 +31,7 @@ function App() {
                             <Routes>
                                 <Route exact path="/" element={<PageIndex/>}/>
                                 <Route exact path="/blog" element={<PageBlogList/>}/>
-                                <Route exact path="/works" element={<PageWorksList/>}/>
+                                <Route exact path="/projects" element={<PageProjectsList/>}/>
                                 <Route exact path="/utils" element={<PageUtilsList/>}/>
                                 <Route path="*" element={<PageError404/>}/>
                             </Routes>
