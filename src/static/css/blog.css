@@ -1,3 +1,4 @@
+/** BlogList **/
 .BlogList .BlogItemContent .BlogItemSubtitle {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -5,4 +6,21 @@
     -webkit-line-clamp: 3;
     line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+.BlogList .MuiCardHeader-content .MuiCardHeader-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.BlogList .MuiCardHeader-root {
+    padding-bottom: 0;
+}
+
+.BlogList .MuiPaper-elevation8 {
+    box-shadow: 0 5px 5px -3px rgb(0, 0, 0, 20%), 0 8px 10px 1px rgb(150, 111, 227, 14%), 0 3px 14px 2px rgb(0, 0, 0, 12%);
 }

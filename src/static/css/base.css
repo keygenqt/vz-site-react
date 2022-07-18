@@ -47,7 +47,7 @@ a {
     display: table-cell;
     width: 100%;
     position: relative;
-    vertical-align: middle;
+    vertical-align: top;
     padding-top: 70px;
     background-color: #caf4ff0d;
 }
@@ -127,4 +127,11 @@ a {
 
 .App .MuiAlert-action {
     padding-top: 5px;
+}
+
+.App .MuiDivider-root.Small {
+    width: 50px;
+    height: 2px;
+    background: #966fe3;
+    margin: 30px auto auto;
 }

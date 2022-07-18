@@ -28,11 +28,11 @@ export const ruLocalization = {
 
             // BlockAbout
             t_about_title: "Обо мне",
-            t_about_me: "Android. Web Full-Stack" 
+            t_about_me: "Android. Web Full-Stack"
                 + "\n"
                 + "И чуток iOS & PC",
-                t_about_follow: "Преследовать",
-            
+            t_about_follow: "Преследовать",
+
             t_about_text: "Я работаю программистом более 10 лет. Начинал как PHP программист, писал фичи для Webasyst (CMS для магазинов)."
                 + "\n\n"
                 + "Почувствовав ограниченность CMS (на самом деле сменил работу) занялся framework-ом yii и после yii2. Все еще пишу на нем иногда, но новые проекты вряд ли на нем начну."
@@ -40,7 +40,7 @@ export const ruLocalization = {
                 + "Когда возникла потребность писать приложение на Android я воспользовался шансом. В итоге я стал лидом Android."
                 + "\n\n"
                 + "А вообще я считаю что программист не должен зависеть от платформы. Писать на bash или на java для него не должно быть разницы, если есть хорошая база.",
-            
+
             // BlockProjects
             t_projects_android_title: "Android",
             t_projects_ios_title: "iOS",
@@ -82,7 +82,36 @@ export const ruLocalization = {
             t_skills_db_text: "Долгое время работал с MySql. Был проект на базе данных Vertica. Писали магазин использующий только лишь Elasticsearch как базу данных.",
             t_skills_web_text: "Основным рабочим инструментом по написанию сайтов был Yii. Писал API на Java/Spring, Ktor/Kotlin. Пишу сайты на React (вы на него смотрите).",
             t_skills_linux_text: "Я из тех бородатых любителей Linux. Долгое время собирал Gentoo и кайфовал от циклических зависимостей, но понял что OS это просто инструмент.",
-        
+        },
+        projects: {
+            list: {
+                t_title: "Open Source",
+                t_subtitle: "Для развития и людей",
+            }
+        },
+        blog: {
+            list: {
+                t_title: "Мой Блог",
+                t_subtitle: "Знания и опыт в тексте",
+            }
+        },
+        utils: {
+            list: {
+                t_title: "Утилиты",
+                t_subtitle: "Web приложения и другое",
+                t_btn_open: "Перейти",
+            },
+            data: {
+                t_you_tube: "Скачивание видео с YouTube в mp4",
+                t_unix_timestamp: "Конвертер timestamp c таймзонами",
+                t_api_tests: "Настраиваемые запросы для тестов API",
+                t_direct_demo: "Демо файлы с прямыми ссылками для тестов",
+            },
+            dialog_soon: {
+                t_title: "Уже скоро...",
+                t_text: "Еще не все готово, сайт и сервисы еще в разработке. Подождите немного скоро все будет.",
+                t_btn: "Хорошо"
+            }
         }
     },
 };

@@ -23,18 +23,19 @@ import {
 
 import {Article, IntegrationInstructions, LightbulbCircle, Menu, Public, PublicOff} from "@mui/icons-material";
 import {AppConstants} from "../utils/AppConstants";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import {useEffect} from "react";
 
 const pages = [
-    {
-        title: "menu.t_blog",
-        icon: <Article fontSize="small"/>,
-        route: "/blog"
-    },
     {
         title: "menu.t_projects",
         icon: <IntegrationInstructions fontSize="small"/>,
         route: "/projects"
+    },
+    {
+        title: "menu.t_blog",
+        icon: <Article fontSize="small"/>,
+        route: "/blog"
     },
     {
         title: "menu.t_utils",
@@ -45,6 +46,7 @@ const pages = [
 
 const AppTopBar = () => {
 
+    const location = useLocation()
     const {t, i18n} = useTranslation();
     const [collapseMenu, setCollapseMenu] = React.useState(false);
     const [switchLocalization, setSwitchLocalization] = React.useState(i18n.language === 'en');
@@ -58,12 +60,25 @@ const AppTopBar = () => {
         }
     }
 
-    return (
-        <ClickAwayListener onClickAway={() => {
+    useEffect(() => {
+        const handleWindowMouseMove = () => {
             if (collapseMenu) {
                 setCollapseMenu(false)
             }
-        }}>
+        };
+        window.addEventListener('scroll', handleWindowMouseMove);
+        return () => {
+            window.removeEventListener('scroll', handleWindowMouseMove);
+        };
+    });
+
+    return (
+        <ClickAwayListener
+            onClickAway={() => {
+                if (collapseMenu) {
+                    setCollapseMenu(false)
+                }
+            }}>
             <Stack spacing={0} className={"AppTopBar"}>
                 <AppBar position="static">
                     <Container maxWidth="lg">
@@ -111,7 +126,8 @@ const AppTopBar = () => {
                                         <Grid key={index + "topBar-menu1-item"} item
                                               sx={{display: {xs: 'none', md: 'block', sm: 'block'}}}>
                                             <Link to={page.route}>
-                                                <Button sx={{color: 'white'}}>
+                                                <Button
+                                                    sx={{color: page.route === location.pathname ? 'white' : '#ffffffb5'}}>
                                                     {t(page.title)}
                                                 </Button>
                                             </Link>
@@ -150,13 +166,14 @@ const AppTopBar = () => {
                                     <MenuItem onClick={() => {
                                         setCollapseMenu(false)
                                     }}>
-                                        <ListItemIcon>{page.icon}</ListItemIcon>
+                                        <ListItemIcon
+                                            style={{color: page.route === location.pathname ? '#2298DB' : '#0000008a'}}>{page.icon}</ListItemIcon>
                                         <ListItemText>{t(page.title)}</ListItemText>
                                     </MenuItem>
                                 </Link>
                             ))}
                             <Divider/>
-                            <MenuItem disableRipple sx={{
+                            <MenuItem disableRipple style={{paddingTop: 11}} sx={{
                                 "&.MuiButtonBase-root:hover": {
                                     bgcolor: "transparent"
                                 }

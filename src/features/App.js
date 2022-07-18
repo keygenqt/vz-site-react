@@ -27,7 +27,10 @@ function App() {
                 <AppTopBar/>
                 <div className={"App AppTable"}>
                     <div className={"AppTableRow"}>
-                        <main>
+                        <main style={{
+                            background: location.pathname === '/' ? '#caf4ff0d' : '#bff2ff36',
+                            verticalAlign: location.key === 'default' ? 'middle' : 'top'
+                        }}>
                             <Routes>
                                 <Route exact path="/" element={<PageIndex/>}/>
                                 <Route exact path="/blog" element={<PageBlogList/>}/>

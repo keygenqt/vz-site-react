@@ -1,3 +1,9 @@
+@media (max-width: 900px) {
+    .App .PagePaddings {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
 @media (max-width: 600px) {
     .App .Footer .Copy {
         text-align: center;

@@ -79,7 +79,36 @@ export const enLocalization = {
             t_skills_db_text: "I have been working with MySql for a long time. There was a project based on the Vertica database. They wrote a store using only Elasticsearch as a database.",
             t_skills_web_text: "Yii was the main my working tool for writing websites. I wrote API in Java/Spring, Ktor/Kotlin. Also I write sites on React, now you are looking at one of them.",
             t_skills_linux_text: "I'm one of those bearded Linux lovers. For a long time I collected Gentoo and got high on cyclic dependencies, but I realized that the OS is just a tool.",
-        
+        },
+        projects: {
+            list: {
+                t_title: "Open Source",
+                t_subtitle: "For evolution and people",
+            }
+        },
+        blog: {
+            list: {
+                t_title: "My Blog",
+                t_subtitle: "Knowledge and experience",
+            }
+        },
+        utils: {
+            list: {
+                t_title: "Utils",
+                t_subtitle: "Web apps and other",
+                t_btn_open: "Open",
+            },
+            data: {
+                t_you_tube: "Download YouTube videos to mp4",
+                t_unix_timestamp: "Timestamp converter with timezones",
+                t_api_tests: "Customizable requests for API tests",
+                t_direct_demo: "Demo files with direct links for tests",
+            },
+            dialog_soon: {
+                t_title: "Coming soon...",
+                t_text: "Not everything is ready yet, the site and services are still under development. Wait a little soon everything will be.",
+                t_btn: "Ok"
+            }
         }
     },
 };

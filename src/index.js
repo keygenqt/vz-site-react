@@ -10,8 +10,8 @@ import './static/css/blog.css';
 import './static/css/blog-media.css';
 import './static/css/utils.css';
 import './static/css/utils-media.css';
-import './static/css/works.css';
-import './static/css/works-media.css';
+import './static/css/projects.css';
+import './static/css/projects-media.css';
 import './static/css/common.css';
 import './static/css/common-media.css';
 

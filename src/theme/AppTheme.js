@@ -100,6 +100,9 @@ export const AppTheme = createTheme({
         primary: {
             main: '#2298db',
         },
+        secondary: {
+            main: '#ffffff',
+        },
         white1: {
             main: '#ffffff',
             contrastText: '#ffffff',
