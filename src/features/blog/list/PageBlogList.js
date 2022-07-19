@@ -19,48 +19,11 @@ import {
 } from "@mui/material";
 
 import {Favorite, Share} from '@mui/icons-material';
-
-import {AppImages} from "../../../utils/AppImages";
+import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {AppRoutes} from "../../../base/routes/AppRoutes";
+import {BlogDemoData} from "../../../demo/BlogDemoData";
 
-const listData = [
-    {
-        img: AppImages.temp.blog_item2,
-        title: "Shrimp and Chorizo Paella",
-        subheader: "September 14, 2016",
-        text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
-    },
-    {
-        img: AppImages.temp.blog_item1,
-        title: "Shrimp and Chorizo Paella",
-        subheader: "September 14, 2016",
-        text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
-    },
-    {
-        img: AppImages.temp.blog_item6,
-        title: "Shrimp and Chorizo Paella Shrimp and Chorizo Paella Shrimp and Chorizo Paella",
-        subheader: "September 14, 2016",
-        text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
-    },
-    {
-        img: AppImages.temp.blog_item3,
-        title: "Shrimp and Chorizo Paella",
-        subheader: "September 14, 2016",
-        text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
-    },
-    {
-        img: AppImages.temp.blog_item5,
-        title: "Shrimp and Chorizo Paella",
-        subheader: "September 14, 2016",
-        text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
-    },
-    {
-        img: AppImages.temp.blog_item4,
-        title: "Shrimp and Chorizo Paella Chorizo Paella",
-        subheader: "September 14, 2016",
-        text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу. Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
-    },
-]
 
 function PageBlogList() {
 
@@ -73,30 +36,32 @@ function PageBlogList() {
 
     const cards = []
 
-    listData.forEach((data, index) => {
+    BlogDemoData.forEach((data, index) => {
         cards.push(
             <Grid key={"item-blog-" + index} item md={4} sm={6} xs={12}>
                 <Card raised={isRaised === index}
                       onMouseEnter={() => setIsRaised(index)}
                       onMouseLeave={() => setIsRaised(-1)}
                 >
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            height="200"
-                            image={data.img}
-                            alt={data.title}
-                        />
-                        <CardHeader
-                            title={data.title}
-                            subheader={data.subheader}
-                        />
-                        <CardContent className={"BlogItemContent"}>
-                            <Typography className={"BlogItemSubtitle"} variant="textCard">
-                                {data.text}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
+                    <Link to={AppRoutes.getLink(AppRoutes.route.blog.view, data.id)}>
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                height="200"
+                                image={data.img}
+                                alt={data.title}
+                            />
+                            <CardHeader
+                                title={data.title}
+                                subheader={data.subheader}
+                            />
+                            <CardContent className={"BlogItemContent"}>
+                                <Typography className={"BlogItemSubtitle"} variant="textCard">
+                                    {data.text}
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                    </Link>
                     <CardActions disableSpacing>
                         <IconButton aria-label="add to favorites">
                             <Favorite/>

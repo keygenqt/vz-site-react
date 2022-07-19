@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useEffect} from 'react';
 import {useTranslation} from "react-i18next";
 import {
     AppBar,
@@ -23,31 +24,31 @@ import {
 
 import {Article, IntegrationInstructions, LightbulbCircle, Menu, Public, PublicOff} from "@mui/icons-material";
 import {AppConstants} from "../utils/AppConstants";
-import {Link, useLocation} from "react-router-dom";
-import {useEffect} from "react";
+import {Link} from "react-router-dom";
+import {AppRoutes} from "../base/routes/AppRoutes";
 
 const pages = [
     {
         title: "menu.t_projects",
         icon: <IntegrationInstructions fontSize="small"/>,
-        route: "/projects"
+        route: AppRoutes.route.projects.index
     },
     {
         title: "menu.t_blog",
         icon: <Article fontSize="small"/>,
-        route: "/blog"
+        route: AppRoutes.route.blog.index
     },
     {
         title: "menu.t_utils",
         icon: <LightbulbCircle fontSize="small"/>,
-        route: "/utils"
+        route: AppRoutes.route.utils.index
     }
 ];
 
 const AppTopBar = () => {
 
-    const location = useLocation()
     const {t, i18n} = useTranslation();
+
     const [collapseMenu, setCollapseMenu] = React.useState(false);
     const [switchLocalization, setSwitchLocalization] = React.useState(i18n.language === 'en');
 
@@ -85,7 +86,7 @@ const AppTopBar = () => {
                         <Toolbar disableGutters style={{
                             minHeight: 70
                         }}>
-                            <Link to={"/"}>
+                            <Link to={AppRoutes.route.home.index}>
                                 <Typography
                                     variant="h6"
                                     noWrap
@@ -127,7 +128,7 @@ const AppTopBar = () => {
                                               sx={{display: {xs: 'none', md: 'block', sm: 'block'}}}>
                                             <Link to={page.route}>
                                                 <Button
-                                                    sx={{color: page.route === location.pathname ? 'white' : '#ffffffb5'}}>
+                                                    sx={{color: AppRoutes.isPageByRoute(page.route) ? 'white' : '#ffffffb5'}}>
                                                     {t(page.title)}
                                                 </Button>
                                             </Link>
@@ -167,7 +168,7 @@ const AppTopBar = () => {
                                         setCollapseMenu(false)
                                     }}>
                                         <ListItemIcon
-                                            style={{color: page.route === location.pathname ? '#2298DB' : '#0000008a'}}>{page.icon}</ListItemIcon>
+                                            style={{color: AppRoutes.isPageByRoute(page.route) ? '#2298DB' : '#0000008a'}}>{page.icon}</ListItemIcon>
                                         <ListItemText>{t(page.title)}</ListItemText>
                                     </MenuItem>
                                 </Link>

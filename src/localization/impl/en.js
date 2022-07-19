@@ -103,11 +103,6 @@ export const enLocalization = {
                 t_unix_timestamp: "Timestamp converter with timezones",
                 t_api_tests: "Customizable requests for API tests",
                 t_direct_demo: "Demo files with direct links for tests",
-            },
-            dialog_soon: {
-                t_title: "Coming soon...",
-                t_text: "Not everything is ready yet, the site and services are still under development. Wait a little soon everything will be.",
-                t_btn: "Ok"
             }
         }
     },

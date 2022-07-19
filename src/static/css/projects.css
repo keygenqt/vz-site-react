@@ -8,7 +8,7 @@
     -webkit-box-orient: vertical;
 }
 
-.ProjectsList .MuiCardHeader-content .MuiCardHeader-title {
+.ProjectsList .MuiCardHeader-content .MuiTypography-h5 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

@@ -8,15 +8,10 @@ import {
     Container,
     Divider,
     Grid,
-    Dialog,
     Stack,
     Typography,
-    DialogContentText,
-    DialogActions,
-    DialogContent,
     useMediaQuery,
     useTheme,
-    DialogTitle,
     Zoom
 } from "@mui/material";
 
@@ -54,8 +49,6 @@ function PageUtilsList() {
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
-    const [showSoon, setShowSoon] = React.useState(false);
-
     const cards = []
 
     listData.forEach((data, index) => {
@@ -78,11 +71,11 @@ function PageUtilsList() {
                         <CardActions style={{
                             display: 'block'
                         }}>
-                            <Button size="small" variant={"outlined"} onClick={() => {
-                                setShowSoon(true)
-                            }}>
-                                {t("utils.list.t_btn_open")}
-                            </Button>
+                            <Button disabled size="small" variant={"outlined"} onClick={() => {
+
+                                }}>
+                                    {t("utils.list.t_btn_open")}
+                                </Button>
                         </CardActions>
                     </Card>
                 </Zoom>
@@ -110,31 +103,6 @@ function PageUtilsList() {
                     </Grid>
                 </Grid>
             </Grid>
-
-            <Dialog
-                open={showSoon}
-                onClose={() => {
-                    setShowSoon(false)
-                }}
-                aria-labelledby="draggable-dialog-title"
-            >
-                <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-                    {t('utils.dialog_soon.t_title')}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        {t('utils.dialog_soon.t_text')}
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={() => {
-                        setShowSoon(false)
-                    }}>
-                        {t('utils.dialog_soon.t_btn')}
-                    </Button>
-                </DialogActions>
-            </Dialog>
-
         </Container>
     );
 }
