@@ -87,6 +87,17 @@ export const typography = {
             'sans-serif',
         ].join(','),
     },
+    textBlog: {
+        color: "#000000de",
+        whiteSpace: 'pre-line',
+        lineHeight: '25px',
+        fontSize: 18,
+        fontFamily: [
+            '"Albert Sans"',
+            'Roboto',
+            'sans-serif',
+        ].join(','),
+    },
     button: {
         whiteSpace: "nowrap"
     },

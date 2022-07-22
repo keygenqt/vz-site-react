@@ -68,6 +68,18 @@ export const AppRoutes = {
     },
 
     /**
+     * Check location is list page
+     *
+     * @returns {boolean}
+     */
+    isListPage: function useIsList() {
+        const location = useLocation()
+        return location.pathname === AppRoutes.route.blog.index
+            || location.pathname === AppRoutes.route.projects.index
+            || location.pathname === AppRoutes.route.utils.index
+    },
+
+    /**
      * Check is page
      *
      * @returns {boolean}

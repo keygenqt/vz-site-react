@@ -2,16 +2,15 @@ import * as React from 'react';
 import {useState} from 'react';
 import {
     Card,
-    CardActionArea,
     CardActions,
     CardContent,
     CardHeader,
     CardMedia,
+    CircularProgress,
     Container,
     Divider,
     Grid,
     IconButton,
-    Pagination,
     Paper,
     Stack,
     ToggleButton,
@@ -22,7 +21,7 @@ import {
     useTheme
 } from "@mui/material";
 
-import {Android, Apple, DesktopWindows, Download, GitHub, Language, Share, Store} from "@mui/icons-material";
+import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} from "@mui/icons-material";
 
 import {AppImages} from "../../../utils/AppImages";
 import {useTranslation} from "react-i18next";
@@ -48,7 +47,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
 const listData = [
     {
         type: "ios",
-        icon: <Apple sx={{fontSize: 20, color: '#000000'}}/>,
+        icon: <Apple sx={{fontSize: 20, color: '#a1a1a1'}}/>,
         img: AppImages.temp.blog_item1,
         title: "Shrimp and Chorizo Paella",
         subheader: "September 14, 2016",
@@ -72,7 +71,7 @@ const listData = [
     },
     {
         type: "ios",
-        icon: <Apple sx={{fontSize: 20, color: '#000000'}}/>,
+        icon: <Apple sx={{fontSize: 20, color: '#a1a1a1'}}/>,
         img: AppImages.temp.blog_item4,
         title: "Shrimp and Chorizo Paella",
         subheader: "September 14, 2016",
@@ -100,11 +99,9 @@ function PageProjectsList(prop) {
 
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
-    const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
     const {t} = useTranslation();
 
-    const [isRaised, setIsRaised] = useState(-1);
     const [formats, setFormats] = useState(prop.filter);
 
     AppRoutes.onChangeRoute(() => {
@@ -123,53 +120,55 @@ function PageProjectsList(prop) {
         if (formats.includes(data.type)) {
             cards.push(
                 <Grid style={{margin: 0}} key={"item-projects-" + index} item md={4} sm={6} xs={12}>
-                    <Card raised={isRaised === index}
-                          onMouseEnter={() => setIsRaised(index)}
-                          onMouseLeave={() => setIsRaised(-1)}
-                    >
-                        <CardActionArea>
-                            <CardHeader
-                                title={
-                                    <Stack spacing={1}>
-                                        {data.icon}
-                                        <Typography variant="h5">
-                                            {data.title}
-                                        </Typography>
-                                    </Stack>
-                                }
-                                subheader={
-                                    <Stack spacing={1}>
-                                        <Typography variant="body2" color="text.secondary">
-                                            {data.subheader}
-                                        </Typography>
-                                    </Stack>
-                                }
-                            />
-                            <CardMedia
-                                component="img"
-                                height="140"
-                                image={data.img}
-                                alt={data.title}
-                            />
-                            <CardContent className={"ProjectsItemContent"}>
-                                <Typography className={"ProjectsItemSubtitle"} variant="textCard">
-                                    {data.text}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                        <CardActions disableSpacing>
+                    <Card variant="outlined" className={"CardBg"}>
+                        <CardHeader
+                            title={
+                                <Stack spacing={1}>
+                                    {data.icon}
+                                    <Typography variant="h5">
+                                        {data.title}
+                                    </Typography>
+                                </Stack>
+                            }
+                            subheader={
+                                <Stack spacing={1}>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {data.subheader}
+                                    </Typography>
+                                </Stack>
+                            }
+                        />
+                        <CardMedia
+                            component="img"
+                            height="140"
+                            image={data.img}
+                            alt={data.title}
+                        />
+                        <CardContent className={"ProjectsItemContent"}>
+                            <Typography className={"ProjectsItemSubtitle"} variant="textCard">
+                                {data.text}
+                            </Typography>
+                        </CardContent>
+                        <CardActions disableSpacing style={{
+                            display: 'block'
+                        }}>
+
                             <IconButton aria-label="To GitHub">
+                                <Favorite/>
+                            </IconButton>
+
+                            <IconButton style={{
+                                float: 'right'
+                            }} aria-label="To store">
+                                <OpenInNew/>
+                            </IconButton>
+
+                            <IconButton style={{
+                                float: 'right'
+                            }} aria-label="To store">
                                 <GitHub/>
                             </IconButton>
-                            <IconButton aria-label="To store">
-                                <Store/>
-                            </IconButton>
-                            <IconButton aria-label="Download">
-                                <Download/>
-                            </IconButton>
-                            <IconButton aria-label="Share">
-                                <Share/>
-                            </IconButton>
+
                         </CardActions>
                     </Card>
                 </Grid>
@@ -188,7 +187,7 @@ function PageProjectsList(prop) {
                         <Typography align={"center"} variant="h2">
                             {t("projects.list.t_subtitle")}
                         </Typography>
-                        <Divider component="div" style={{background: "#5ac140"}} className={"Small"}/>
+                        <Divider component="div" className={"Small"}/>
                     </Stack>
                 </Grid>
                 <Grid item xs={12}>
@@ -230,9 +229,9 @@ function PageProjectsList(prop) {
                             </Paper>
                         </Grid>
                         {cards}
-                        <Grid style={{display: cards.length === 6 ? 'block' : 'none'}} item xs={12}>
-                            <Stack alignItems={"end"} spacing={2}>
-                                <Pagination count={11} siblingCount={isSmall ? 0 : 1} variant="outlined"/>
+                        <Grid item xs={12}>
+                            <Stack alignItems={"center"} spacing={2}>
+                                <CircularProgress/>
                             </Stack>
                         </Grid>
                     </Grid>

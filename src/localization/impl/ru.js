@@ -99,7 +99,7 @@ export const ruLocalization = {
             list: {
                 t_title: "Утилиты",
                 t_subtitle: "Web приложения и другое",
-                t_btn_open: "Перейти",
+                t_btn_open: "Скоро замучу...",
             },
             data: {
                 t_you_tube: "Скачивание видео с YouTube в mp4",

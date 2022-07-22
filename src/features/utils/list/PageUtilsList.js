@@ -55,8 +55,14 @@ function PageUtilsList() {
         cards.push(
             <Grid key={index + "item-utils"} item lg={3} md={6} sm={6} xs={12}>
                 <Zoom timeout={700} in={true}>
-                    <Card style={{textAlign: 'center', padding: '20px 15px'}}>
-                        {data.icon}
+                    <Card className={"CardBg"} variant="outlined" style={{
+                        textAlign: 'center',
+                    }}>
+                        <div style={{
+                            paddingTop: 20
+                        }}>
+                            {data.icon}
+                        </div>
                         <CardHeader
                             style={{
                                 whiteSpace: "pre"
@@ -68,14 +74,17 @@ function PageUtilsList() {
                                 {t(data.text)}
                             </Typography>
                         </CardContent>
-                        <CardActions style={{
-                            display: 'block'
+                        <CardActions disableSpacing style={{
+                            display: 'block',
                         }}>
-                            <Button disabled size="small" variant={"outlined"} onClick={() => {
-
+                            <Stack alignItems={"center"} spacing={1}>
+                                <Divider/>
+                                <Button disabled size="small" variant={"outlined"} onClick={() => {
                                 }}>
                                     {t("utils.list.t_btn_open")}
                                 </Button>
+                                <Divider/>
+                            </Stack>
                         </CardActions>
                     </Card>
                 </Zoom>
@@ -94,7 +103,7 @@ function PageUtilsList() {
                         <Typography align={"center"} variant="h2">
                             {t("utils.list.t_subtitle")}
                         </Typography>
-                        <Divider component="div" style={{background: "#ff9e36"}} className={"Small"}/>
+                        <Divider component="div" className={"Small"}/>
                     </Stack>
                 </Grid>
                 <Grid item xs={12}>

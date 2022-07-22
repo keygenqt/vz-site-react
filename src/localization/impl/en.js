@@ -96,7 +96,7 @@ export const enLocalization = {
             list: {
                 t_title: "Utils",
                 t_subtitle: "Web apps and other",
-                t_btn_open: "Open",
+                t_btn_open: "Coming soon...",
             },
             data: {
                 t_you_tube: "Download YouTube videos to mp4",

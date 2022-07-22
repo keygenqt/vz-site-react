@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useState} from 'react';
 import {
     Card,
     CardActionArea,
@@ -11,7 +10,7 @@ import {
     Divider,
     Grid,
     IconButton,
-    Pagination,
+    CircularProgress,
     Stack,
     Typography,
     useMediaQuery,
@@ -29,20 +28,15 @@ function PageBlogList() {
 
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
-    const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
     const {t} = useTranslation();
-    const [isRaised, setIsRaised] = useState(-1);
 
     const cards = []
 
     BlogDemoData.forEach((data, index) => {
         cards.push(
-            <Grid key={"item-blog-" + index} item md={4} sm={6} xs={12}>
-                <Card raised={isRaised === index}
-                      onMouseEnter={() => setIsRaised(index)}
-                      onMouseLeave={() => setIsRaised(-1)}
-                >
+            <Grid style={{margin: 0}} key={"item-blog-" + index} item md={4} sm={6} xs={12}>
+                <Card variant="outlined" className={"CardBg"}>
                     <Link to={AppRoutes.getLink(AppRoutes.route.blog.view, data.id)}>
                         <CardActionArea>
                             <CardMedia
@@ -62,7 +56,9 @@ function PageBlogList() {
                             </CardContent>
                         </CardActionArea>
                     </Link>
-                    <CardActions disableSpacing>
+                    <CardActions disableSpacing style={{
+                        background: "#ffffff"
+                    }}>
                         <IconButton aria-label="add to favorites">
                             <Favorite/>
                         </IconButton>
@@ -94,8 +90,8 @@ function PageBlogList() {
                     <Grid container spacing={isMiddle ? 3 : 6}>
                         {cards}
                         <Grid item xs={12}>
-                            <Stack alignItems={"end"} spacing={2}>
-                                <Pagination count={11} siblingCount={isSmall ? 0 : 1} variant="outlined"/>
+                            <Stack alignItems={"center"} spacing={2}>
+                                <CircularProgress />
                             </Stack>
                         </Grid>
                     </Grid>

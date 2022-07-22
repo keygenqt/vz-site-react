@@ -1,5 +1,27 @@
+/** RANDOM BG ANIMATION **/
+.RandomBg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.RandomBg .Square-1 {
+    width: 10px;
+    height: 10px;
+    left: 0;
+    right: 0;
+    top: 114px;
+    transform: rotate(270deg);
+    background-color: #966fe3;
+    margin: 0 auto;
+    box-shadow: none;
+}
+
 /** ROOT BG ANIMATION **/
-.Root-bg {
+.RootBg {
     position: absolute;
     top: 0;
     right: 0;
@@ -7,26 +29,11 @@
     height: 100%;
     max-height: 1300px;
     overflow-x: hidden;
-    opacity: 0.15;
+    opacity: 0.2;
     background-color: #8e8eff;
 }
 
-.Root-bg .Circle {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 35px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
-}
-
-.Root-bg .Square {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 35px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
-}
-
-.Root-bg .Square-1 {
+.RootBg .Square-1 {
     width: 442px;
     height: 442px;
     right: -152px;
@@ -35,7 +42,7 @@
     background-color: #51EAFF;
 }
 
-.Root-bg .Square-2 {
+.RootBg .Square-2 {
     width: 350px;
     height: 350px;
     top: -203px;
@@ -46,7 +53,7 @@
     background-color: #a9ff9f;
 }
 
-.Root-bg .Square-3 {
+.RootBg .Square-3 {
     width: 300px;
     height: 300px;
     left: 200px;
@@ -55,7 +62,7 @@
     background-color: #fff68b;
 }
 
-.Root-bg .Circle-1 {
+.RootBg .Circle-1 {
     width: 480px;
     height: 480px;
     left: -65px;
@@ -63,7 +70,7 @@
     background-color: #FFBEED;
 }
 
-.Root-bg .Circle-2 {
+.RootBg .Circle-2 {
     width: 150px;
     height: 150px;
     left: 100px;
@@ -71,12 +78,27 @@
     background-color: #ff7be3;
 }
 
-.Root-bg .Circle-3 {
+.RootBg .Circle-3 {
     width: 300px;
     height: 300px;
     right: 110px;
     top: 35px;
     background-color: #fe7676;
+}
+
+.Circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 35px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
+}
+
+.Square {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 35px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
 }
 
 /** INDEX BlockMain **/

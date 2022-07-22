@@ -4,6 +4,7 @@ import {AppTheme} from "../theme/AppTheme";
 import {AppRoutes} from "../base/routes/AppRoutes";
 import {RouteRender} from "../base/routes/RouteRender";
 import RootAnimationBg from "../components/RootAnimationBg.js";
+import TitleSquareAnimation from "../components/TitleSquareAnimation.js";
 import AppTopBar from "../components/AppTopBar";
 import AppFooter from "../components/AppFooter";
 
@@ -15,11 +16,11 @@ function App() {
         <ThemeProvider theme={AppTheme}>
             <React.Fragment>
                 {AppRoutes.isHomePage() ? <RootAnimationBg/> : null}
+                {AppRoutes.isListPage() ? <TitleSquareAnimation/> : null}
                 <AppTopBar/>
                 <div className={"App AppTable"}>
                     <div className={"AppTableRow"}>
                         <main style={{
-                            background: AppRoutes.isHomePage() ? '#caf4ff0d' : '#bff2ff36',
                             verticalAlign: isCenter ? 'middle' : 'top'
                         }}>
                             {RouteRender.render(() => {

@@ -49,7 +49,6 @@ a {
     position: relative;
     vertical-align: top;
     padding-top: 70px;
-    background-color: #caf4ff0d;
 }
 
 .App .PagePaddings {
@@ -134,4 +133,34 @@ a {
     height: 2px;
     background: #966fe3;
     margin: 30px auto auto;
+}
+
+/** CUSTOM CLASSES **/
+.App .CardBg {
+    background: #99e6ff0f
+}
+
+.App .CardBg button.MuiCardActionArea-root {
+    position: relative;
+}
+
+.App .CardBg button.MuiCardActionArea-root:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    transition: 0.2s linear;
+}
+
+.App .CardBg button.MuiCardActionArea-root:hover:before {
+    content: "";
+    background-color: #0000001f;
+    transition: 0.2s linear;
+}
+
+.App .CardBg .MuiCardActions-root {
+    background: #ffffff
 }

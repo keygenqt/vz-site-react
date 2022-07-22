@@ -19,7 +19,7 @@ function RootAnimationBg() {
     }, []);
 
     return (
-        <div className={"Root-bg"}>
+        <div className={"RootBg"}>
             <div className={"Square Square-1"}
                  style={{
                      "right": -152 + Math.ceil(20 * globalFactor.x) + "px",
