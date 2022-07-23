@@ -16,28 +16,28 @@ function BlockProjects() {
             image: AppImages.platform.android,
             title: "index.t_projects_android_title",
             text: "index.t_projects_android_text",
-            route: conf.routes.projects.filter_and.route
+            filter: 'filter-android'
         },
         {
             color: '#a1a1a11a',
             image: AppImages.platform.apple,
             title: "index.t_projects_ios_title",
             text: "index.t_projects_ios_text",
-            route: conf.routes.projects.filter_ios.route
+            filter: 'filter-ios'
         },
         {
             color: '#3198c11a',
             image: AppImages.platform.web,
             title: "index.t_projects_web_title",
             text: "index.t_projects_web_text",
-            route: conf.routes.projects.filter_web.route
+            filter: 'filter-web'
         },
         {
             color: '#2468d11a',
             image: AppImages.platform.pc,
             title: "index.t_projects_pc_title",
             text: "index.t_projects_pc_text",
-            route: conf.routes.projects.filter_pc.route
+            filter: 'filter-pc'
         },
     ];
 
@@ -45,7 +45,7 @@ function BlockProjects() {
         cards.push(
             <Grid key={index + "item-projects"} item md={3} sm={6} xs={12}>
                 <Card className={"CardBg"} variant="outlined">
-                    <CardActionArea onClick={route.onClickToLocationDelay(data.route)}>
+                    <CardActionArea onClick={route.onClickToLocationDelay(conf.routes.projects.filter.route, data.filter)}>
                         <Grid container columns={12}>
                             <Grid item sm={6} xs={6}>
                                 <img

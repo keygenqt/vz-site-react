@@ -35,10 +35,7 @@ const pages = [
         route: RouteConf.routes.projects.index.route,
         routesActive: [
             RouteConf.routes.projects.index,
-            RouteConf.routes.projects.filter_and,
-            RouteConf.routes.projects.filter_ios,
-            RouteConf.routes.projects.filter_web,
-            RouteConf.routes.projects.filter_pc,
+            RouteConf.routes.projects.filter,
         ],
     },
     {

@@ -54,54 +54,21 @@ export const RouteConf = {
                         key={key}
                         exact
                         path={route}
-                        element={<PageProjectsList filter={['android', 'ios', 'web', 'pc']}/>}
+                        element={<PageProjectsList/>}
                     />
                 }
             },
-            filter_and: {
-                route: '/projects/android',
+            filter: {
+                route: '/projects/:filter',
                 render: function (key, route) {
                     return <Route
                         key={key}
                         exact
                         path={route}
-                        element={<PageProjectsList filter={['android']}/>}
+                        element={<PageProjectsList/>}
                     />
                 }
-            },
-            filter_ios: {
-                route: '/projects/ios',
-                render: function (key, route) {
-                    return <Route
-                        key={key}
-                        exact
-                        path={route}
-                        element={<PageProjectsList filter={['ios']}/>}
-                    />
-                }
-            },
-            filter_web: {
-                route: '/projects/web',
-                render: function (key, route) {
-                    return <Route
-                        key={key}
-                        exact
-                        path={route}
-                        element={<PageProjectsList filter={['web']}/>}
-                    />
-                }
-            },
-            filter_pc: {
-                route: '/projects/pc',
-                render: function (key, route) {
-                    return <Route
-                        key={key}
-                        exact
-                        path={route}
-                        element={<PageProjectsList filter={['pc']}/>}
-                    />
-                }
-            },
+            }
         },
         utils: {
             index: {

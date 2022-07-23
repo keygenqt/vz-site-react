@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
     Card,
     CardActions,
@@ -26,6 +26,7 @@ import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} f
 import {AppImages} from "../../../utils/AppImages";
 import {useTranslation} from "react-i18next";
 import {styled} from '@mui/material/styles';
+import {useParams} from "react-router-dom";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
     '& .MuiToggleButtonGroup-grouped': {
@@ -94,20 +95,32 @@ const listData = [
     },
 ]
 
-function PageProjectsList(prop) {
+const filters = ['android', 'ios', 'web', 'pc']
+
+function PageProjectsList() {
+
+    let {filter} = useParams();
 
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
     const {t} = useTranslation();
 
-    const [formats, setFormats] = useState(prop.filter);
+    const [formats, setFormats] = useState(filter === undefined ? filters : [filter.replace('filter-', '')]);
 
     const handleFormat = (event, newFormats) => {
         if (newFormats.length !== 0) {
             setFormats(newFormats);
         }
     };
+
+    useEffect(() => {
+        if (filter === undefined) {
+            setFormats(filters)
+        } else {
+            setFormats([filter.replace('filter-', '')])
+        }
+    }, [filter]);
 
     const cards = []
 
@@ -187,7 +200,9 @@ function PageProjectsList(prop) {
                 </Grid>
                 <Grid item xs={12}>
                     <Grid container spacing={isMiddle ? 3 : 6}>
-                        <Grid style={{textAlign: "end", paddingTop: 0}} item xs={12}>
+                        <Grid
+                            style={{textAlign: "end", paddingTop: 0, display: filter === undefined ? 'block' : 'none'}}
+                            item xs={12}>
                             <Paper
                                 elevation={0}
                                 sx={{

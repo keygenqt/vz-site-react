@@ -20,13 +20,15 @@ export default class RouteCore {
      * Open page
      *
      * @param route {String}
-     * @param arg {String}
+     * @param arg
      *
      * @returns {(function(): void)|*}
      */
-    onClickToLocation(route, ...arg) {
-        return () => {
-            this.navigate(this.createLink(route, arg), {replace: true});
+    toLocation(route, ...arg) {
+        if (this.isPage(route)) {
+            this.navigate(0)
+        } else {
+            this.navigate(this.createLink(route, arg));
         }
     }
 
@@ -34,16 +36,67 @@ export default class RouteCore {
      * Open page with delay
      *
      * @param route {String}
-     * @param arg {String}
+     * @param arg
+     *
+     * @returns {(function(): void)|*}
+     */
+    toLocationDelay(route, ...arg) {
+        const self = this
+        setTimeout(function () {
+            if (self.isPage(route)) {
+                self.navigate(0)
+            } else {
+                self.navigate(self.createLink(route, arg));
+            }
+        }, this.conf.delay);
+    }
+
+    /**
+     * To back navigate
+     *
+     * @returns {(function(): void)|*}
+     */
+    toBack() {
+        this.navigate(-1)
+    }
+
+    /**
+     * To back navigate with delay
+     *
+     * @returns {(function(): void)|*}
+     */
+    toBackDelay() {
+        const nav = this.navigate
+        setTimeout(function () {
+            nav(-1)
+        }, this.conf.delay);
+    }
+
+    /**
+     * Open page
+     *
+     * @param route {String}
+     * @param arg
+     *
+     * @returns {(function(): void)|*}
+     */
+    onClickToLocation(route, ...arg) {
+        return () => {
+            this.toLocation(route, arg)
+        }
+    }
+
+    /**
+     * Open page with delay
+     *
+     * @param route {String}
+     * @param arg
      *
      * @returns {(function(): void)|*}
      */
     onClickToLocationDelay(route, ...arg) {
         return () => {
-            const self = this
-            setTimeout(function () {
-                self.navigate(self.createLink(route, arg), {replace: true});
-            }, this.conf.delay);
+            this.toLocationDelay(route, arg)
         }
     }
 
@@ -54,7 +107,7 @@ export default class RouteCore {
      */
     onClickToBack() {
         return () => {
-            this.navigate(-1)
+            this.toBack()
         }
     }
 
@@ -65,10 +118,7 @@ export default class RouteCore {
      */
     onClickToBackDelay() {
         return () => {
-            const nav = this.navigate
-            setTimeout(function () {
-                nav(-1)
-            }, this.conf.delay);
+            this.toBackDelay()
         }
     }
 
@@ -88,8 +138,8 @@ export default class RouteCore {
      */
     isPage(...route) {
 
-        const regexInt = /[\d+]/ig;
         const regexPath = /:\w+/ig;
+        const regexLoc = /([\d+])|(\w+\-\w+)/ig;
 
         for (let i = 0; i < route.length; i++) {
 
@@ -102,7 +152,7 @@ export default class RouteCore {
                 result = data.route
             }
 
-            if (this.location.pathname.replaceAll(regexInt, "__id__") === result.replaceAll(regexPath, "__id__")) {
+            if (this.location.pathname.replaceAll(regexLoc, "__id__") === result.replaceAll(regexPath, "__id__")) {
                 return true
             }
         }

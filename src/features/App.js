@@ -19,17 +19,13 @@ function App() {
             <React.Fragment>
 
                 {route.isPage(
-                    conf.routes.home.index.route,
+                    conf.routes.home.index,
                 ) ? <RootAnimationBg/> : null}
 
                 {route.isPage(
-                    conf.routes.blog.index.route,
-                    conf.routes.utils.index.route,
-                    conf.routes.projects.index.route,
-                    conf.routes.projects.filter_and,
-                    conf.routes.projects.filter_ios,
-                    conf.routes.projects.filter_web,
-                    conf.routes.projects.filter_pc,
+                    conf.routes.blog.index,
+                    conf.routes.utils.index,
+                    conf.routes.projects.index,
                 ) ? <TitleSquareAnimation/> : null}
 
                 <AppTopBar/>

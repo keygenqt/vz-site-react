@@ -16,7 +16,6 @@ function PageBlogView() {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-
     return (
         <Container maxWidth="md" className={"Page PagePaddings BlogView"}>
             <Stack spacing={3}>
