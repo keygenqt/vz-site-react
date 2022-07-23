@@ -1,10 +1,9 @@
 import * as React from 'react';
-import {useEffect} from 'react';
+import {useContext, useEffect} from 'react';
 import {Button, Container, Stack, Typography, Zoom} from "@mui/material";
-import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {SentimentVeryDissatisfied} from "@mui/icons-material";
-import {AppRoutes} from "../../../base/routes/AppRoutes";
+import {RouteContext} from "../../../base/route/RouteContext";
 
 function PageError404(prop) {
 
@@ -12,6 +11,7 @@ function PageError404(prop) {
         prop.onError.call()
     });
 
+    const {route, conf} = useContext(RouteContext)
     const {t} = useTranslation();
 
     return (
@@ -32,11 +32,9 @@ function PageError404(prop) {
                 }}>
                     {t("error.t_subtext")}
                 </Typography>
-                <Link to={AppRoutes.route.home.index}>
-                    <Button variant="outlined">
-                        {t("error.t_btn")}
-                    </Button>
-                </Link>
+                <Button onClick={route.onClickToLocationDelay(conf.routes.home.index.route)} variant="outlined">
+                    {t("error.t_btn")}
+                </Button>
             </Stack>
         </Container>
     );

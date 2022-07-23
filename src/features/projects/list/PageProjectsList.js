@@ -26,7 +26,6 @@ import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} f
 import {AppImages} from "../../../utils/AppImages";
 import {useTranslation} from "react-i18next";
 import {styled} from '@mui/material/styles';
-import {AppRoutes} from "../../../base/routes/AppRoutes";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
     '& .MuiToggleButtonGroup-grouped': {
@@ -103,10 +102,6 @@ function PageProjectsList(prop) {
     const {t} = useTranslation();
 
     const [formats, setFormats] = useState(prop.filter);
-
-    AppRoutes.onChangeRoute(() => {
-        setFormats(prop.filter);
-    })
 
     const handleFormat = (event, newFormats) => {
         if (newFormats.length !== 0) {

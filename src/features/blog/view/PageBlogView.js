@@ -3,9 +3,12 @@ import {Container, Divider, Grid, IconButton, Paper, Stack, Typography, Zoom} fr
 import {useParams} from "react-router-dom";
 import {BlogDemoData} from "../../../demo/BlogDemoData";
 import {ArrowBack, ArrowUpward, Favorite, Share} from '@mui/icons-material';
+import {useContext} from "react";
+import {RouteContext} from "../../../base/route/RouteContext";
 
 function PageBlogView() {
 
+    const {route} = useContext(RouteContext)
     let {id} = useParams();
     let model = BlogDemoData.find(element => element.id === parseInt(id))
 
@@ -67,7 +70,7 @@ function PageBlogView() {
 
                 <Stack display={"block"} direction="row" spacing={2}>
 
-                    <IconButton size="small" aria-label="share">
+                    <IconButton size="small" aria-label="share" onClick={route.onClickToBackDelay()}>
                         <ArrowBack size="small"/>
                     </IconButton>
 

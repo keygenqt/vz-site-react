@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useContext} from 'react';
 import {
     Card,
     CardActionArea,
@@ -6,11 +7,11 @@ import {
     CardContent,
     CardHeader,
     CardMedia,
+    CircularProgress,
     Container,
     Divider,
     Grid,
     IconButton,
-    CircularProgress,
     Stack,
     Typography,
     useMediaQuery,
@@ -18,14 +19,14 @@ import {
 } from "@mui/material";
 
 import {Favorite, Share} from '@mui/icons-material';
-import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {AppRoutes} from "../../../base/routes/AppRoutes";
 import {BlogDemoData} from "../../../demo/BlogDemoData";
+import {RouteContext} from "../../../base/route/RouteContext";
 
 
 function PageBlogList() {
 
+    const {route, conf} = useContext(RouteContext)
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -37,25 +38,23 @@ function PageBlogList() {
         cards.push(
             <Grid style={{margin: 0}} key={"item-blog-" + index} item md={4} sm={6} xs={12}>
                 <Card variant="outlined" className={"CardBg"}>
-                    <Link to={AppRoutes.getLink(AppRoutes.route.blog.view, data.id)}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                height="200"
-                                image={data.img}
-                                alt={data.title}
-                            />
-                            <CardHeader
-                                title={data.title}
-                                subheader={data.subheader}
-                            />
-                            <CardContent className={"BlogItemContent"}>
-                                <Typography className={"BlogItemSubtitle"} variant="textCard">
-                                    {data.text}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Link>
+                    <CardActionArea onClick={route.onClickToLocationDelay(conf.routes.blog.view.route, data.id)}>
+                        <CardMedia
+                            component="img"
+                            height="200"
+                            image={data.img}
+                            alt={data.title}
+                        />
+                        <CardHeader
+                            title={data.title}
+                            subheader={data.subheader}
+                        />
+                        <CardContent className={"BlogItemContent"}>
+                            <Typography className={"BlogItemSubtitle"} variant="textCard">
+                                {data.text}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
                     <CardActions disableSpacing style={{
                         background: "#ffffff"
                     }}>
@@ -91,7 +90,7 @@ function PageBlogList() {
                         {cards}
                         <Grid item xs={12}>
                             <Stack alignItems={"center"} spacing={2}>
-                                <CircularProgress />
+                                <CircularProgress/>
                             </Stack>
                         </Grid>
                     </Grid>

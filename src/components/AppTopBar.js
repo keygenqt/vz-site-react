@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect} from 'react';
+import {useContext, useEffect} from 'react';
 import {useTranslation} from "react-i18next";
 import {
     AppBar,
@@ -25,28 +25,44 @@ import {
 import {Article, IntegrationInstructions, LightbulbCircle, Menu, Public, PublicOff} from "@mui/icons-material";
 import {AppConstants} from "../utils/AppConstants";
 import {Link} from "react-router-dom";
-import {AppRoutes} from "../base/routes/AppRoutes";
+import {RouteContext} from "../base/route/RouteContext";
+import {RouteConf} from "../base/route/RouteConf";
 
 const pages = [
     {
         title: "menu.t_projects",
         icon: <IntegrationInstructions fontSize="small"/>,
-        route: AppRoutes.route.projects.index
+        route: RouteConf.routes.projects.index.route,
+        routesActive: [
+            RouteConf.routes.projects.index,
+            RouteConf.routes.projects.filter_and,
+            RouteConf.routes.projects.filter_ios,
+            RouteConf.routes.projects.filter_web,
+            RouteConf.routes.projects.filter_pc,
+        ],
     },
     {
         title: "menu.t_blog",
         icon: <Article fontSize="small"/>,
-        route: AppRoutes.route.blog.index
+        route: RouteConf.routes.blog.index.route,
+        routesActive: [
+            RouteConf.routes.blog.index,
+            RouteConf.routes.blog.view,
+        ],
     },
     {
         title: "menu.t_utils",
         icon: <LightbulbCircle fontSize="small"/>,
-        route: AppRoutes.route.utils.index
+        route: RouteConf.routes.utils.index.route,
+        routesActive: [
+            RouteConf.routes.utils.index
+        ],
     }
 ];
 
-const AppTopBar = () => {
+function AppTopBar() {
 
+    const {route} = useContext(RouteContext)
     const {t, i18n} = useTranslation();
 
     const [collapseMenu, setCollapseMenu] = React.useState(false);
@@ -86,7 +102,7 @@ const AppTopBar = () => {
                         <Toolbar disableGutters style={{
                             minHeight: 70
                         }}>
-                            <Link to={AppRoutes.route.home.index}>
+                            <Link to="/">
                                 <Typography
                                     variant="h6"
                                     noWrap
@@ -126,12 +142,11 @@ const AppTopBar = () => {
                                     {pages.map((page, index) => (
                                         <Grid key={index + "topBar-menu1-item"} item
                                               sx={{display: {xs: 'none', md: 'block', sm: 'block'}}}>
-                                            <Link to={page.route}>
-                                                <Button
-                                                    sx={{color: AppRoutes.isPageByRoute(page.route) ? 'white' : '#ffffffb5'}}>
-                                                    {t(page.title)}
-                                                </Button>
-                                            </Link>
+                                            <Button
+                                                onClick={route.onClickToLocationDelay(page.route)}
+                                                sx={{color: route.isPages(page.routesActive) ? 'white' : '#ffffffb5'}}>
+                                                {t(page.title)}
+                                            </Button>
                                         </Grid>
                                     ))}
 
@@ -157,6 +172,7 @@ const AppTopBar = () => {
                         </Toolbar>
                     </Container>
                 </AppBar>
+
                 <Collapse in={collapseMenu} sx={{
                     display: {md: 'none', sm: 'none'},
                 }}>
@@ -168,7 +184,7 @@ const AppTopBar = () => {
                                         setCollapseMenu(false)
                                     }}>
                                         <ListItemIcon
-                                            style={{color: AppRoutes.isPageByRoute(page.route) ? '#2298DB' : '#0000008a'}}>{page.icon}</ListItemIcon>
+                                            style={{color: route.isPages(page.routesActive) ? '#2298DB' : '#0000008a'}}>{page.icon}</ListItemIcon>
                                         <ListItemText>{t(page.title)}</ListItemText>
                                     </MenuItem>
                                 </Link>
@@ -201,5 +217,6 @@ const AppTopBar = () => {
             </Stack>
         </ClickAwayListener>
     );
-};
+}
+
 export default AppTopBar;
