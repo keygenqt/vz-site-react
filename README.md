@@ -5,6 +5,8 @@ _(in progress)_
 Finally, I mustered up the courage to rewrite it from the currently obsolete [Yii2](https://www.yiiframework.com/) framework to modern
 [React](https://reactjs.org/). It was not easy to come up with a design, as always, do not judge strictly :)
 
+**Used:** [React](https://reactjs.org/) + [MUI](https://mui.com/)
+
 ### Preview (18mb...)
 
 ![alt text](data/vokoscreenNG-2022-07-23_03-04-30.gif)
