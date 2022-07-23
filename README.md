@@ -7,9 +7,9 @@ Finally, I mustered up the courage to rewrite it from the currently obsolete [Yi
 
 **Used:** [React](https://reactjs.org/) + [MUI](https://mui.com/)
 
-### Preview (18mb...)
-
+### Preview
 ![alt text](data/vokoscreenNG-2022-07-23_03-04-30.gif)
+_(18mb)_
 
 # License
 
