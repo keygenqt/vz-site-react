@@ -1,6 +1,13 @@
-VZ Site
+My Personal Site
 ===================
 _(in progress)_
+
+My personal site. Finally, I mustered up the courage to rewrite it from the currently obsolete [Yii2](https://www.yiiframework.com/) framework to modern
+[React](https://reactjs.org/). It was not easy to come up with a design, as always, do not judge strictly :)
+
+### Preview
+
+![alt text](data/vokoscreen-2022-07-23_03-04-30.gif)
 
 # License
 
