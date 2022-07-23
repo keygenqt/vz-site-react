@@ -7,7 +7,7 @@ My personal site. Finally, I mustered up the courage to rewrite it from the curr
 
 ### Preview
 
-![alt text](data/vokoscreen-2022-07-23_03-04-30.gif)
+![alt text](data/vokoscreenNG-2022-07-23_03-04-30.gif)
 
 # License
 
