@@ -20,13 +20,12 @@ import {
 
 import {Favorite, Share} from '@mui/icons-material';
 import {useTranslation} from "react-i18next";
-import {BlogDemoData} from "../../../demo/BlogDemoData";
-import {RouteContext} from "../../../base/route/RouteContext";
+import {ConstantDemoData, AppContext} from "../../../base";
 
 
 function PageBlogList() {
 
-    const {route, conf} = useContext(RouteContext)
+    const {route, conf} = useContext(AppContext)
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -34,7 +33,7 @@ function PageBlogList() {
 
     const cards = []
 
-    BlogDemoData.forEach((data, index) => {
+    ConstantDemoData.blog.forEach((data, index) => {
         cards.push(
             <Grid style={{margin: 0}} key={"item-blog-" + index} item md={4} sm={6} xs={12}>
                 <Card variant="outlined" className={"CardBg"}>

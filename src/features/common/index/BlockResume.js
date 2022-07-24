@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {Avatar, Grid, Paper, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
-import {AppImages} from "../../../utils/AppImages";
+import {ConstantImages} from "../../../base";
 import {useTranslation} from "react-i18next";
 
 const listData = [
     {
-        image: AppImages.company.surf,
+        image: ConstantImages.company.surf,
         company: "Surf",
         text: "index.t_resume_surf_text",
         works: [
@@ -16,7 +16,7 @@ const listData = [
         ]
     },
     {
-        image: AppImages.company.clowder,
+        image: ConstantImages.company.clowder,
         company: "Clowder®",
         text: "index.t_resume_clowder_text",
         works: [
@@ -31,7 +31,7 @@ const listData = [
         ]
     },
     {
-        image: AppImages.company.privezem,
+        image: ConstantImages.company.privezem,
         company: "Privezem",
         text: "index.t_resume_privezem_text",
         works: [
@@ -42,7 +42,7 @@ const listData = [
         ]
     },
     {
-        image: AppImages.company.agamaya,
+        image: ConstantImages.company.agamaya,
         company: "Agamaya",
         text: "index.t_resume_agamaya_text",
         works: [

@@ -1,25 +1,18 @@
 import * as React from 'react';
+import {useContext} from 'react';
 import Container from "@mui/material/Container";
-import {ButtonGroup, Grid, Link, Button} from "@mui/material";
+import {Button, ButtonGroup, Grid, Link} from "@mui/material";
 import {ArrowUpward, Email, GitHub, LinkedIn, Telegram} from "@mui/icons-material";
-import {openUrl, openUrlInNewTab} from "../utils/AppHelpers";
-import {AppConstants} from "../utils/AppConstants";
-import {useTranslation} from "react-i18next";
-import {useLocation} from "react-router-dom";
+import {AppContext, ConstantLinks, ConstantOther} from "../base";
 
-function AppFooter() {
+export default function AppFooter() {
 
-    const location = useLocation()
-    const {t} = useTranslation();
-
-    const scrollToTop = () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+    const {route, conf, t} = useContext(AppContext)
 
     return (
         <Container maxWidth="lg" className={"Footer"}>
 
-            {location.pathname === '/' ? <React.Fragment>
+            {route.isPage(conf.routes.home.index) ? <React.Fragment>
                 <div className={"Text"}>
                     <div>
                         {t("footer.t_questions")}
@@ -29,13 +22,13 @@ function AppFooter() {
                     </div>
                 </div>
                 <div className={"TextSmall"}>
-                    <Link href={"mailto:" + AppConstants.data.email}>
-                        {AppConstants.data.email}
+                    <Link href={`mailto:${ConstantOther.email}`}>
+                        {ConstantOther.email}
                     </Link>
                 </div>
                 <div className={"TextSmall"}>
                     <div>{t("footer.t_name")}</div>
-                    <div>{AppConstants.data.key}</div>
+                    <div>{ConstantOther.nickname}</div>
                 </div>
                 <div className={"Line"}/>
             </React.Fragment> : null}
@@ -44,25 +37,26 @@ function AppFooter() {
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                         <div className={"Copy"}>
-                            © 2022 KeyGenQt
+                            {ConstantOther.copy}
                         </div>
                     </Grid>
                     <Grid className={"Buttons"} item xs={12} sm={6}>
                         <ButtonGroup color="white6" size="small" aria-label="small button group">
-                            <Button onClick={() => openUrlInNewTab(AppConstants.links.github)}>
+                            <Button onClick={() => route.openUrlNewTab(ConstantLinks.github)}>
                                 <GitHub style={{width: 20}}/>
                             </Button>
-                            <Button onClick={() => openUrlInNewTab(AppConstants.links.linkedIn)}>
+                            <Button onClick={() => route.openUrlNewTab(ConstantLinks.linkedIn)}>
                                 <LinkedIn/>
                             </Button>
-                            <Button onClick={() => openUrlInNewTab(AppConstants.links.telegram)}>
+                            <Button onClick={() => route.openUrlNewTab(ConstantLinks.telegram)}>
                                 <Telegram/>
                             </Button>
-                            <Button onClick={() => openUrl("mailto:" + AppConstants.data.email)}>
+                            <Button onClick={() => route.openUrl(`mailto:${ConstantOther.email}`)}>
                                 <Email/>
                             </Button>
-
-                            <Button onClick={scrollToTop}>
+                            <Button onClick={() => {
+                                route.scrollToTopSmooth()
+                            }}>
                                 <ArrowUpward/>
                             </Button>
                         </ButtonGroup>
@@ -72,5 +66,3 @@ function AppFooter() {
         </Container>
     );
 }
-
-export default AppFooter;

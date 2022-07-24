@@ -3,7 +3,7 @@ import {useContext, useEffect} from 'react';
 import {Button, Container, Stack, Typography, Zoom} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import {SentimentVeryDissatisfied} from "@mui/icons-material";
-import {RouteContext} from "../../../base/route/RouteContext";
+import {AppContext} from "../../../base";
 
 function PageError404(prop) {
 
@@ -11,7 +11,7 @@ function PageError404(prop) {
         prop.onError.call()
     });
 
-    const {route, conf} = useContext(RouteContext)
+    const {route, conf} = useContext(AppContext)
     const {t} = useTranslation();
 
     return (

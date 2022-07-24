@@ -1,20 +1,15 @@
 import * as React from 'react';
+import {useContext} from 'react';
 import {Container, Divider, Grid, IconButton, Paper, Stack, Typography, Zoom} from "@mui/material";
 import {useParams} from "react-router-dom";
-import {BlogDemoData} from "../../../demo/BlogDemoData";
+import {ConstantDemoData, AppContext} from "../../../base";
 import {ArrowBack, ArrowUpward, Favorite, Share} from '@mui/icons-material';
-import {useContext} from "react";
-import {RouteContext} from "../../../base/route/RouteContext";
 
 function PageBlogView() {
 
-    const {route} = useContext(RouteContext)
+    const {route} = useContext(AppContext)
     let {id} = useParams();
-    let model = BlogDemoData.find(element => element.id === parseInt(id))
-
-    const scrollToTop = () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+    let model = ConstantDemoData.blog.find(element => element.id === parseInt(id))
 
     return (
         <Container maxWidth="md" className={"Page PagePaddings BlogView"}>
@@ -73,7 +68,9 @@ function PageBlogView() {
                         <ArrowBack size="small"/>
                     </IconButton>
 
-                    <IconButton size="small" aria-label="share" onClick={scrollToTop}>
+                    <IconButton size="small" aria-label="share" onClick={() => {
+                        route.scrollToTopSmooth()
+                    }}>
                         <ArrowUpward size="small"/>
                     </IconButton>
 

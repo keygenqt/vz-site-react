@@ -1,16 +1,16 @@
 import * as React from 'react';
 import {useContext} from 'react';
 import {ThemeProvider} from "@mui/material";
-import {AppTheme} from "../theme/AppTheme";
+import {AppTheme} from "../base/theme/AppTheme";
 import RootAnimationBg from "../components/RootAnimationBg.js";
 import TitleSquareAnimation from "../components/TitleSquareAnimation.js";
-import AppTopBar from "../components/AppTopBar";
+import AppTopBar from "../components/appTopBar/AppTopBar";
 import AppFooter from "../components/AppFooter";
-import {RouteContext} from "../base/route/RouteContext";
+import {AppContext} from "../base";
 
 function App() {
 
-    const {route, conf} = useContext(RouteContext)
+    const {route, conf} = useContext(AppContext)
 
     const [isCenter, setIsCenter] = React.useState(false);
 

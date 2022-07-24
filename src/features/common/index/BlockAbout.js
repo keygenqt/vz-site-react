@@ -1,12 +1,13 @@
 import * as React from 'react';
+import {useContext} from 'react';
 import {Button, ButtonGroup, Grid, Typography} from "@mui/material";
 import {Email, GitHub, LinkedIn, Telegram} from "@mui/icons-material";
-import {AppConstants} from "../../../utils/AppConstants";
-import {openUrl, openUrlInNewTab} from "../../../utils/AppHelpers";
+import {ConstantLinks, ConstantOther, AppContext} from "../../../base";
 import {useTranslation} from "react-i18next";
 
 function BlockAbout() {
 
+    const {route} = useContext(AppContext)
     const {t} = useTranslation();
 
     return (
@@ -45,16 +46,16 @@ function BlockAbout() {
                         </Grid>
                         <Grid item sm={12} xs={12}>
                             <ButtonGroup size="small" aria-label="small button group">
-                                <Button onClick={() => openUrlInNewTab(AppConstants.links.github)}>
+                                <Button onClick={() => route.openUrlNewTab(ConstantLinks.github)}>
                                     <GitHub style={{width: 20}}/>
                                 </Button>
-                                <Button onClick={() => openUrlInNewTab(AppConstants.links.linkedIn)}>
+                                <Button onClick={() => route.openUrlNewTab(ConstantLinks.linkedIn)}>
                                     <LinkedIn/>
                                 </Button>
-                                <Button onClick={() => openUrlInNewTab(AppConstants.links.telegram)}>
+                                <Button onClick={() => route.openUrlNewTab(ConstantLinks.telegram)}>
                                     <Telegram/>
                                 </Button>
-                                <Button onClick={() => openUrl("mailto:" + AppConstants.data.email)}>
+                                <Button onClick={() => route.openUrl(`mailto:${ConstantOther.email}`)}>
                                     <Email/>
                                 </Button>
                             </ButtonGroup>

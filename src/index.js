@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import "./localization/Localization";
+import "./base/localization/Localization";
 
 import './static/css/base.css';
 import './static/css/base-media.css';
@@ -18,16 +18,16 @@ import './static/css/common-media.css';
 import App from './features/App';
 import reportWebVitals from './tests/reportWebVitals';
 
-import {BrowserRouter,} from "react-router-dom";
-import RouteContextProvider from "./base/route/RouteContext";
+import {BrowserRouter} from "react-router-dom";
+import AppContextProvider from "./base/contexts/AppContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <RouteContextProvider>
+            <AppContextProvider>
                 <App/>
-            </RouteContextProvider>
+            </AppContextProvider>
         </BrowserRouter>
     </React.StrictMode>
 );

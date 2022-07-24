@@ -23,7 +23,7 @@ import {
 
 import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} from "@mui/icons-material";
 
-import {AppImages} from "../../../utils/AppImages";
+import {ConstantImages} from "../../../base";
 import {useTranslation} from "react-i18next";
 import {styled} from '@mui/material/styles';
 import {useParams} from "react-router-dom";
@@ -48,7 +48,7 @@ const listData = [
     {
         type: "ios",
         icon: <Apple sx={{fontSize: 20, color: '#a1a1a1'}}/>,
-        img: AppImages.temp.blog_item1,
+        img: ConstantImages.temp.blog_item1,
         title: "Shrimp and Chorizo Paella",
         subheader: "September 14, 2016",
         text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
@@ -56,7 +56,7 @@ const listData = [
     {
         type: "pc",
         icon: <DesktopWindows sx={{fontSize: 18, padding: '2px', color: '#2468d1'}}/>,
-        img: AppImages.temp.blog_item2,
+        img: ConstantImages.temp.blog_item2,
         title: "Shrimp and Chorizo Paella",
         subheader: "September 14, 2016",
         text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
@@ -64,7 +64,7 @@ const listData = [
     {
         type: "android",
         icon: <Android sx={{fontSize: 20, color: '#3BD580'}}/>,
-        img: AppImages.temp.blog_item3,
+        img: ConstantImages.temp.blog_item3,
         title: "Shrimp and Chorizo Paella Shrimp and Chorizo Paella Shrimp and Chorizo Paella",
         subheader: "September 14, 2016",
         text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
@@ -72,7 +72,7 @@ const listData = [
     {
         type: "ios",
         icon: <Apple sx={{fontSize: 20, color: '#a1a1a1'}}/>,
-        img: AppImages.temp.blog_item4,
+        img: ConstantImages.temp.blog_item4,
         title: "Shrimp and Chorizo Paella",
         subheader: "September 14, 2016",
         text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
@@ -80,7 +80,7 @@ const listData = [
     {
         type: "android",
         icon: <Android sx={{fontSize: 20, color: '#3BD580'}}/>,
-        img: AppImages.temp.blog_item5,
+        img: ConstantImages.temp.blog_item5,
         title: "Shrimp and Chorizo Paella",
         subheader: "September 14, 2016",
         text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",
@@ -88,7 +88,7 @@ const listData = [
     {
         type: "web",
         icon: <Language sx={{fontSize: 20, color: '#3198c1'}}/>,
-        img: AppImages.temp.blog_item6,
+        img: ConstantImages.temp.blog_item6,
         title: "Shrimp and Chorizo Paella Chorizo Paella",
         subheader: "September 14, 2016",
         text: "Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу. Алгоритмы или очередной фреймворк? Во что вложиться? Инструмент который тебе поможет решить поставленную задачу.",

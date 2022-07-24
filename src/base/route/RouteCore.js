@@ -193,10 +193,11 @@ export default class RouteCore {
     /**
      * Render pages by conf
      *
+     * @param onError callback if open page error
+     *
      * @returns {JSX.Element}
      */
-    render(onError = () => {
-    }) {
+    render(onError) {
 
         const pages = []
 
@@ -221,5 +222,37 @@ export default class RouteCore {
                 </Routes>
             </React.Fragment>
         );
+    }
+
+    /**
+     * Open outer url
+     *
+     * @param url
+     */
+    openUrl(url) {
+        window.location.href = url
+    }
+
+    /**
+     * Open outer url
+     *
+     * @param url
+     */
+    openUrlNewTab(url) {
+        window.open(url, '_blank', 'noopener,noreferrer')
+    }
+
+    /**
+     * Scroll to top page
+     */
+    scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+
+    /**
+     * Scroll to top page with smooth
+     */
+    scrollToTopSmooth() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 }

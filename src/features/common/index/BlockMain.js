@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Alert, Box, Button, Collapse, Container, Fab, Grid, IconButton, TextField, Typography} from "@mui/material";
 import {Close, ExpandMore} from "@mui/icons-material";
-import {WindowHeight} from "../../../utils/AppHelpers";
+import {useWindowResize} from "../../../base";
 import {useTranslation} from "react-i18next";
 
 function isBlankOrNull(string) {
@@ -11,6 +11,7 @@ function isBlankOrNull(string) {
 function BlockMain(prop) {
 
     const {t, i18n} = useTranslation();
+    const {height} = useWindowResize();
 
     const [collapseSuccess, setCollapseSuccess] = React.useState(null);
     const [collapseError, setCollapseError] = React.useState(null);
@@ -34,7 +35,7 @@ function BlockMain(prop) {
     };
 
     return (
-        <div style={{height: WindowHeight()}} className={"BlockMain AppTable"}>
+        <div style={{height: height}} className={"BlockMain AppTable"}>
             <div className={"AppTableCell"}>
                 <Grid container columns={12} spacing={2.2}>
                     <Grid item sm={12}>

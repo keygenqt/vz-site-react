@@ -1,40 +1,39 @@
 import * as React from 'react';
 import {useContext} from 'react';
 import {Card, CardActionArea, CardContent, Grid, Typography} from "@mui/material";
-import {AppImages} from "../../../utils/AppImages";
+import {ConstantImages, AppContext} from "../../../base";
 import {useTranslation} from "react-i18next";
-import {RouteContext} from "../../../base/route/RouteContext";
 
 function BlockProjects() {
 
-    const {route, conf} = useContext(RouteContext)
+    const {route, conf} = useContext(AppContext)
     const {t} = useTranslation();
     const cards = []
     const data = [
         {
             color: '#3BD5801a',
-            image: AppImages.platform.android,
+            image: ConstantImages.platform.android,
             title: "index.t_projects_android_title",
             text: "index.t_projects_android_text",
             filter: 'filter-android'
         },
         {
             color: '#a1a1a11a',
-            image: AppImages.platform.apple,
+            image: ConstantImages.platform.apple,
             title: "index.t_projects_ios_title",
             text: "index.t_projects_ios_text",
             filter: 'filter-ios'
         },
         {
             color: '#3198c11a',
-            image: AppImages.platform.web,
+            image: ConstantImages.platform.web,
             title: "index.t_projects_web_title",
             text: "index.t_projects_web_text",
             filter: 'filter-web'
         },
         {
             color: '#2468d11a',
-            image: AppImages.platform.pc,
+            image: ConstantImages.platform.pc,
             title: "index.t_projects_pc_title",
             text: "index.t_projects_pc_text",
             filter: 'filter-pc'
@@ -45,7 +44,8 @@ function BlockProjects() {
         cards.push(
             <Grid key={index + "item-projects"} item md={3} sm={6} xs={12}>
                 <Card className={"CardBg"} variant="outlined">
-                    <CardActionArea onClick={route.onClickToLocationDelay(conf.routes.projects.filter.route, data.filter)}>
+                    <CardActionArea
+                        onClick={route.onClickToLocationDelay(conf.routes.projects.filter.route, data.filter)}>
                         <Grid container columns={12}>
                             <Grid item sm={6} xs={6}>
                                 <img
