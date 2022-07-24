@@ -1,0 +1,22 @@
+.BlogsPage .BlogItemContent .BlogItemSubtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.BlogsPage .MuiCardHeader-root {
+    display: inherit;
+}
+
+.BlogsPage .MuiCardHeader-content .MuiCardHeader-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.BlogsPage .MuiCardHeader-root {
+    padding-bottom: 0;
+}

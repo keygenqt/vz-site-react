@@ -1,7 +1,7 @@
 import * as React from "react";
-import ScrollToTop from "../../components/ScrollToTop";
+import {ScrollToTop} from "../../components";
 import {Route, Routes} from "react-router-dom";
-import PageError404 from "../../features/common/errors/PageError404";
+import {ErrorPage} from "../../pages";
 
 export default class RouteCore {
 
@@ -139,7 +139,7 @@ export default class RouteCore {
     isPage(...route) {
 
         const regexPath = /:\w+/ig;
-        const regexLoc = /([\d+])|(\w+\-\w+)/ig;
+        const regexLoc = /([\d+])|(\w+-\w+)/ig;
 
         for (let i = 0; i < route.length; i++) {
 
@@ -203,9 +203,9 @@ export default class RouteCore {
 
         Object.keys(this.conf.routes).forEach((group, groupIndex) => {
             Object.keys(this.conf.routes[group]).forEach((page, pageIndex) => {
-                const {route, render} = this.conf.routes[group][page]
+                const {route, title, render} = this.conf.routes[group][page]
                 if (render !== undefined) {
-                    pages.push(render(groupIndex + pageIndex, route))
+                    pages.push(render(groupIndex + pageIndex, route, title))
                 }
             })
         });
@@ -217,7 +217,7 @@ export default class RouteCore {
                     {pages}
                     <Route
                         path="*"
-                        element={<PageError404 onError={onError}/>}
+                        element={<ErrorPage onError={onError}/>}
                     />
                 </Routes>
             </React.Fragment>

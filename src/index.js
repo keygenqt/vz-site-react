@@ -3,19 +3,11 @@ import ReactDOM from 'react-dom/client';
 import "./base/localization/Localization";
 
 import './static/css/base.css';
-import './static/css/base-media.css';
-import './static/css/about.css';
-import './static/css/about-media.css';
-import './static/css/blog.css';
-import './static/css/blog-media.css';
-import './static/css/utils.css';
-import './static/css/utils-media.css';
+import './static/css/home.css';
+import './static/css/blogs.css';
 import './static/css/projects.css';
-import './static/css/projects-media.css';
-import './static/css/common.css';
-import './static/css/common-media.css';
 
-import App from './features/App';
+import App from './App';
 import reportWebVitals from './tests/reportWebVitals';
 
 import {BrowserRouter} from "react-router-dom";

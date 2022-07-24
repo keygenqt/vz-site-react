@@ -1,0 +1,128 @@
+/** Main **/
+.HomePage .BlockMain .Title-ru {
+    font-size: 135px;
+}
+
+@media (max-width: 700px) {
+    .HomePage .BlockMain .Title-ru {
+        font-size: 80px;
+    }
+}
+
+@media (max-width: 450px) {
+    .HomePage .BlockMain .Title-ru {
+        font-size: 64px;
+    }
+}
+
+.HomePage .BlockMain .Title-en {
+    font-size: 186px;
+}
+
+@media (max-width: 700px) {
+    .HomePage .BlockMain .Title-en {
+        font-size: 105px;
+    }
+}
+
+@media (max-width: 400px) {
+    .HomePage .BlockMain .Title-en {
+        font-size: 80px;
+    }
+}
+
+@media (min-width: 700px) {
+    .HomePage .BlockMain .Subtitle-ru {
+        font-size: 32px;
+    }
+}
+
+.HomePage .BlockMain .AppTableCell {
+    position: relative;
+    padding-bottom: 130px;
+}
+
+.HomePage .BlockMain .BottomButton {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50px;
+}
+
+/** About **/
+.HomePage .BlockAbout .Line {
+    height: 3px;
+    width: 40px;
+    background-color: #2298db;
+}
+
+/** Cards **/
+.HomePage .BlockCards .MuiCardMedia-root {
+    height: 350px;
+}
+
+/** Resume **/
+.HomePage .BlockResume .Line {
+    height: 1px;
+    background-color: #b1b1b1;
+}
+
+.HomePage .BlockResume .WorksUL {
+    position: relative;
+    padding-left: 35px;
+}
+
+.HomePage .BlockResume .WorksUL .WorksLI {
+    margin-bottom: 15px;
+    padding-left: 8px;
+}
+
+.HomePage .BlockResume .WorksUL .WorksPoint {
+    position: relative;
+    content: "";
+    border-radius: 50%;
+    top: 14px;
+    left: -28px;
+    height: 10px;
+    width: 10px;
+    background-color: #b1b1b1;
+}
+
+.HomePage .BlockResume .WorksUL .WorksLI::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 19px;
+    height: 73px;
+    width: 2px;
+    background-color: #b1b1b1;
+}
+
+.HomePage .BlockResume .WorksUL .WorksLI:last-child {
+    margin-bottom: 0;
+}
+
+.HomePage .BlockResume .WorksUL .WorksLI:last-child::before {
+    display: none;
+}
+
+/** Skills **/
+.HomePage .BlockSkills .SkillAlert {
+    background-color: #def5ff;
+}
+
+.HomePage .BlockSkills .SkillAlert .MuiAlert-icon {
+    padding-top: 12px;
+}
+
+.HomePage .BlockSkills {
+    padding-bottom: 130px;
+}
+
+@media (max-width: 700px) {
+    .HomePage .BlockSkills {
+        padding-bottom: 60px;
+    }
+}

@@ -13,6 +13,7 @@ const AppContextProvider = (props) => {
     const location = useLocation()
     const navigate = useNavigate()
 
+    const language = i18n.language
     const isLocEn = i18n.language === ConstantOther.languages.en
     const isLocRu = i18n.language === ConstantOther.languages.ru
 
@@ -28,6 +29,7 @@ const AppContextProvider = (props) => {
                 conf,
                 t,
                 i18n,
+                language,
                 isLocEn,
                 isLocRu,
             }}>

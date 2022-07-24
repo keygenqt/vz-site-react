@@ -56,6 +56,13 @@ a {
     padding-bottom: 80px;
 }
 
+@media (max-width: 900px) {
+    .App .PagePaddings {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
 /** FOOTER **/
 .App footer {
     display: table-cell;
@@ -111,6 +118,15 @@ a {
     padding-top: 10px;
 }
 
+@media (max-width: 600px) {
+    .App .Footer .Copy {
+        text-align: center;
+    }
+    .App .Footer .Buttons {
+        text-align: center;
+    }
+}
+
 /** Custom Mui **/
 .App .Page .MuiGrid-item {
     margin: 0 auto;
@@ -163,4 +179,113 @@ a {
 
 .App .CardBg .MuiCardActions-root {
     background: #ffffff
+}
+
+/** TITLE SQUARE ANIMATION **/
+.TitleSquare {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.TitleSquare .Square-1 {
+    width: 10px;
+    height: 10px;
+    left: 0;
+    right: 0;
+    top: 114px;
+    transform: rotate(270deg);
+    background-color: #966fe3;
+    margin: 0 auto;
+    box-shadow: none;
+}
+
+@media (max-width: 900px) {
+    .TitleSquare .Square-1 {
+        top: 102px;
+    }
+}
+
+/** ROOT BG ANIMATION **/
+.RootBg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    max-height: 1300px;
+    overflow-x: hidden;
+    opacity: 0.2;
+    background-color: #8e8eff;
+}
+
+.RootBg .Square-1 {
+    width: 442px;
+    height: 442px;
+    right: -152px;
+    bottom: 110px;
+    transform: rotate(117deg);
+    background-color: #51EAFF;
+}
+
+.RootBg .Square-2 {
+    width: 350px;
+    height: 350px;
+    top: -203px;
+    right: -96px;
+    left: 100px;
+    margin: 0 auto;
+    transform: rotate(242deg);
+    background-color: #a9ff9f;
+}
+
+.RootBg .Square-3 {
+    width: 300px;
+    height: 300px;
+    left: 200px;
+    top: 230px;
+    transform: rotate(76deg);
+    background-color: #fff68b;
+}
+
+.RootBg .Circle-1 {
+    width: 480px;
+    height: 480px;
+    left: -65px;
+    bottom: 100px;
+    background-color: #FFBEED;
+}
+
+.RootBg .Circle-2 {
+    width: 150px;
+    height: 150px;
+    left: 100px;
+    top: 200px;
+    background-color: #ff7be3;
+}
+
+.RootBg .Circle-3 {
+    width: 300px;
+    height: 300px;
+    right: 110px;
+    top: 35px;
+    background-color: #fe7676;
+}
+
+.Circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 35px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
+}
+
+.Square {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 35px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
 }

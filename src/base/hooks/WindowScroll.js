@@ -3,7 +3,7 @@ import {useLayoutEffect, useState} from 'react';
 /**
  * Get windows size
  *
- * @returns {{width: number, height: number}}
+ * @returns {{x: number, y: number}}
  */
 export function useWindowScroll(effect = undefined) {
 
@@ -30,7 +30,7 @@ export function useWindowScroll(effect = undefined) {
         return () => {
             window.removeEventListener('scroll', handleWindowScroll);
         };
-    }, []);
+    });
 
     return position;
 }

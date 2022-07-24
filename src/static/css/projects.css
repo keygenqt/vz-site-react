@@ -1,5 +1,4 @@
-/** ProjectsList **/
-.ProjectsList .ProjectsItemContent .ProjectsItemSubtitle {
+.ProjectsPage .ProjectsItemContent .ProjectsItemSubtitle {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -8,7 +7,7 @@
     -webkit-box-orient: vertical;
 }
 
-.ProjectsList .MuiCardHeader-content .MuiTypography-h5 {
+.ProjectsPage .MuiCardHeader-content .MuiTypography-h5 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
