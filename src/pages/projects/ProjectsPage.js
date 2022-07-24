@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {
     Card,
     CardActions,
@@ -26,7 +26,6 @@ import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} f
 import {AppContext, ConstantImages} from "../../base";
 import {styled} from '@mui/material/styles';
 import {useParams} from "react-router-dom";
-import {useContext} from "react";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
     '& .MuiToggleButtonGroup-grouped': {
@@ -100,13 +99,14 @@ const filters = ['android', 'ios', 'web', 'pc']
 export function ProjectsPage(props) {
 
     const theme = useTheme();
-    const {t, language} = useContext(AppContext)
+    const {t} = useContext(AppContext)
 
     let {filter} = useParams();
 
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
     const [formats, setFormats] = useState(filter === undefined ? filters : [filter.replace('filter-', '')]);
+    const [showLoader, setShowLoader] = useState(true);
 
     const handleFormat = (event, newFormats) => {
         if (newFormats.length !== 0) {
@@ -116,6 +116,9 @@ export function ProjectsPage(props) {
 
     useEffect(() => {
         document.title = t(props.title);
+        setTimeout(function () {
+            setShowLoader(false)
+        }, 2000);
     });
 
     useEffect(() => {
@@ -243,7 +246,7 @@ export function ProjectsPage(props) {
                             </Paper>
                         </Grid>
                         {cards}
-                        <Grid item xs={12}>
+                        <Grid item xs={12} style={{display: showLoader ? 'block' : 'none'}}>
                             <Stack alignItems={"center"} spacing={2}>
                                 <CircularProgress/>
                             </Stack>

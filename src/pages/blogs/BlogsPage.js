@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useContext, useEffect} from 'react';
+import {useContext, useEffect, useState} from 'react';
 
 import {
     Card,
@@ -27,9 +27,13 @@ export function BlogsPage(props) {
     const {route, conf, t} = useContext(AppContext)
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
+    const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
         document.title = t(props.title);
+        setTimeout(function () {
+            setShowLoader(false)
+        }, 2000);
     });
 
     const cards = []
@@ -88,7 +92,7 @@ export function BlogsPage(props) {
                 <Grid item xs={12}>
                     <Grid container spacing={isMiddle ? 3 : 6}>
                         {cards}
-                        <Grid item xs={12}>
+                        <Grid item xs={12} style={{display: showLoader ? 'block' : 'none'}}>
                             <Stack alignItems={"center"} spacing={2}>
                                 <CircularProgress/>
                             </Stack>
