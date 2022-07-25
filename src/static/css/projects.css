@@ -15,3 +15,10 @@
     line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+
+@media (max-width: 600px) {
+    .ProjectsPage .MuiCardHeader-content .MuiTypography-h5 {
+        white-space: unset;
+        -webkit-line-clamp: inherit;
+    }
+}

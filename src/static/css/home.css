@@ -72,6 +72,7 @@
 .HomePage .BlockResume .WorksUL {
     position: relative;
     padding-left: 35px;
+    list-style-type: none;
 }
 
 .HomePage .BlockResume .WorksUL .WorksLI {
