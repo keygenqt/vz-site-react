@@ -2,8 +2,9 @@ import * as React from 'react';
 import {useContext, useEffect} from 'react';
 import {Container, Divider, Grid, IconButton, Paper, Stack, Typography, Zoom} from "@mui/material";
 import {useParams} from "react-router-dom";
-import {ConstantDemoData, AppContext} from "../../base";
+import {AppContext, ConstantDemoData} from "../../base";
 import {ArrowBack, ArrowUpward, Favorite, Share} from '@mui/icons-material';
+import ReactMarkdown from 'https://esm.sh/react-markdown@7'
 
 export function BlogPage(props) {
 
@@ -55,9 +56,9 @@ export function BlogPage(props) {
 
                                 <Divider component="div" className={"Small"}/>
 
-                                <Typography align={"left"} variant="textBlog">
+                                <ReactMarkdown>
                                     {model.text}
-                                </Typography>
+                                </ReactMarkdown>
 
                             </Stack>
                         </Grid>
