@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect} from 'react';
 
 import {
     Card,
@@ -20,25 +20,24 @@ import {
 } from "@mui/material";
 
 import {Favorite, Share} from '@mui/icons-material';
-import {AppContext, ConstantDemoData} from "../../base";
+import {AppContext, useRequest} from "../../base";
+import {MethodsRequest} from "../../base/request/MethodsRequest";
 
 export function BlogsPage(props) {
 
     const {route, conf, t} = useContext(AppContext)
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
-    const [showLoader, setShowLoader] = useState(true);
+    const {loading, data, error} = useRequest(MethodsRequest.articles, false);
 
     useEffect(() => {
         document.title = t(props.title);
-        setTimeout(function () {
-            setShowLoader(false)
-        }, 2000);
     });
 
     const cards = []
+    const value = data ?? []
 
-    ConstantDemoData.blog.forEach((data, index) => {
+    value.forEach((data, index) => {
         cards.push(
             <Grid style={{margin: 0}} key={"item-blog-" + index} item md={4} sm={6} xs={12}>
                 <Card variant="outlined" className={"CardBg"}>
@@ -46,16 +45,16 @@ export function BlogsPage(props) {
                         <CardMedia
                             component="img"
                             height="200"
-                            image={data.img}
+                            image={data.publicImage}
                             alt={data.title}
                         />
                         <CardHeader
                             title={data.title}
-                            subheader={data.subheader}
+                            subheader={data.createAt}
                         />
                         <CardContent className={"BlogItemContent"}>
                             <Typography className={"BlogItemSubtitle"} variant="textCard">
-                                {data.text}
+                                {data.description}
                             </Typography>
                         </CardContent>
                     </CardActionArea>
@@ -92,7 +91,7 @@ export function BlogsPage(props) {
                 <Grid item xs={12}>
                     <Grid container spacing={isMiddle ? 3 : 6}>
                         {cards}
-                        <Grid item xs={12} style={{display: showLoader ? 'block' : 'none'}}>
+                        <Grid item xs={12} style={{display: loading ? 'block' : 'none'}}>
                             <Stack alignItems={"center"} spacing={2}>
                                 <CircularProgress/>
                             </Stack>

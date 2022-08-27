@@ -6,7 +6,7 @@ import {ErrorPage} from "../../pages";
 export default class RouteCore {
 
     /**
-     * @param location {H.LocationState}
+     * @param location {Location}
      * @param navigate {NavigateFunction}
      * @param conf route object with params
      */

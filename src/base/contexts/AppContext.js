@@ -1,5 +1,5 @@
 import React, {createContext} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useNavigationType} from "react-router-dom";
 import RouteCore from "../route/RouteCore";
 import {RouteConf} from "../route/RouteConf";
 import {useTranslation} from "react-i18next";
@@ -12,6 +12,7 @@ const AppContextProvider = (props) => {
     const {t, i18n} = useTranslation()
     const location = useLocation()
     const navigate = useNavigate()
+    const type = useNavigationType()
 
     const language = i18n.language
     const isLocEn = i18n.language === ConstantOther.languages.en
@@ -26,6 +27,7 @@ const AppContextProvider = (props) => {
                 location,
                 navigate,
                 route,
+                type,
                 conf,
                 t,
                 i18n,

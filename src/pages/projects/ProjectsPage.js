@@ -23,9 +23,10 @@ import {
 
 import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} from "@mui/icons-material";
 
-import {AppContext, ConstantImages} from "../../base";
+import {AppContext, ConstantImages, useRequest} from "../../base";
 import {styled} from '@mui/material/styles';
 import {useParams} from "react-router-dom";
+import {MethodsRequest} from "../../base/request/MethodsRequest";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
     '& .MuiToggleButtonGroup-grouped': {
@@ -94,19 +95,19 @@ const listData = [
     },
 ]
 
-const filters = ['android', 'ios', 'web', 'pc']
+const filters = ['ANDROID', 'IOS', 'WEB', 'OTHER']
 
 export function ProjectsPage(props) {
 
     const theme = useTheme();
     const {t} = useContext(AppContext)
+    const {loading, data, error} = useRequest(MethodsRequest.projects, false);
 
     let {filter} = useParams();
 
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
     const [formats, setFormats] = useState(filter === undefined ? filters : [filter.replace('filter-', '')]);
-    const [showLoader, setShowLoader] = useState(true);
 
     const handleFormat = (event, newFormats) => {
         if (newFormats.length !== 0) {
@@ -116,9 +117,6 @@ export function ProjectsPage(props) {
 
     useEffect(() => {
         document.title = t(props.title);
-        setTimeout(function () {
-            setShowLoader(false)
-        }, 2000);
     });
 
     useEffect(() => {
@@ -130,9 +128,10 @@ export function ProjectsPage(props) {
     }, [filter]);
 
     const cards = []
+    const value = data ?? []
 
-    listData.forEach((data, index) => {
-        if (formats.includes(data.type)) {
+    value.forEach((data, index) => {
+        if (formats.includes(data.category)) {
             cards.push(
                 <Grid style={{margin: 0}} key={"item-projects-" + index} item md={4} sm={6} xs={12}>
                     <Card variant="outlined" className={"CardBg"}>
@@ -148,7 +147,7 @@ export function ProjectsPage(props) {
                             subheader={
                                 <Stack spacing={1}>
                                     <Typography variant="body2" color="text.secondary">
-                                        {data.subheader}
+                                        {data.createAt}
                                     </Typography>
                                 </Stack>
                             }
@@ -156,12 +155,12 @@ export function ProjectsPage(props) {
                         <CardMedia
                             component="img"
                             height="140"
-                            image={data.img}
+                            image={data.publicImage}
                             alt={data.title}
                         />
                         <CardContent className={"ProjectsItemContent"}>
                             <Typography className={"ProjectsItemSubtitle"} variant="textCard">
-                                {data.text}
+                                {data.description}
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing style={{
@@ -246,7 +245,7 @@ export function ProjectsPage(props) {
                             </Paper>
                         </Grid>
                         {cards}
-                        <Grid item xs={12} style={{display: showLoader ? 'block' : 'none'}}>
+                        <Grid item xs={12} style={{display: loading ? 'block' : 'none'}}>
                             <Stack alignItems={"center"} spacing={2}>
                                 <CircularProgress/>
                             </Stack>
