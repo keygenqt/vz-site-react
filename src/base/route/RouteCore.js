@@ -33,6 +33,16 @@ export default class RouteCore {
     }
 
     /**
+     * Open page with replace
+     *
+     * @param route {String | Object}
+     * @param arg
+     */
+    toLocationReplace(route, ...arg) {
+        this.navigate(this.createLink(route, arg), {replace: true});
+    }
+
+    /**
      * Open page with delay
      *
      * @param route {String}

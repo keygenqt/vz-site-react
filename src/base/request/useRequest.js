@@ -60,7 +60,7 @@ export const useRequest = (method, refresh, ...params) => {
             } else {
                 dispatch({type: 'FETCHING'});
                 try {
-                    await new Promise(r => setTimeout(r, 100));
+                    await new Promise(r => setTimeout(r, 1000));
                     if (cancelRequest) return;
 
                     const response = await method.apply(this, arg)

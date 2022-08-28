@@ -16,7 +16,8 @@ import {
     Stack,
     Typography,
     useMediaQuery,
-    useTheme
+    useTheme,
+    Zoom
 } from "@mui/material";
 
 import {Favorite, Share} from '@mui/icons-material';
@@ -25,7 +26,7 @@ import {MethodsRequest} from "../../base/request/MethodsRequest";
 
 export function BlogsPage(props) {
 
-    const {route, conf, t} = useContext(AppContext)
+    const {route, conf, t, isLocEn} = useContext(AppContext)
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
     const {loading, data, error} = useRequest(MethodsRequest.articles, false);
@@ -50,7 +51,13 @@ export function BlogsPage(props) {
                         />
                         <CardHeader
                             title={data.title}
-                            subheader={data.createAt}
+                            subheader={new Intl
+                                .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: '2-digit',
+                                })
+                                .format(data.createAt)}
                         />
                         <CardContent className={"BlogItemContent"}>
                             <Typography className={"BlogItemSubtitle"} variant="textCard">
@@ -75,7 +82,7 @@ export function BlogsPage(props) {
 
     return (
         <Container maxWidth="lg" className={"Page PagePaddings BlogsPage"}>
-            <Grid container spacing={isMiddle ? 8 : 14}>
+            <Grid container spacing={isMiddle || (loading || error) ? 8 : 14}>
                 <Grid item xs={7}>
                     <Stack spacing={4}>
                         <Typography align={"center"} variant="h4">
@@ -90,12 +97,19 @@ export function BlogsPage(props) {
                 </Grid>
                 <Grid item xs={12}>
                     <Grid container spacing={isMiddle ? 3 : 6}>
-                        {cards}
-                        <Grid item xs={12} style={{display: loading ? 'block' : 'none'}}>
-                            <Stack alignItems={"center"} spacing={2}>
-                                <CircularProgress/>
-                            </Stack>
-                        </Grid>
+                        {loading || error ? (
+                            <Grid item xs={12}>
+                                <Zoom timeout={1000} in={true}>
+                                    <Stack alignItems={"center"}>
+                                        <CircularProgress/>
+                                    </Stack>
+                                </Zoom>
+                            </Grid>
+                        ) : (
+                            <>
+                                {cards}
+                            </>
+                        )}
                     </Grid>
                 </Grid>
 

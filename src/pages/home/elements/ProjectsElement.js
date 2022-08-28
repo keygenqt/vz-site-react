@@ -3,40 +3,41 @@ import {useContext} from 'react';
 import {Card, CardActionArea, CardContent, Grid, Typography} from "@mui/material";
 import {AppContext, ConstantImages} from "../../../base";
 
+const data = [
+    {
+        color: '#3BD5801a',
+        image: ConstantImages.platform.android,
+        title: "pages.home.t_projects_android_title",
+        text: "pages.home.t_projects_android_text",
+        filter: 'filter-android'
+    },
+    {
+        color: '#a1a1a11a',
+        image: ConstantImages.platform.apple,
+        title: "pages.home.t_projects_ios_title",
+        text: "pages.home.t_projects_ios_text",
+        filter: 'filter-ios'
+    },
+    {
+        color: '#3198c11a',
+        image: ConstantImages.platform.web,
+        title: "pages.home.t_projects_web_title",
+        text: "pages.home.t_projects_web_text",
+        filter: 'filter-web'
+    },
+    {
+        color: '#2468d11a',
+        image: ConstantImages.platform.pc,
+        title: "pages.home.t_projects_pc_title",
+        text: "pages.home.t_projects_pc_text",
+        filter: 'filter-other'
+    },
+];
+
 function ProjectsElement() {
 
     const {route, conf, t} = useContext(AppContext)
     const cards = []
-    const data = [
-        {
-            color: '#3BD5801a',
-            image: ConstantImages.platform.android,
-            title: "pages.home.t_projects_android_title",
-            text: "pages.home.t_projects_android_text",
-            filter: 'filter-android'
-        },
-        {
-            color: '#a1a1a11a',
-            image: ConstantImages.platform.apple,
-            title: "pages.home.t_projects_ios_title",
-            text: "pages.home.t_projects_ios_text",
-            filter: 'filter-ios'
-        },
-        {
-            color: '#3198c11a',
-            image: ConstantImages.platform.web,
-            title: "pages.home.t_projects_web_title",
-            text: "pages.home.t_projects_web_text",
-            filter: 'filter-web'
-        },
-        {
-            color: '#2468d11a',
-            image: ConstantImages.platform.pc,
-            title: "pages.home.t_projects_pc_title",
-            text: "pages.home.t_projects_pc_text",
-            filter: 'filter-pc'
-        },
-    ];
 
     data.forEach((data, index) => {
         cards.push(

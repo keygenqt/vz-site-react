@@ -41,7 +41,7 @@ export const ruLocalization = {
                 t_projects_android_title: "Android",
                 t_projects_ios_title: "iOS",
                 t_projects_web_title: "Web",
-                t_projects_pc_title: "PC",
+                t_projects_pc_title: "Другое",
                 t_projects_android_text: "Около 7 лет занимаюсь Android разработкой. Год работаю с Jetpack Compose.",
                 t_projects_ios_text: "Swift очень похож на Kotlin, а SwiftUI на Jetpack Compose. Есть проекты в GitHub.",
                 t_projects_web_text: "Проекты web раньше были основным моим занятием. Сейчас я пишу для души.",
@@ -78,6 +78,7 @@ export const ruLocalization = {
                 t_title: "@keygenqt | Проекты",
                 t_title_page: "Open Source",
                 t_subtitle: "Для развития и людей",
+                t_empty: "Пока нет, работаю над этим",
             },
             blogs: {
                 t_title: "@keygenqt | Блог",

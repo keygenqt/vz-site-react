@@ -39,7 +39,7 @@ export const enLocalization = {
                 t_projects_android_title: "Android",
                 t_projects_ios_title: "iOS",
                 t_projects_web_title: "Web",
-                t_projects_pc_title: "PC",
+                t_projects_pc_title: "Other",
                 t_projects_android_text: "I'am developing Android ~7 years. One year work with Jetpack Compose.",
                 t_projects_ios_text: "Swift is very similar to Kotlin and SwiftUI is very similar to Jetpack Compose.",
                 t_projects_web_text: "Web projects used to be my main occupation. Now I write for the soul.",
@@ -76,6 +76,7 @@ export const enLocalization = {
                 t_title: "@keygenqt | Projects",
                 t_title_page: "Open Source",
                 t_subtitle: "For evolution and people",
+                t_empty: "Not yet, I'm working on it",
             },
             blogs: {
                 t_title: "@keygenqt | Blog",

@@ -18,15 +18,18 @@ import {
     Tooltip,
     Typography,
     useMediaQuery,
-    useTheme
+    useTheme,
+    Zoom
 } from "@mui/material";
+import Lottie from "lottie-react";
 
 import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} from "@mui/icons-material";
 
-import {AppContext, ConstantImages, useRequest} from "../../base";
+import {AppContext, useRequest} from "../../base";
 import {styled} from '@mui/material/styles';
 import {useParams} from "react-router-dom";
 import {MethodsRequest} from "../../base/request/MethodsRequest";
+import {ConstantLottie} from "../../base/constants/ConstantLottie";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
     '& .MuiToggleButtonGroup-grouped': {
@@ -44,74 +47,22 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
     },
 }));
 
-const listData = [
-    {
-        type: "pc",
-        icon: <DesktopWindows sx={{fontSize: 18, padding: '2px', color: '#2468d1'}}/>,
-        img: ConstantImages.temp.blog_item1,
-        title: "Changeln",
-        subheader: "September 14, 2016",
-        text: "Generate changelog from git tags. You can use snap-ubuntu or just download pyz file with app.",
-    },
-    {
-        type: "android",
-        icon: <Android sx={{fontSize: 20, color: '#3BD580'}}/>,
-        img: ConstantImages.temp.blog_item2,
-        title: "Compose Forms",
-        subheader: "September 14, 2016",
-        text: "Easy way create forms with automation, mask, field overloading for jetpack compose.",
-    },
-    {
-        type: "ios",
-        icon: <Apple sx={{fontSize: 20, color: '#a1a1a1'}}/>,
-        img: ConstantImages.temp.blog_item3,
-        title: "GitHub Viewer",
-        subheader: "September 14, 2016",
-        text: "Implementation of the application using the latest iOS Tech Stack (mvvm, swiftUI) and the GitHub REST API.",
-    },
-    {
-        type: "pc",
-        icon: <DesktopWindows sx={{fontSize: 18, padding: '2px', color: '#2468d1'}}/>,
-        img: ConstantImages.temp.blog_item4,
-        title: "Autoway",
-        subheader: "September 14, 2016",
-        text: "Replacing mocks with a full-fledged REST backend. Everything works out of the box, the application just needs to specify the path to Flyway migrations.",
-    },
-    {
-        type: "pc",
-        icon: <DesktopWindows sx={{fontSize: 18, padding: '2px', color: '#2468d1'}}/>,
-        img: ConstantImages.temp.blog_item5,
-        title: "Backupz",
-        subheader: "September 14, 2016",
-        text: "Backupz create backup tar.gz archive. Select dirs or select files. Save backup to dir or ftp. Use multiple processes.",
-    },
-    {
-        type: "web",
-        icon: <Language sx={{fontSize: 20, color: '#3198c1'}}/>,
-        img: ConstantImages.temp.blog_item6,
-        title: "Parallax",
-        subheader: "September 14, 2016",
-        text: "A library that allows you to easily make an image parallax effect in your site. It's use JQuery.",
-    },
-]
-
-const filters = ['ANDROID', 'IOS', 'WEB', 'OTHER']
-
 export function ProjectsPage(props) {
 
     const theme = useTheme();
-    const {t} = useContext(AppContext)
+    const {t, isLocEn, route, conf} = useContext(AppContext)
     const {loading, data, error} = useRequest(MethodsRequest.projects, false);
 
     let {filter} = useParams();
 
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
-    const [formats, setFormats] = useState(filter === undefined ? filters : [filter.replace('filter-', '')]);
+    const [formats, setFormats] = useState(filter === undefined ? [] : [filter.replace('filter-', '').toUpperCase()]);
 
     const handleFormat = (event, newFormats) => {
-        if (newFormats.length !== 0) {
-            setFormats(newFormats);
+        setFormats(newFormats !== null && !formats.includes(newFormats) ? newFormats : []);
+        if (filter !== undefined) {
+            route.toLocationReplace(conf.routes.projects.index.route)
         }
     };
 
@@ -119,19 +70,11 @@ export function ProjectsPage(props) {
         document.title = t(props.title);
     });
 
-    useEffect(() => {
-        if (filter === undefined) {
-            setFormats(filters)
-        } else {
-            setFormats([filter.replace('filter-', '')])
-        }
-    }, [filter]);
-
     const cards = []
     const value = data ?? []
 
     value.forEach((data, index) => {
-        if (formats.includes(data.category)) {
+        if (formats.includes(data.category) || formats.length === 0) {
             cards.push(
                 <Grid style={{margin: 0}} key={"item-projects-" + index} item md={4} sm={6} xs={12}>
                     <Card variant="outlined" className={"CardBg"}>
@@ -147,7 +90,13 @@ export function ProjectsPage(props) {
                             subheader={
                                 <Stack spacing={1}>
                                     <Typography variant="body2" color="text.secondary">
-                                        {data.createAt}
+                                        {new Intl
+                                            .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
+                                                year: 'numeric',
+                                                month: 'long',
+                                                day: '2-digit',
+                                            })
+                                            .format(data.createAt)}
                                     </Typography>
                                 </Stack>
                             }
@@ -192,7 +141,7 @@ export function ProjectsPage(props) {
 
     return (
         <Container maxWidth="lg" className={"Page PagePaddings ProjectsPage"}>
-            <Grid container spacing={isMiddle ? 8 : 14}>
+            <Grid container spacing={isMiddle || (loading || error) ? 8 : 14}>
                 <Grid item xs={7}>
                     <Stack spacing={4}>
                         <Typography align={"center"} variant="h4">
@@ -206,50 +155,99 @@ export function ProjectsPage(props) {
                 </Grid>
                 <Grid item xs={12}>
                     <Grid container spacing={isMiddle ? 3 : 6}>
-                        <Grid
-                            style={{textAlign: "end", paddingTop: 0, display: filter === undefined ? 'block' : 'none'}}
-                            item xs={12}>
-                            <Paper
-                                elevation={0}
-                                sx={{
-                                    display: 'inline-block',
-                                    border: (theme) => `1px solid ${theme.palette.divider}`,
-                                }}
-                            >
-                                <StyledToggleButtonGroup
-                                    value={formats}
-                                    onChange={handleFormat}
-                                    aria-label="text formatting"
-                                >
-                                    <Tooltip title="Android" value="android">
-                                        <ToggleButton size="small" color="primary" aria-label="Android" value="android">
-                                            <Android/>
-                                        </ToggleButton>
-                                    </Tooltip>
-                                    <Tooltip title="iOS" value="ios">
-                                        <ToggleButton size={"small"} color={"primary"} aria-label="iOS" value="ios">
-                                            <Apple/>
-                                        </ToggleButton>
-                                    </Tooltip>
-                                    <Tooltip title="Web" value="web">
-                                        <ToggleButton size={"small"} color={"primary"} aria-label="Web" value="web">
-                                            <Language/>
-                                        </ToggleButton>
-                                    </Tooltip>
-                                    <Tooltip title="PC" value="pc">
-                                        <ToggleButton size={"small"} color={"primary"} aria-label="PC" value="pc">
-                                            <DesktopWindows/>
-                                        </ToggleButton>
-                                    </Tooltip>
-                                </StyledToggleButtonGroup>
-                            </Paper>
-                        </Grid>
-                        {cards}
-                        <Grid item xs={12} style={{display: loading ? 'block' : 'none'}}>
-                            <Stack alignItems={"center"} spacing={2}>
-                                <CircularProgress/>
-                            </Stack>
-                        </Grid>
+
+                        {loading || error ? (
+                            <Grid item xs={12}>
+                                <Zoom timeout={1000} in={true}>
+                                    <Stack alignItems={"center"}>
+                                        <CircularProgress/>
+                                    </Stack>
+                                </Zoom>
+                            </Grid>
+                        ) : (
+                            <>
+                                <Grid
+                                    style={{
+                                        textAlign: "end",
+                                        paddingTop: 0,
+                                    }}
+                                    item xs={12}>
+                                    <Paper
+                                        elevation={0}
+                                        sx={{
+                                            display: 'inline-block',
+                                            border: (theme) => `1px solid ${theme.palette.divider}`,
+                                        }}
+                                    >
+                                        <StyledToggleButtonGroup
+                                            exclusive
+                                            value={formats}
+                                            onChange={handleFormat}
+                                            aria-label="text formatting"
+                                        >
+                                            <Tooltip title="Android" value="ANDROID">
+                                                <ToggleButton
+                                                    size="small"
+                                                    color="primary"
+                                                    aria-label="Android"
+                                                    value="ANDROID"
+                                                >
+                                                    <Android/>
+                                                </ToggleButton>
+                                            </Tooltip>
+                                            <Tooltip title="iOS" value="IOS">
+                                                <ToggleButton
+                                                    size={"small"}
+                                                    color={"primary"}
+                                                    aria-label="iOS"
+                                                    value="IOS"
+                                                >
+                                                    <Apple/>
+                                                </ToggleButton>
+                                            </Tooltip>
+                                            <Tooltip title="Web" value="WEB">
+                                                <ToggleButton
+                                                    size={"small"}
+                                                    color={"primary"}
+                                                    aria-label="Web"
+                                                    value="WEB"
+                                                >
+                                                    <Language/>
+                                                </ToggleButton>
+                                            </Tooltip>
+                                            <Tooltip title="PC" value="OTHER">
+                                                <ToggleButton
+                                                    size={"small"}
+                                                    color={"primary"}
+                                                    aria-label="Other"
+                                                    value="OTHER"
+                                                >
+                                                    <DesktopWindows/>
+                                                </ToggleButton>
+                                            </Tooltip>
+                                        </StyledToggleButtonGroup>
+                                    </Paper>
+                                </Grid>
+                                {cards.length !== 0 ? cards : <Grid item xs={12}>
+                                    <Zoom timeout={200} in={true}>
+                                        <Stack alignItems={"center"}>
+
+                                            <Stack alignItems={"center"} spacing={2}>
+                                                <Lottie style={{
+                                                    width: 250,
+                                                    borderRadius: '50%',
+                                                    backgroundColor: 'white'
+                                                }} animationData={ConstantLottie.work_from_home}/>
+                                            </Stack>
+
+                                            <Typography align={"center"} variant="h6">
+                                                {t("pages.projects.t_empty")}
+                                            </Typography>
+                                        </Stack>
+                                    </Zoom>
+                                </Grid>}
+                            </>
+                        )}
                     </Grid>
                 </Grid>
 
