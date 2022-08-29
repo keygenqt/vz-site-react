@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {useContext} from 'react';
 import {ButtonGroup, Grid, Typography} from "@mui/material";
-import {AppContext} from "../../../base";
+import {LanguageContext} from "../../../base";
 import ButtonsFollow from "../../../components/footer/elements/ButtonsFollow";
 
 function AboutElement() {
 
-    const {t} = useContext(AppContext)
+    const {t} = useContext(LanguageContext)
 
     return (
         <React.Fragment>

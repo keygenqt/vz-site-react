@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useContext} from 'react';
 import {Card, CardActionArea, CardContent, Grid, Typography} from "@mui/material";
-import {AppContext, ConstantImages} from "../../../base";
+import {ConstantImages, LanguageContext, NavigateContext} from "../../../base";
 
 const data = [
     {
@@ -36,7 +36,8 @@ const data = [
 
 function ProjectsElement() {
 
-    const {route, conf, t} = useContext(AppContext)
+    const {route, conf} = useContext(NavigateContext)
+    const {t} = useContext(LanguageContext)
     const cards = []
 
     data.forEach((data, index) => {
@@ -44,7 +45,10 @@ function ProjectsElement() {
             <Grid key={index + "item-projects"} item md={3} sm={6} xs={12}>
                 <Card className={"CardBg"} variant="outlined">
                     <CardActionArea
-                        onClick={route.onClickToLocationDelay(conf.routes.projects.filter.route, data.filter)}>
+                        onClick={() => {
+                            route.toLocation(conf.routes.ps.projectsFilter, data.filter)
+                        }}
+                    >
                         <Grid container columns={12}>
                             <Grid item sm={6} xs={6}>
                                 <img

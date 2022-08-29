@@ -13,13 +13,15 @@ import {Link} from "react-router-dom";
 import {Public, PublicOff} from "@mui/icons-material";
 import * as React from "react";
 import {appBarData} from "./AppBarData";
+import {useContext} from "react";
+import {LanguageContext, NavigateContext} from "../../../base";
 
 export function AppBarListElement(props) {
 
+    const {route, conf} = useContext(NavigateContext)
+    const {t} = useContext(LanguageContext)
+
     const {
-        route,
-        conf,
-        t,
         switchState,
         switchChange,
         collapseState,
@@ -33,7 +35,7 @@ export function AppBarListElement(props) {
             <Paper sx={{width: '100%', maxWidth: '100%', borderRadius: 0}} elevation={1}>
                 <MenuList>
                     {appBarData(conf).map((page, index) => (
-                        <Link key={index + "topBar-menu2-item"} to={page.route}>
+                        <Link key={index + "topBar-menu2-item"} to={page.route.path}>
                             <MenuItem onClick={() => {
                                 collapseChange(false)
                             }}>

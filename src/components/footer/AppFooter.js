@@ -3,17 +3,18 @@ import {useContext} from 'react';
 import Container from "@mui/material/Container";
 import {Button, ButtonGroup, Grid, Link} from "@mui/material";
 import {ArrowUpward} from "@mui/icons-material";
-import {AppContext, ConstantOther} from "../../base";
+import {LanguageContext, ConstantOther, NavigateContext} from "../../base";
 import ButtonsFollow from "./elements/ButtonsFollow";
 
 export function AppFooter() {
 
-    const {route, conf, t} = useContext(AppContext)
+    const {route, conf} = useContext(NavigateContext)
+    const {t} = useContext(LanguageContext)
 
     return (
         <Container maxWidth="lg" className={"Footer"}>
 
-            {route.isPage(conf.routes.home.index) ? <React.Fragment>
+            {route.isPage(conf.routes.home) ? <React.Fragment>
                 <div className={"Text"}>
                     <div>
                         {t("components.footer.t_questions")}

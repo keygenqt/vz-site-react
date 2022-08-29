@@ -25,10 +25,10 @@ import Lottie from "lottie-react";
 
 import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} from "@mui/icons-material";
 
-import {AppContext, useRequest} from "../../base";
+import {LanguageContext, NavigateContext, useRequest} from "../../base";
 import {styled} from '@mui/material/styles';
 import {useParams} from "react-router-dom";
-import {MethodsRequest} from "../../base/request/MethodsRequest";
+import {MethodsRequest} from "../../services/MethodsRequest";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
@@ -50,7 +50,8 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
 export function ProjectsPage(props) {
 
     const theme = useTheme();
-    const {t, isLocEn, route, conf} = useContext(AppContext)
+    const {route, conf} = useContext(NavigateContext)
+    const {t, isLocEn} = useContext(LanguageContext)
     const {loading, data, error} = useRequest(MethodsRequest.projects, false);
 
     let {filter} = useParams();
@@ -62,12 +63,12 @@ export function ProjectsPage(props) {
     const handleFormat = (event, newFormats) => {
         setFormats(newFormats !== null && !formats.includes(newFormats) ? newFormats : []);
         if (filter !== undefined) {
-            route.toLocationReplace(conf.routes.projects.index.route)
+            route.toLocationReplace(conf.routes.projects)
         }
     };
 
     useEffect(() => {
-        document.title = t(props.title);
+        document.title = t('pages.projects.t_title');
     });
 
     const cards = []
@@ -235,8 +236,6 @@ export function ProjectsPage(props) {
                                             <Stack alignItems={"center"} spacing={2}>
                                                 <Lottie style={{
                                                     width: 250,
-                                                    borderRadius: '50%',
-                                                    backgroundColor: 'white'
                                                 }} animationData={ConstantLottie.work_from_home}/>
                                             </Stack>
 

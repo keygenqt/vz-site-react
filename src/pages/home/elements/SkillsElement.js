@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Alert, Grid, Typography} from "@mui/material";
 import {AccountTree, Android, Apple, DesktopWindows, Language, ViewQuilt} from '@mui/icons-material';
 import {useContext} from "react";
-import {AppContext} from "../../../base";
+import {LanguageContext} from "../../../base";
 
 const listData = [
     {
@@ -39,7 +39,7 @@ const listData = [
 
 function SkillsElement() {
 
-    const {t} = useContext(AppContext)
+    const {t} = useContext(LanguageContext)
 
     const items = []
 

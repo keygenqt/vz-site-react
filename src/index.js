@@ -2,24 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./base/localization/Localization";
 
-import './static/css/base.css';
-import './static/css/home.css';
-import './static/css/blogs.css';
-import './static/css/projects.css';
+import './assets/css/base.css';
+import './assets/css/home.css';
+import './assets/css/blogs.css';
+import './assets/css/projects.css';
 
 import App from './App';
 import reportWebVitals from './tests/reportWebVitals';
 
 import {BrowserRouter} from "react-router-dom";
-import AppContextProvider from "./base/contexts/AppContext";
+import LanguageContextProvider from "./base/contexts/LanguageContext";
+import NavigateContextProvider from "./base/contexts/NavigateContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <AppContextProvider>
-                <App/>
-            </AppContextProvider>
+            <NavigateContextProvider>
+                <LanguageContextProvider>
+                    <App/>
+                </LanguageContextProvider>
+            </NavigateContextProvider>
         </BrowserRouter>
     </React.StrictMode>
 );

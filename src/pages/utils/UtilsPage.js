@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 
 import {AccessTime, CallMerge, SnippetFolder, YouTube} from "@mui/icons-material";
-import {AppContext} from "../../base";
+import {LanguageContext} from "../../base";
 
 const listData = [
     {
@@ -44,13 +44,13 @@ const listData = [
 
 export function UtilsPage(props) {
 
-    const {t} = useContext(AppContext)
+    const {t} = useContext(LanguageContext)
 
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
     useEffect(() => {
-        document.title = t(props.title);
+        document.title = t('pages.utils.t_title');
     });
 
     const cards = []

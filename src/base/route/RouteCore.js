@@ -1,12 +1,14 @@
 import * as React from "react";
 import {ScrollToTop} from "../../components";
 import {Route, Routes} from "react-router-dom";
+import {RouteType} from "./RouteType";
 import {ErrorPage} from "../../pages";
+import {BaseLayout} from "../../layouts/BaseLayout";
 
 export default class RouteCore {
 
     /**
-     * @param location {Location}
+     * @param location {H.LocationState}
      * @param navigate {NavigateFunction}
      * @param conf route object with params
      */
@@ -16,20 +18,44 @@ export default class RouteCore {
         this.conf = conf;
     }
 
+    updateLocation(location) {
+        this.location = location;
+    }
+
+    updateNavigate(navigate) {
+        this.navigate = navigate;
+    }
+
+    /**
+     * Get path with check object or string
+     *
+     * @param route
+     *
+     * @return string
+     */
+    getPathFromObject(route) {
+        if (typeof route === 'string' || route instanceof String) {
+            return route
+        } else {
+            if (route === undefined) {
+                return ""
+            } else if (route.path !== undefined) {
+                return route.path
+            } else {
+                return ""
+            }
+        }
+    }
+
     /**
      * Open page
      *
-     * @param route {String}
+     * @param route {String | Object}
      * @param arg
-     *
-     * @returns {(function(): void)|*}
      */
     toLocation(route, ...arg) {
-        if (this.isPage(route)) {
-            this.navigate(0)
-        } else {
-            this.navigate(this.createLink(route, arg));
-        }
+        const path = this.getPathFromObject(route)
+        this.navigate(this.createLink(path, arg));
     }
 
     /**
@@ -39,24 +65,51 @@ export default class RouteCore {
      * @param arg
      */
     toLocationReplace(route, ...arg) {
-        this.navigate(this.createLink(route, arg), {replace: true});
+        const path = this.getPathFromObject(route)
+        this.navigate(this.createLink(path, arg), {replace: true});
+    }
+
+    /**
+     * Open page with replace
+     *
+     * @param route {String | Object}
+     * @param arg
+     */
+    toLocationPush(route, ...arg) {
+        const path = this.getPathFromObject(route)
+        this.navigate(this.createLink(path, arg), {push: true});
+    }
+
+    /**
+     * Open page with new stack
+     *
+     * @param route {String | Object}
+     * @param arg
+     */
+    toLocationReset(route, ...arg) {
+        const path = this.getPathFromObject(route)
+        this.navigate(this.createLink(path, arg), {reset: true});
     }
 
     /**
      * Open page with delay
      *
-     * @param route {String}
+     * @param route {String | Object}
      * @param arg
      *
      * @returns {(function(): void)|*}
      */
     toLocationDelay(route, ...arg) {
+        if (route === undefined) {
+            return
+        }
         const self = this
+        const path = this.getPathFromObject(route)
         setTimeout(function () {
-            if (self.isPage(route)) {
+            if (self.isPage(path)) {
                 self.navigate(0)
             } else {
-                self.navigate(self.createLink(route, arg));
+                self.navigate(self.createLink(path, arg));
             }
         }, this.conf.delay);
     }
@@ -85,28 +138,30 @@ export default class RouteCore {
     /**
      * Open page
      *
-     * @param route {String}
+     * @param route {String | Object}
      * @param arg
      *
      * @returns {(function(): void)|*}
      */
     onClickToLocation(route, ...arg) {
+        const path = this.getPathFromObject(route)
         return () => {
-            this.toLocation(route, arg)
+            this.toLocation(path, arg)
         }
     }
 
     /**
      * Open page with delay
      *
-     * @param route {String}
+     * @param route {String | Object}
      * @param arg
      *
      * @returns {(function(): void)|*}
      */
     onClickToLocationDelay(route, ...arg) {
+        const path = this.getPathFromObject(route)
         return () => {
-            this.toLocationDelay(route, arg)
+            this.toLocationDelay(path, arg)
         }
     }
 
@@ -142,27 +197,18 @@ export default class RouteCore {
     }
 
     /**
-     * Check location by route
+     * Check location by path
      *
      * @returns {boolean}
      */
     isPage(...route) {
 
         const regexPath = /:\w+/ig;
-        const regexLoc = /([\d+])|(\w+-\w+)/ig;
+        const regexLoc = /(\d+)|(\w+-\w+)/ig;
 
         for (let i = 0; i < route.length; i++) {
-
-            let result;
-            let data = route[i]
-
-            if (typeof data === 'string' || data instanceof String) {
-                result = data
-            } else {
-                result = data.route
-            }
-
-            if (this.location.pathname.replaceAll(regexLoc, "__id__") === result.replaceAll(regexPath, "__id__")) {
+            const path = this.getPathFromObject(route[i])
+            if (this.location.pathname.replaceAll(regexLoc, "__id__") === path.replaceAll(regexPath, "__id__")) {
                 return true
             }
         }
@@ -176,14 +222,20 @@ export default class RouteCore {
      */
     createLink(route, ...arg) {
 
-        if (!route.includes(":")) {
-            return route
+        const path = this.getPathFromObject(route)
+
+        if (path.includes('http')) {
+            return path + (arg.length === 0 ? '' : '/' + arg.join('/'));
         }
 
-        let result = route
+        if (!path.includes(":")) {
+            return path
+        }
+
+        let result = path
         let linkArgs = []
 
-        route.split("/").forEach((v) => {
+        path.split("/").forEach((v) => {
             if (v.includes(":")) {
                 linkArgs.push(v)
             }
@@ -203,19 +255,42 @@ export default class RouteCore {
     /**
      * Render pages by conf
      *
-     * @param onError callback if open page error
-     *
      * @returns {JSX.Element}
      */
-    render(onError) {
+    render() {
 
         const pages = []
 
         Object.keys(this.conf.routes).forEach((group, groupIndex) => {
             Object.keys(this.conf.routes[group]).forEach((page, pageIndex) => {
-                const {route, title, render} = this.conf.routes[group][page]
+
+                const {path, render, match} = this.conf.routes[group][page]
+
                 if (render !== undefined) {
-                    pages.push(render(groupIndex + pageIndex, route, title))
+                    if (match) {
+                        const clearPath = path.slice(0, path.indexOf(':'))
+                        const paramsUrl = this.location.pathname.replace(clearPath, '').split("/")
+                        const paramsPath = path.replace(clearPath, '').split("/").map((e) => e.replace(':', ''))
+                        const validate = []
+                        paramsPath.forEach((key, index) => {
+                            const type = match[key] ? match[key] : RouteType.string
+                            const value = paramsUrl[index]
+                            validate.push(RouteType.validate(type, value))
+                        })
+                        if (validate.includes(false)) {
+                            pages.push(
+                                <Route
+                                    key={groupIndex + pageIndex}
+                                    path={path}
+                                    element={<ErrorPage/>}
+                                />
+                            )
+                        } else {
+                            pages.push(render(groupIndex + pageIndex, path))
+                        }
+                    } else {
+                        pages.push(render(groupIndex + pageIndex, path))
+                    }
                 }
             })
         });
@@ -227,7 +302,11 @@ export default class RouteCore {
                     {pages}
                     <Route
                         path="*"
-                        element={<ErrorPage onError={onError}/>}
+                        element={
+                            <BaseLayout isCenter={true}>
+                                <ErrorPage/>
+                            </BaseLayout>
+                        }
                     />
                 </Routes>
             </React.Fragment>
@@ -264,5 +343,19 @@ export default class RouteCore {
      */
     scrollToTopSmooth() {
         window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    /**
+     * Refresh page
+     */
+    refreshPage() {
+        this.navigate(0);
+    }
+
+    /**
+     * Refresh location
+     */
+    refreshLocation() {
+        this.navigate(this.location);
     }
 }

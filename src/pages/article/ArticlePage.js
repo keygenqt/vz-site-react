@@ -2,19 +2,21 @@ import * as React from 'react';
 import {useContext, useEffect} from 'react';
 import {Container, Divider, Grid, IconButton, Paper, Stack, Typography, Zoom} from "@mui/material";
 import {useParams} from "react-router-dom";
-import {AppContext, useRequest} from "../../base";
+import {LanguageContext, NavigateContext, useRequest} from "../../base";
 import {ArrowBack, ArrowUpward, Favorite, Share} from '@mui/icons-material';
 import ReactMarkdown from 'https://esm.sh/react-markdown@7'
-import {MethodsRequest} from "../../base/request/MethodsRequest";
+import {MethodsRequest} from "../../services/MethodsRequest";
 
-export function BlogPage(props) {
+export function ArticlePage(props) {
 
-    const {route, t} = useContext(AppContext)
     let {id} = useParams();
+
+    const {route} = useContext(NavigateContext)
+    const {t, isLocEn} = useContext(LanguageContext)
     const {loading, data, error} = useRequest(MethodsRequest.article, false, id);
 
     useEffect(() => {
-        document.title = t(props.title);
+        document.title = t('pages.blog.t_title');
     });
 
     return (
@@ -59,7 +61,13 @@ export function BlogPage(props) {
                                                 </Typography>
                                             </Zoom>
                                             <Typography align={"center"} variant="h7">
-                                                Written on {data.createAt}
+                                                Written on {new Intl
+                                                .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
+                                                    year: 'numeric',
+                                                    month: 'long',
+                                                    day: '2-digit',
+                                                })
+                                                .format(data.createAt)}
                                             </Typography>
 
                                             <Divider component="div" className={"Small"}/>

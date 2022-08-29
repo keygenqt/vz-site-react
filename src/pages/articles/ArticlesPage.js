@@ -21,18 +21,19 @@ import {
 } from "@mui/material";
 
 import {Favorite, Share} from '@mui/icons-material';
-import {AppContext, useRequest} from "../../base";
-import {MethodsRequest} from "../../base/request/MethodsRequest";
+import {LanguageContext, NavigateContext, useRequest} from "../../base";
+import {MethodsRequest} from "../../services/MethodsRequest";
 
-export function BlogsPage(props) {
+export function ArticlesPage(props) {
 
-    const {route, conf, t, isLocEn} = useContext(AppContext)
+    const {route, conf} = useContext(NavigateContext)
+    const {t, isLocEn} = useContext(LanguageContext)
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
     const {loading, data, error} = useRequest(MethodsRequest.articles, false);
 
     useEffect(() => {
-        document.title = t(props.title);
+        document.title = t('pages.blogs.t_title');
     });
 
     const cards = []
@@ -42,7 +43,9 @@ export function BlogsPage(props) {
         cards.push(
             <Grid style={{margin: 0}} key={"item-blog-" + index} item md={4} sm={6} xs={12}>
                 <Card variant="outlined" className={"CardBg"}>
-                    <CardActionArea onClick={route.onClickToLocationDelay(conf.routes.blog.view.route, data.id)}>
+                    <CardActionArea onClick={() => {
+                        route.toLocation(conf.routes.ps.article, data.id)
+                    }}>
                         <CardMedia
                             component="img"
                             height="200"

@@ -1,4 +1,4 @@
-import {CoreRequest} from "../CoreRequest";
+import {CoreRequest} from "../../base/request/CoreRequest";
 
 /**
  * Get list projects

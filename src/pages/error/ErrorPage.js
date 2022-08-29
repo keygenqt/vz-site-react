@@ -2,14 +2,16 @@ import * as React from 'react';
 import {useContext, useEffect} from 'react';
 import {Button, Container, Stack, Typography, Zoom} from "@mui/material";
 import {SentimentVeryDissatisfied} from "@mui/icons-material";
-import {AppContext} from "../../base";
+import {LanguageContext, NavigateContext} from "../../base";
+import Lottie from "lottie-react";
+import {ConstantLottie} from "../../base/constants/ConstantLottie";
 
 export function ErrorPage(props) {
 
-    const {route, conf, t} = useContext(AppContext)
+    const {t} = useContext(LanguageContext)
+    const {route, conf} = useContext(NavigateContext)
 
     useEffect(() => {
-        props.onError.call()
         document.title = t("pages.error.t_title");
     });
 
@@ -17,9 +19,9 @@ export function ErrorPage(props) {
         <Container maxWidth={"sm"} className={"Page UtilsList"}>
             <Stack alignItems={"center"} spacing={2}>
 
-                <Zoom timeout={1000} in={true}>
-                    <SentimentVeryDissatisfied sx={{fontSize: 140, color: '#ff5400'}}/>
-                </Zoom>
+                <Lottie style={{
+                    width: 250,
+                }} animationData={ConstantLottie.error_404}/>
 
                 <Typography variant="h3" style={{
                     marginTop: 30
@@ -31,7 +33,12 @@ export function ErrorPage(props) {
                 }}>
                     {t("pages.error.t_subtext")}
                 </Typography>
-                <Button onClick={route.onClickToLocationDelay(conf.routes.home.index.route)} variant="outlined">
+                <Button
+                    onClick={() => {
+                        route.toLocation(conf.routes.home)
+                    }}
+                    variant="outlined"
+                >
                     {t("pages.error.t_btn")}
                 </Button>
             </Stack>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useContext, useEffect} from 'react';
-import {AppContext, ConstantOther, useWindowScroll} from "../../base";
+import {LanguageContext, ConstantOther, useWindowScroll, NavigateContext} from "../../base";
 import {ClickAwayListener, Stack,} from '@mui/material';
 import {AppBarElement} from "./elements/AppBarElement";
 import {AppBarListElement} from "./elements/AppBarListElement";
@@ -12,7 +12,7 @@ import {AppBarListElement} from "./elements/AppBarListElement";
  */
 export function AppTopBar() {
 
-    const {route, conf, t, i18n, isLocEn} = useContext(AppContext)
+    const {i18n, isLocEn} = useContext(LanguageContext)
 
     // State language switch
     const [switchLocEn, setSwitchLocEn] = React.useState(isLocEn);
@@ -39,9 +39,6 @@ export function AppTopBar() {
             }}>
             <Stack spacing={0} className={"AppTopBar"}>
                 <AppBarElement
-                    t={t}
-                    conf={conf}
-                    route={route}
                     // state switch
                     switchState={switchLocEn}
                     switchChange={setSwitchLocEn}
@@ -50,9 +47,6 @@ export function AppTopBar() {
                     collapseChange={setCollapseState}
                 />
                 <AppBarListElement
-                    t={t}
-                    conf={conf}
-                    route={route}
                     // state switch
                     switchState={switchLocEn}
                     switchChange={setSwitchLocEn}

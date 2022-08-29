@@ -12,17 +12,18 @@ import {
     Typography
 } from "@mui/material";
 import {Link} from "react-router-dom";
-import {ConstantOther} from "../../../base";
+import {ConstantOther, LanguageContext, NavigateContext} from "../../../base";
 import {Menu} from "@mui/icons-material";
 import * as React from "react";
 import {appBarData} from "./AppBarData";
+import {useContext} from "react";
 
 export function AppBarElement(props) {
 
+    const {route, conf} = useContext(NavigateContext)
+    const {t} = useContext(LanguageContext)
+
     const {
-        route,
-        conf,
-        t,
         switchState,
         switchChange,
         collapseState,
@@ -76,8 +77,13 @@ export function AppBarElement(props) {
                                 <Grid key={index + "topBar-menu1-item"} item
                                       sx={{display: {xs: 'none', md: 'block', sm: 'block'}}}>
                                     <Button
-                                        onClick={route.onClickToLocationDelay(page.route)}
-                                        sx={{color: route.isPages(page.routesActive) ? 'white' : '#ffffffb5'}}>
+                                        onClick={() => {
+                                            route.toLocation(page.route)
+                                        }}
+                                        sx={{
+                                            color: route.isPages(page.routesActive) ? 'white' : '#ffffffb5'
+                                        }}
+                                    >
                                         {t(page.title)}
                                     </Button>
                                 </Grid>

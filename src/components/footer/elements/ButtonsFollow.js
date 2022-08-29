@@ -1,12 +1,12 @@
 import * as React from "react";
 import {useContext} from "react";
-import {AppContext, ConstantLinks, ConstantOther} from "../../../base";
+import {LanguageContext, ConstantLinks, ConstantOther} from "../../../base";
 import {Button} from "@mui/material";
 import {Email, GitHub, LinkedIn, Telegram} from "@mui/icons-material";
 
 export default function ButtonsFollow() {
 
-    const {route} = useContext(AppContext)
+    const {route} = useContext(LanguageContext)
 
     return (
         <React.Fragment>

@@ -1,7 +1,7 @@
 import {useContext, useEffect, useReducer, useState} from "react";
 import PropTypes from "prop-types";
 import {MD5} from "crypto-js";
-import {AppContext} from "../contexts/AppContext";
+import {NavigateContext} from "../contexts/NavigateContext";
 
 /**
  * Request reducer
@@ -13,7 +13,7 @@ import {AppContext} from "../contexts/AppContext";
  */
 export const useRequest = (method, refresh, ...params) => {
 
-    const {type} = useContext(AppContext)
+    const {type} = useContext(NavigateContext)
     const [arg] = useState(params)
     const [update, setUpdate] = useState(refresh)
 

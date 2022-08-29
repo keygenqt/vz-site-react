@@ -8,7 +8,9 @@ export * from './hooks/WindowScroll';
 export * from './hooks/WindowMouseMove';
 export * from './hooks/WindowMouseFactor';
 export * from './hooks/WindowMouseFactors';
+// Locale
+export * from './contexts/LanguageContext';
 // route
-export * from './contexts/AppContext';
+export * from './contexts/NavigateContext';
 // api
 export * from './request/useRequest';

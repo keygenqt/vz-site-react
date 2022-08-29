@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Avatar, Grid, Paper, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
-import {AppContext, ConstantImages} from "../../../base";
+import {LanguageContext, ConstantImages} from "../../../base";
 import {useContext} from "react";
 
 const listData = [
@@ -56,7 +56,7 @@ const listData = [
 
 function ResumeElement() {
 
-    const {t} = useContext(AppContext)
+    const {t} = useContext(LanguageContext)
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 

@@ -9,27 +9,27 @@ export const appBarData = (conf) => {
         {
             title: "components.topBar.t_projects",
             icon: <IntegrationInstructions fontSize="small"/>,
-            route: conf.routes.projects.index.route,
+            route: conf.routes.ps.projects,
             routesActive: [
-                conf.routes.projects.index,
-                conf.routes.projects.filter,
+                conf.routes.ps.projects,
+                conf.routes.ps.projectsFilter,
             ],
         },
         {
             title: "components.topBar.t_blog",
             icon: <Article fontSize="small"/>,
-            route: conf.routes.blog.index.route,
+            route: conf.routes.ps.articles,
             routesActive: [
-                conf.routes.blog.index,
-                conf.routes.blog.view,
+                conf.routes.ps.articles,
+                conf.routes.ps.article,
             ],
         },
         {
             title: "components.topBar.t_utils",
             icon: <LightbulbCircle fontSize="small"/>,
-            route: conf.routes.utils.index.route,
+            route: conf.routes.ps.utils,
             routesActive: [
-                conf.routes.utils.index
+                conf.routes.ps.utils
             ],
         }
     ]

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {CoreRequest} from "../CoreRequest";
+import {CoreRequest} from "../../base/request/CoreRequest";
 
 /**
  * Get article by id

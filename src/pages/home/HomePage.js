@@ -2,23 +2,23 @@ import * as React from 'react';
 import {useContext, useEffect} from 'react';
 
 import {Container, Grid, useMediaQuery, useTheme} from "@mui/material";
-import {AppContext} from "../../base";
 
 import MainElement from "./elements/MainElement";
 import AboutElement from "./elements/AboutElement";
 import ResumeElement from "./elements/ResumeElement";
 import ProjectsElement from "./elements/ProjectsElement";
 import SkillsElement from "./elements/SkillsElement";
+import {LanguageContext} from "../../base";
 
 export function HomePage(props) {
 
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
     const blockAboutRef = React.useRef(null)
-    const {t} = useContext(AppContext)
+    const {t} = useContext(LanguageContext)
 
     useEffect(() => {
-        document.title = t(props.title);
+        document.title = t('pages.home.t_title');
     });
 
     return (

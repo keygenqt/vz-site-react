@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useContext} from 'react';
 import {Alert, Box, Button, Collapse, Container, Fab, Grid, IconButton, TextField, Typography} from "@mui/material";
 import {Close, ExpandMore} from "@mui/icons-material";
-import {AppContext, useWindowResize} from "../../../base";
+import {LanguageContext, useWindowResize} from "../../../base";
 
 function isBlankOrNull(string) {
     return typeof string !== 'string' || string.trim().length === 0
@@ -10,7 +10,7 @@ function isBlankOrNull(string) {
 
 function MainElement(prop) {
 
-    const {t, i18n} = useContext(AppContext)
+    const {t, i18n} = useContext(LanguageContext)
     const {height} = useWindowResize();
 
     const [collapseSuccess, setCollapseSuccess] = React.useState(null);

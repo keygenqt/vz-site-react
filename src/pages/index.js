@@ -1,5 +1,5 @@
-export * from './blog/BlogPage';
-export * from './blogs/BlogsPage';
+export * from './article/ArticlePage';
+export * from './articles/ArticlesPage';
 export * from './error/ErrorPage';
 export * from './home/HomePage';
 export * from './projects/ProjectsPage';
