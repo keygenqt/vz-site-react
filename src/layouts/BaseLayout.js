@@ -19,6 +19,7 @@ export function BaseLayout(props) {
                 conf.routes.ps.articles,
                 conf.routes.ps.utils,
                 conf.routes.ps.projects,
+                conf.routes.ps.projectsFilter,
             ) ? <TitleSquareAnimation/> : null}
 
             <AppTopBar/>

@@ -9,28 +9,28 @@ const data = [
         image: ConstantImages.platform.android,
         title: "pages.home.t_projects_android_title",
         text: "pages.home.t_projects_android_text",
-        filter: 'android'
+        filter: 'filter:android'
     },
     {
         color: '#a1a1a11a',
         image: ConstantImages.platform.apple,
         title: "pages.home.t_projects_ios_title",
         text: "pages.home.t_projects_ios_text",
-        filter: 'ios'
+        filter: 'filter:ios'
     },
     {
         color: '#3198c11a',
         image: ConstantImages.platform.web,
         title: "pages.home.t_projects_web_title",
         text: "pages.home.t_projects_web_text",
-        filter: 'web'
+        filter: 'filter:web'
     },
     {
         color: '#2468d11a',
         image: ConstantImages.platform.pc,
         title: "pages.home.t_projects_pc_title",
         text: "pages.home.t_projects_pc_text",
-        filter: 'other'
+        filter: 'filter:other'
     },
 ];
 

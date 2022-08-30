@@ -74,7 +74,7 @@ export function ProjectsPage(props) {
 
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
 
-    const [formats, setFormats] = useState(filter === undefined ? [] : [filter.toUpperCase()]);
+    const [formats, setFormats] = useState(filter === undefined ? [] : [filter.replace("filter:", "").toUpperCase()]);
 
     const handleFormat = (event, newFormats) => {
         setFormats(newFormats !== null && !formats.includes(newFormats) ? newFormats : []);
