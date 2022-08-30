@@ -13,6 +13,12 @@ export const ruLocalization = {
                 t_name: "Виталий Зарубин",
             },
         },
+        common: {
+            t_like: 'Нравится',
+            t_unlike: 'Отменить',
+            t_back: 'Назад',
+            t_up: 'В начало',
+        },
         pages: {
             home: {
                 t_title: "@keygenqt",
@@ -79,14 +85,18 @@ export const ruLocalization = {
                 t_title_page: "Open Source",
                 t_subtitle: "Для развития и людей",
                 t_empty: "Пока нет, работаю над этим",
+                t_to_project: 'Перейти на сайт проекта',
+                t_to_github: 'Перейти на GitHub',
             },
             blogs: {
                 t_title: "@keygenqt | Блог",
                 t_title_page: "Мой Блог",
                 t_subtitle: "Знания и опыт в тексте",
+                t_copy_link: 'Копировать ссылку',
             },
             blog: {
                 t_title: "@keygenqt | Блог",
+                t_date: "Написано",
             },
             utils: {
                 t_title: "@keygenqt | Утилиты",

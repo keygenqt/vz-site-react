@@ -23,8 +23,9 @@ export function ScrollRecovery(props) {
     useEffect(() => {
         if (props.recovery) {
             const key = `scroll-recovery-${MD5(pathname)}`
+            const el = document.getElementById("pageSelection")
             if (type === 'POP') {
-                window.scrollTo(0, parseInt(localStorage.getItem(key) ?? 0));
+                el.scrollTo(0, parseInt(localStorage.getItem(key) ?? 0));
                 setKey(key)
             } else {
                 setKey(key)

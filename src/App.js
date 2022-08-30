@@ -10,7 +10,9 @@ export default function App() {
 
     return (
         <ThemeProvider theme={AppTheme}>
-            {route.render()}
+            <div id={'pageSelection'} className={'section'}>
+                {route.render()}
+            </div>
         </ThemeProvider>
     );
 }

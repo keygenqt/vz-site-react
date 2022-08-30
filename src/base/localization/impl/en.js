@@ -13,6 +13,12 @@ export const enLocalization = {
                 t_name: "Vitaliy Zarubin",
             },
         },
+        common: {
+          t_like: 'Like',
+          t_unlike: 'Unlike',
+          t_back: 'To Back',
+          t_up: 'To Up',
+        },
         pages: {
             home: {
                 t_title: "@keygenqt | Home",
@@ -77,14 +83,18 @@ export const enLocalization = {
                 t_title_page: "Open Source",
                 t_subtitle: "For evolution and people",
                 t_empty: "Not yet, I'm working on it",
+                t_to_project: 'To Project',
+                t_to_github: 'To GitHub',
             },
             blogs: {
                 t_title: "@keygenqt | Blog",
                 t_title_page: "My Blog",
                 t_subtitle: "Knowledge and experience",
+                t_copy_link: 'Copy Link',
             },
             blog: {
                 t_title: "@keygenqt | Blog",
+                t_date: "Written on",
             },
             utils: {
                 t_title: "@keygenqt | Utils",

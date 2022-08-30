@@ -47,7 +47,7 @@ export const routePS = {
                 exact
                 path={path}
                 element={
-                    <BaseLayout>
+                    <BaseLayout isCenter={true}>
                         <ArticlePage/>
                     </BaseLayout>
                 }
@@ -110,7 +110,7 @@ export const routePS = {
                 exact
                 path={path}
                 element={
-                    <BaseLayout>
+                    <BaseLayout isCenter={true}>
                         <PersonalSitePage/>
                     </BaseLayout>
                 }

@@ -7,17 +7,21 @@ import {useLayoutEffect, useState} from 'react';
  */
 export function useWindowScroll(effect = undefined) {
 
+
     const [position, setPosition] = useState({
         x: window.scrollX,
         y: window.scrollY,
     });
 
     useLayoutEffect(() => {
+
+        const el = document.getElementById("pageSelection")
+
         const handleWindowScroll = () => {
 
             const result = {
-                x: window.scrollX,
-                y: window.scrollY,
+                x: el.scrollLeft,
+                y: el.scrollTop,
             }
 
             setPosition(result);
@@ -26,9 +30,9 @@ export function useWindowScroll(effect = undefined) {
                 effect(result)
             }
         };
-        window.addEventListener('scroll', handleWindowScroll);
+        el.addEventListener('scroll', handleWindowScroll);
         return () => {
-            window.removeEventListener('scroll', handleWindowScroll);
+            el.removeEventListener('scroll', handleWindowScroll);
         };
     });
 

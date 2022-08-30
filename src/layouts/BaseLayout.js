@@ -23,7 +23,7 @@ export function BaseLayout(props) {
 
             <AppTopBar/>
 
-            <div className={"App AppTable"}>
+            <div className={"App AppTableContent"}>
                 <div className={"AppTableRow"}>
                     <main style={{
                         verticalAlign: props.isCenter ? 'middle' : 'top'

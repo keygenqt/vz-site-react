@@ -15,16 +15,21 @@ import {
     Grid,
     IconButton,
     Stack,
+    Tooltip,
     Typography,
     useMediaQuery,
     useTheme,
     Zoom
 } from "@mui/material";
 
-import {Favorite, Share} from '@mui/icons-material';
+import {Favorite, InsertLink} from '@mui/icons-material';
 import {LanguageContext, NavigateContext, useRequest} from "../../base";
 import {MethodsRequest} from "../../services/MethodsRequest";
 import {ScrollRecovery} from "../../components/other/ScrollRecovery";
+import Lottie from "lottie-react";
+import {ConstantLottie} from "../../base/constants/ConstantLottie";
+import {ConstantConf} from "../../ConstantConf";
+import {MD5} from "crypto-js";
 
 export function ArticlesPage(props) {
 
@@ -81,28 +86,44 @@ export function ArticlesPage(props) {
                             </Typography>
                         </CardContent>
                     </CardActionArea>
-                    <CardActions disableSpacing style={{
-                        background: "#ffffff"
+                    <CardActions disableSpacing sx={{
+                        background: "#ffffff",
+                        display: 'block'
                     }}>
-                        <IconButton
-                            aria-label="Like"
-                            onClick={() => {
-                                if (likes[data.id]) {
-                                    MethodsRequest.unlikeArticle(data.id)
-                                } else {
-                                    MethodsRequest.likeArticle(data.id)
-                                }
-                                setLikes({...likes, [data.id]: !likes[data.id]})
-                            }}
+                        <Stack
+                            direction="row"
+                            justifyContent="space-between"
                         >
-                            <Favorite
-                                sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
-                            />
-                        </IconButton>
+                            <Tooltip title={likes[data.id] === true ? t("common.t_unlike") : t("common.t_like")}>
+                                <IconButton
+                                    aria-label="Like"
+                                    onClick={() => {
+                                        if (likes[data.id]) {
+                                            MethodsRequest.unlikeArticle(data.id)
+                                        } else {
+                                            MethodsRequest.likeArticle(data.id)
+                                        }
+                                        setLikes({...likes, [data.id]: !likes[data.id]})
+                                    }}
+                                >
+                                    <Favorite
+                                        sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
+                                    />
+                                </IconButton>
+                            </Tooltip>
 
-                        <IconButton aria-label="share">
-                            <Share/>
-                        </IconButton>
+                            <Tooltip title={t("pages.blogs.t_copy_link")}>
+                                <IconButton
+                                    onClick={() => {
+                                        const url = `${ConstantConf.publicPath}${route.createLink(conf.routes.ps.article, data.id)}`
+                                        navigator.clipboard.writeText(url)
+                                    }}
+                                >
+                                    <InsertLink/>
+                                </IconButton>
+                            </Tooltip>
+
+                        </Stack>
                     </CardActions>
                 </Card>
             </Grid>
@@ -114,7 +135,7 @@ export function ArticlesPage(props) {
             <>
                 <ScrollRecovery recovery={!loading}/>
                 <Fade timeout={500} in={true}>
-                    <Grid container spacing={isMiddle || (loading || error) ? 8 : 14}>
+                    <Grid container spacing={isMiddle || (loading) ? 8 : 14}>
                         <Grid item xs={7}>
                             <Stack spacing={4}>
                                 <Typography align={"center"} variant="h4">
@@ -129,7 +150,7 @@ export function ArticlesPage(props) {
                         </Grid>
                         <Grid item xs={12}>
                             <Grid container spacing={isMiddle ? 3 : 6}>
-                                {loading || error ? (
+                                {loading ? (
                                     <Grid item xs={12}>
                                         <Zoom timeout={1000} in={true}>
                                             <Stack alignItems={"center"}>
@@ -139,7 +160,22 @@ export function ArticlesPage(props) {
                                     </Grid>
                                 ) : (
                                     <>
-                                        {cards}
+                                        {cards.length !== 0 && !error ? cards : <Grid item xs={12}>
+                                            <Zoom timeout={200} in={true}>
+                                                <Stack alignItems={"center"}>
+
+                                                    <Stack alignItems={"center"} spacing={2}>
+                                                        <Lottie style={{
+                                                            width: 250,
+                                                        }} animationData={ConstantLottie.work_from_home}/>
+                                                    </Stack>
+
+                                                    <Typography align={"center"} variant="h6">
+                                                        {t("pages.projects.t_empty")}
+                                                    </Typography>
+                                                </Stack>
+                                            </Zoom>
+                                        </Grid>}
                                     </>
                                 )}
                             </Grid>

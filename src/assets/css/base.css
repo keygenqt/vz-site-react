@@ -8,6 +8,7 @@ body, html, #root {
     height: 100%;
     width: 100%;
     font-family: 'Albert Sans', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 
 a {
@@ -15,7 +16,36 @@ a {
     color: inherit;
 }
 
+/** Scroll **/
+.section {
+    height: 100%;
+    position: relative;
+    scrollbar-gutter: stable;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.section::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.section::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+.section::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.4);
+    border-radius: 4px;
+}
+
 /** TABLE **/
+.AppTableContent {
+    display: table;
+    width: calc(100% + 7px);
+    height: 100%;
+}
+
 .AppTable {
     display: table;
     width: 100%;
@@ -37,7 +67,7 @@ a {
 .AppTopBar {
     position: absolute;
     left: 0;
-    right: 0;
+    right: -7px;
     top: 0;
     z-index: 2;
 }
@@ -216,7 +246,6 @@ a {
     right: 0;
     left: 0;
     height: 100%;
-    max-height: 1300px;
     overflow-x: hidden;
     opacity: 0.2;
     background-color: #8e8eff;

@@ -164,41 +164,45 @@ export function ProjectsPage(props) {
                             display: 'block'
                         }}>
 
-                            <IconButton
-                                aria-label="Like"
-                                onClick={() => {
-                                    if (likes[data.id]) {
-                                        MethodsRequest.unlikeProject(data.id)
-                                    } else {
-                                        MethodsRequest.likeProject(data.id)
-                                    }
-                                    setLikes({...likes, [data.id]: !likes[data.id]})
-                                }}
-                            >
-                                <Favorite
-                                    sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
-                                />
-                            </IconButton>
+                            <Tooltip title={likes[data.id] === true ? t("common.t_unlike") : t("common.t_like")}>
+                                <IconButton
+                                    aria-label="Like"
+                                    onClick={() => {
+                                        if (likes[data.id]) {
+                                            MethodsRequest.unlikeProject(data.id)
+                                        } else {
+                                            MethodsRequest.likeProject(data.id)
+                                        }
+                                        setLikes({...likes, [data.id]: !likes[data.id]})
+                                    }}
+                                >
+                                    <Favorite
+                                        sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
+                                    />
+                                </IconButton>
+                            </Tooltip>
 
-                            {data.url ? <IconButton
-                                style={{float: 'right'}}
-                                aria-label="To Project"
-                                onClick={() => {
-                                    route.openUrlNewTab(data.url)
-                                }}
-                            >
-                                <OpenInNew/>
-                            </IconButton> : null}
+                            {data.url ? <Tooltip title={t("pages.projects.t_to_project")}>
+                                <IconButton
+                                    style={{float: 'right'}}
+                                    onClick={() => {
+                                        route.openUrlNewTab(data.url)
+                                    }}
+                                >
+                                    <OpenInNew/>
+                                </IconButton>
+                            </Tooltip> : null}
 
-                            {data.urlGitHub ? <IconButton
-                                style={{float: 'right'}}
-                                aria-label="To GitHub"
-                                onClick={() => {
-                                    route.openUrlNewTab(data.urlGitHub)
-                                }}
-                            >
-                                <GitHub/>
-                            </IconButton> : null}
+                            {data.urlGitHub ? <Tooltip title={t("pages.projects.t_to_github")}>
+                                <IconButton
+                                    style={{float: 'right'}}
+                                    onClick={() => {
+                                        route.openUrlNewTab(data.urlGitHub)
+                                    }}
+                                >
+                                    <GitHub/>
+                                </IconButton>
+                            </Tooltip> : null}
 
 
                         </CardActions>
@@ -213,7 +217,7 @@ export function ProjectsPage(props) {
             <>
                 <ScrollRecovery recovery={!loading}/>
                 <Fade timeout={500} in={true}>
-                    <Grid container spacing={isMiddle || (loading || error) ? 8 : 14}>
+                    <Grid container spacing={isMiddle || (loading) ? 8 : 14}>
                         <Grid item xs={7}>
                             <Stack spacing={4}>
                                 <Typography align={"center"} variant="h4">
@@ -228,7 +232,7 @@ export function ProjectsPage(props) {
                         <Grid item xs={12}>
                             <Grid container spacing={isMiddle ? 3 : 6}>
 
-                                {loading || error ? (
+                                {loading ? (
                                     <Grid item xs={12}>
                                         <Zoom timeout={1000} in={true}>
                                             <Stack alignItems={"center"}>
@@ -300,7 +304,7 @@ export function ProjectsPage(props) {
                                                 </StyledToggleButtonGroup>
                                             </Paper>
                                         </Grid>
-                                        {cards.length !== 0 ? cards : <Grid item xs={12}>
+                                        {cards.length !== 0 && !error ? cards : <Grid item xs={12}>
                                             <Zoom timeout={200} in={true}>
                                                 <Stack alignItems={"center"}>
 
