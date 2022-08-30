@@ -1,7 +1,7 @@
 import {MD5} from "crypto-js";
 
 /**
- * Apps constants images for easy import
+ * App for work with cache
  */
 export const AppCache = {
 
