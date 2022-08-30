@@ -12,11 +12,11 @@ import {
     Typography
 } from "@mui/material";
 import {Link} from "react-router-dom";
-import {ConstantOther, LanguageContext, NavigateContext} from "../../../base";
+import {AppCache, ConstantOther, LanguageContext, NavigateContext, ProjectsCustomPages} from "../../../base";
 import {Menu} from "@mui/icons-material";
 import * as React from "react";
-import {appBarData} from "./AppBarData";
 import {useContext} from "react";
+import {appBarData} from "./AppBarData";
 
 export function AppBarElement(props) {
 
@@ -28,6 +28,7 @@ export function AppBarElement(props) {
         switchChange,
         collapseState,
         collapseChange,
+        onClickMenu,
     } = props
 
     return (
@@ -78,7 +79,7 @@ export function AppBarElement(props) {
                                       sx={{display: {xs: 'none', md: 'block', sm: 'block'}}}>
                                     <Button
                                         onClick={() => {
-                                            route.toLocation(page.route)
+                                            onClickMenu(route, conf, page)
                                         }}
                                         sx={{
                                             color: route.isPages(page.routesActive) ? 'white' : '#ffffffb5'

@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import {NavigateContext, useWindowScroll} from "../../base";
+import {AppCache, NavigateContext, useWindowScroll} from "../../base";
 import PropTypes from "prop-types";
 import {MD5} from "crypto-js";
 
@@ -16,7 +16,7 @@ export function ScrollRecovery(props) {
 
     useEffect(() => {
         if (key) {
-            localStorage.setItem(key, `${scrollY}`)
+            AppCache.intSet(key, scrollY)
         }
     }, [key, scrollY]);
 
@@ -25,7 +25,7 @@ export function ScrollRecovery(props) {
             const key = `scroll-recovery-${MD5(pathname)}`
             const el = document.getElementById("pageSelection")
             if (type === 'POP') {
-                el.scrollTo(0, parseInt(localStorage.getItem(key) ?? 0));
+                el.scrollTo(0, AppCache.intGet(key));
                 setKey(key)
             } else {
                 setKey(key)

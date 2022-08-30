@@ -1,19 +1,21 @@
 import {useContext, useEffect, useReducer, useState} from "react";
 import PropTypes from "prop-types";
-import {MD5} from "crypto-js";
 import {NavigateContext} from "../contexts/NavigateContext";
+import {AppCache} from "../../base";
 
 /**
  * Request reducer
  *
  * @param method
+ * @param refresh
  * @param params
  * @return {never}
  */
-export const useRequest = (method, ...params) => {
+export const useRequest = (method, refresh = false, ...params) => {
 
     const {type} = useContext(NavigateContext)
     const [arg] = useState(params)
+    const [update, setUpdate] = useState(refresh)
 
     const initialState = {
         status: 'idle',
@@ -40,17 +42,32 @@ export const useRequest = (method, ...params) => {
         let cancelRequest = false;
 
         const fetchData = async () => {
-            dispatch({type: 'FETCHING'});
-            try {
-                await new Promise(r => setTimeout(r, 1000));
-                if (cancelRequest) return;
 
-                const response = await method.apply(this, arg)
-                dispatch({type: 'FETCHED', payload: response});
+            if (type === 'PUSH' || update) {
+                AppCache.requestClear(method)
+                if (update) {
+                    await new Promise(r => setTimeout(r, 500));
+                }
+                setUpdate(false)
+            }
 
-            } catch (error) {
-                if (cancelRequest) return;
-                dispatch({type: 'FETCH_ERROR', payload: error});
+            if (AppCache.requestIsHas(method)) {
+                dispatch({type: 'FETCHED', payload: AppCache.requestGet(method)});
+            } else {
+                dispatch({type: 'FETCHING'});
+                try {
+                    await new Promise(r => setTimeout(r, 1000));
+                    if (cancelRequest) return;
+
+                    const response = await method.apply(this, arg)
+
+                    AppCache.requestSet(method, response)
+                    dispatch({type: 'FETCHED', payload: response});
+
+                } catch (error) {
+                    if (cancelRequest) return;
+                    dispatch({type: 'FETCH_ERROR', payload: error});
+                }
             }
         };
 
@@ -59,7 +76,13 @@ export const useRequest = (method, ...params) => {
         return function cleanup() {
             cancelRequest = true;
         };
-    }, [type, method, arg]);
+    }, [type, method, arg, update]);
+
+    useEffect(() => {
+        if (refresh) {
+            setUpdate(true)
+        }
+    }, [refresh])
 
     return state;
 }

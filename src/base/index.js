@@ -14,3 +14,6 @@ export * from './contexts/LanguageContext';
 export * from './contexts/NavigateContext';
 // api
 export * from './request/useRequest';
+// utils
+export * from './utils/AppCache';
+export * from './utils/ProjectsCustomPages';

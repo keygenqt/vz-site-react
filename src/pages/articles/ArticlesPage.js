@@ -29,7 +29,6 @@ import {ScrollRecovery} from "../../components/other/ScrollRecovery";
 import Lottie from "lottie-react";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
 import {ConstantConf} from "../../ConstantConf";
-import {MD5} from "crypto-js";
 
 export function ArticlesPage(props) {
 

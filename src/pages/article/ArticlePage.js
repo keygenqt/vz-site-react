@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useContext, useEffect, useState} from 'react';
 import {Container, Divider, Grid, IconButton, Paper, Stack, Tooltip, Typography, Zoom} from "@mui/material";
 import {useParams} from "react-router-dom";
-import {LanguageContext, NavigateContext, useRequest} from "../../base";
+import {AppCache, LanguageContext, NavigateContext, useRequest} from "../../base";
 import {ArrowBack, ArrowUpward, Favorite} from '@mui/icons-material';
 import ReactMarkdown from 'https://esm.sh/react-markdown@7'
 import {MethodsRequest} from "../../services/MethodsRequest";
@@ -17,7 +17,7 @@ export function ArticlePage(props) {
 
     const {route} = useContext(NavigateContext)
     const {t, isLocEn} = useContext(LanguageContext)
-    const {loading, data, error} = useRequest(MethodsRequest.article, id);
+    const {loading, data, error} = useRequest(MethodsRequest.article, false, id);
     const [like, setLike] = useState(false)
 
     useEffect(() => {
@@ -50,6 +50,9 @@ export function ArticlePage(props) {
                             },
                             '& a': {
                                 color: '#2298db'
+                            },
+                            '& pre': {
+                                whiteSpace: 'break-spaces'
                             }
                         }}>
                             <Stack spacing={3}>
@@ -141,6 +144,7 @@ export function ArticlePage(props) {
                                                     MethodsRequest.likeArticle(data.id)
                                                 }
                                                 setLike(!like)
+                                                AppCache.requestClear(MethodsRequest.articles)
                                             }}
                                         >
                                             <Favorite

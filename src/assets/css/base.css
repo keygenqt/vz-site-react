@@ -66,6 +66,7 @@ a {
     position: relative;
     vertical-align: top;
     padding-top: 70px;
+    padding-right: 15px;
 }
 
 .App .PagePaddings {
@@ -203,7 +204,7 @@ a {
     position: absolute;
     top: 0;
     right: 0;
-    left: 0;
+    left: -15px;
     height: 100%;
     overflow-x: hidden;
 }
@@ -231,7 +232,7 @@ a {
     position: absolute;
     top: 0;
     right: 0;
-    left: 0;
+    left: -15px;
     height: 100%;
     overflow-x: hidden;
     opacity: 0.2;

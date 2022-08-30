@@ -205,7 +205,7 @@ export default class RouteCore {
     isPage(...route) {
 
         const regexPath = /:\w+/ig;
-        const regexLoc = /(\d+)|(\w+-\w+)/ig;
+        const regexLoc = /(\d+)/ig;
 
         for (let i = 0; i < route.length; i++) {
             const path = this.getPathFromObject(route[i])

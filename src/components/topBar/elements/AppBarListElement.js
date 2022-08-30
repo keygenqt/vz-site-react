@@ -9,11 +9,10 @@ import {
     Switch,
     Typography
 } from "@mui/material";
-import {Link} from "react-router-dom";
 import {Public, PublicOff} from "@mui/icons-material";
 import * as React from "react";
-import {appBarData} from "./AppBarData";
 import {useContext} from "react";
+import {appBarData} from "./AppBarData";
 import {LanguageContext, NavigateContext} from "../../../base";
 
 export function AppBarListElement(props) {
@@ -26,6 +25,7 @@ export function AppBarListElement(props) {
         switchChange,
         collapseState,
         collapseChange,
+        onClickMenu,
     } = props
 
     return (
@@ -41,18 +41,20 @@ export function AppBarListElement(props) {
                     width: '100%',
                     maxWidth: '100%',
                     borderRadius: 0,
-                }} >
+                }}>
                     <MenuList>
                         {appBarData(conf).map((page, index) => (
-                            <Link key={index + "topBar-menu2-item"} to={page.route.path}>
-                                <MenuItem onClick={() => {
+                            <MenuItem
+                                key={index + "topBar-menu2-item"}
+                                onClick={() => {
                                     collapseChange(false)
-                                }}>
-                                    <ListItemIcon
-                                        style={{color: route.isPages(page.routesActive) ? '#2298DB' : '#0000008a'}}>{page.icon}</ListItemIcon>
-                                    <ListItemText>{t(page.title)}</ListItemText>
-                                </MenuItem>
-                            </Link>
+                                    onClickMenu(route, conf, page)
+                                }}
+                            >
+                                <ListItemIcon
+                                    style={{color: route.isPages(page.routesActive) ? '#2298DB' : '#0000008a'}}>{page.icon}</ListItemIcon>
+                                <ListItemText>{t(page.title)}</ListItemText>
+                            </MenuItem>
                         ))}
                         <Divider/>
                         <MenuItem disableRipple style={{paddingTop: 11}} sx={{

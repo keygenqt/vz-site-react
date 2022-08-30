@@ -27,7 +27,7 @@ import Lottie from "lottie-react";
 
 import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} from "@mui/icons-material";
 
-import {LanguageContext, NavigateContext, useRequest} from "../../base";
+import {LanguageContext, NavigateContext, ProjectsCustomPages, useRequest} from "../../base";
 import {styled} from '@mui/material/styles';
 import {useParams} from "react-router-dom";
 import {MethodsRequest} from "../../services/MethodsRequest";
@@ -51,18 +51,15 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
 }));
 
 /**
- * Custom pages projects
+ * Custom page projects
  *
  * @param id
  * @param conf
  */
 const pagesById = (id, conf) => {
-    switch (id) {
-        case 1:
-            return conf.routes.ps.projectPersonalSite
-        default:
-            return null
-    }
+    const pages = ProjectsCustomPages(conf)
+    const key = Object.keys(pages).find(key => pages[key].id === id)
+    return pages[key].route ?? null
 }
 
 export function ProjectsPage(props) {
