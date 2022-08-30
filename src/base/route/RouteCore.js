@@ -92,6 +92,19 @@ export default class RouteCore {
     }
 
     /**
+     * Reopen page
+     *
+     * @param route {String | Object}
+     * @param arg
+     */
+    toRefreshState(route, ...arg) {
+        const path = this.getPathFromObject(route)
+        this.navigate(this.createLink(path, arg), {replace: true});
+        this.navigate(this.createLink(path, arg));
+        this.toBack();
+    }
+
+    /**
      * Open page with delay
      *
      * @param route {String | Object}

@@ -1,13 +1,6 @@
 import * as React from 'react';
-import {useCallback, useContext, useEffect} from 'react';
-import {
-    LanguageContext,
-    ConstantOther,
-    useWindowScroll,
-    NavigateContext,
-    ProjectsCustomPages,
-    AppCache
-} from "../../base";
+import {useContext, useEffect} from 'react';
+import {AppCache, ConstantOther, LanguageContext, ProjectsCustomPages, useWindowScroll} from "../../base";
 import {ClickAwayListener, Stack,} from '@mui/material';
 import {AppBarElement} from "./elements/AppBarElement";
 import {AppBarListElement} from "./elements/AppBarListElement";
@@ -17,17 +10,16 @@ const onClickMenu = (route, conf, page) => {
 
     // load custom page projects
     const pages = ProjectsCustomPages(conf)
-    Object.keys(pages).forEach(function(key) {
+    Object.keys(pages).forEach(function (key) {
         pagesBack.push(pages[key].route)
     });
 
     // Route menu
     if (route.isPages(pagesBack)) {
         route.toBack()
-    }
-    else if (route.isPage(page.route)) {
+    } else if (route.isPages([page.route, conf.routes.ps.projectsFilter /* custom logic page with filter */])) {
         AppCache.clearAll()
-        route.refreshPage()
+        route.toRefreshState(page.route)
     } else {
         route.toLocation(page.route)
     }
