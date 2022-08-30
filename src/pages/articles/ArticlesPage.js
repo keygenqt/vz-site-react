@@ -37,7 +37,7 @@ export function ArticlesPage(props) {
     const {t, isLocEn} = useContext(LanguageContext)
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
-    const {loading, data, error} = useRequest(MethodsRequest.articles, false);
+    const {loading, data, error} = useRequest(MethodsRequest.articles);
     const [likes, setLikes] = useState({})
 
     useEffect(() => {

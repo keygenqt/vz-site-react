@@ -70,7 +70,7 @@ export function ProjectsPage(props) {
     const theme = useTheme();
     const {route, conf} = useContext(NavigateContext)
     const {t, isLocEn} = useContext(LanguageContext)
-    const {loading, data, error} = useRequest(MethodsRequest.projects, false);
+    const {loading, data, error} = useRequest(MethodsRequest.projects);
     const [likes, setLikes] = useState({})
 
     let {filter} = useParams();

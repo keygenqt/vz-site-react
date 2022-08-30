@@ -7,17 +7,13 @@ import {NavigateContext} from "../contexts/NavigateContext";
  * Request reducer
  *
  * @param method
- * @param refresh
  * @param params
  * @return {never}
  */
-export const useRequest = (method, refresh, ...params) => {
+export const useRequest = (method, ...params) => {
 
     const {type} = useContext(NavigateContext)
     const [arg] = useState(params)
-    const [update, setUpdate] = useState(refresh)
-
-    const key = `request-${MD5(method.toString())}`
 
     const initialState = {
         status: 'idle',
@@ -42,35 +38,19 @@ export const useRequest = (method, refresh, ...params) => {
     useEffect(() => {
 
         let cancelRequest = false;
-        if (!key) return;
 
         const fetchData = async () => {
+            dispatch({type: 'FETCHING'});
+            try {
+                await new Promise(r => setTimeout(r, 1000));
+                if (cancelRequest) return;
 
-            if (type === 'PUSH' || update) {
-                localStorage.removeItem(key)
-                if (update) {
-                    await new Promise(r => setTimeout(r, 500));
-                }
-                setUpdate(false)
-            }
+                const response = await method.apply(this, arg)
+                dispatch({type: 'FETCHED', payload: response});
 
-            if (localStorage.getItem(key)) {
-                const data = JSON.parse(localStorage.getItem(key));
-                dispatch({type: 'FETCHED', payload: data});
-            } else {
-                dispatch({type: 'FETCHING'});
-                try {
-                    await new Promise(r => setTimeout(r, 1000));
-                    if (cancelRequest) return;
-
-                    const response = await method.apply(this, arg)
-                    localStorage.setItem(key, JSON.stringify(response))
-                    dispatch({type: 'FETCHED', payload: response});
-
-                } catch (error) {
-                    if (cancelRequest) return;
-                    dispatch({type: 'FETCH_ERROR', payload: error});
-                }
+            } catch (error) {
+                if (cancelRequest) return;
+                dispatch({type: 'FETCH_ERROR', payload: error});
             }
         };
 
@@ -79,13 +59,7 @@ export const useRequest = (method, refresh, ...params) => {
         return function cleanup() {
             cancelRequest = true;
         };
-    }, [key, type, method, arg, update]);
-
-    useEffect(() => {
-        if (refresh) {
-            setUpdate(true)
-        }
-    }, [refresh])
+    }, [type, method, arg]);
 
     return state;
 }
