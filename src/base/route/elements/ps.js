@@ -3,6 +3,7 @@ import * as React from "react";
 import {RouteType} from "../RouteType";
 import {ArticlePage, ArticlesPage, HomePage, ProjectsPage, UtilsPage} from "../../../pages";
 import {BaseLayout} from "../../../layouts/BaseLayout";
+import {PersonalSitePage} from "../../../pages/projects/ps/PersonalSitePage";
 
 export const routePS = {
     home: {
@@ -53,8 +54,8 @@ export const routePS = {
             />
         }
     },
-    projects: {
-        path: '/projects',
+    utils: {
+        path: '/utils',
         render: function (key, path) {
             return <Route
                 key={key}
@@ -62,7 +63,7 @@ export const routePS = {
                 path={path}
                 element={
                     <BaseLayout>
-                        <ProjectsPage/>
+                        <UtilsPage/>
                     </BaseLayout>
                 }
             />
@@ -86,8 +87,8 @@ export const routePS = {
             />
         }
     },
-    utils: {
-        path: '/utils',
+    projects: {
+        path: '/projects',
         render: function (key, path) {
             return <Route
                 key={key}
@@ -95,7 +96,22 @@ export const routePS = {
                 path={path}
                 element={
                     <BaseLayout>
-                        <UtilsPage/>
+                        <ProjectsPage/>
+                    </BaseLayout>
+                }
+            />
+        }
+    },
+    projectPersonalSite: {
+        path: '/projects/personal-site',
+        render: function (key, path) {
+            return <Route
+                key={key}
+                exact
+                path={path}
+                element={
+                    <BaseLayout>
+                        <PersonalSitePage/>
                     </BaseLayout>
                 }
             />

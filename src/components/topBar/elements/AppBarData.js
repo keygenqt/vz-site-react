@@ -13,6 +13,7 @@ export const appBarData = (conf) => {
             routesActive: [
                 conf.routes.ps.projects,
                 conf.routes.ps.projectsFilter,
+                conf.routes.ps.projectPersonalSite,
             ],
         },
         {

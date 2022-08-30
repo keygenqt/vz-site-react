@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useContext, useEffect} from 'react';
+import {useContext, useEffect, useState} from 'react';
 
 import {
     Card,
@@ -11,6 +11,7 @@ import {
     CircularProgress,
     Container,
     Divider,
+    Fade,
     Grid,
     IconButton,
     Stack,
@@ -23,6 +24,7 @@ import {
 import {Favorite, Share} from '@mui/icons-material';
 import {LanguageContext, NavigateContext, useRequest} from "../../base";
 import {MethodsRequest} from "../../services/MethodsRequest";
+import {ScrollRecovery} from "../../components/other/ScrollRecovery";
 
 export function ArticlesPage(props) {
 
@@ -31,10 +33,21 @@ export function ArticlesPage(props) {
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
     const {loading, data, error} = useRequest(MethodsRequest.articles, false);
+    const [likes, setLikes] = useState({})
 
     useEffect(() => {
         document.title = t('pages.blogs.t_title');
     });
+
+    useEffect(() => {
+        if (data) {
+            let likes = {}
+            data.forEach((item) => {
+                likes[item.id] = item.isLike
+            })
+            setLikes(likes)
+        }
+    }, [data]);
 
     const cards = []
     const value = data ?? []
@@ -71,9 +84,22 @@ export function ArticlesPage(props) {
                     <CardActions disableSpacing style={{
                         background: "#ffffff"
                     }}>
-                        <IconButton aria-label="add to favorites">
-                            <Favorite/>
+                        <IconButton
+                            aria-label="Like"
+                            onClick={() => {
+                                if (likes[data.id]) {
+                                    MethodsRequest.unlikeArticle(data.id)
+                                } else {
+                                    MethodsRequest.likeArticle(data.id)
+                                }
+                                setLikes({...likes, [data.id]: !likes[data.id]})
+                            }}
+                        >
+                            <Favorite
+                                sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
+                            />
                         </IconButton>
+
                         <IconButton aria-label="share">
                             <Share/>
                         </IconButton>
@@ -85,38 +111,43 @@ export function ArticlesPage(props) {
 
     return (
         <Container maxWidth="lg" className={"Page PagePaddings BlogsPage"}>
-            <Grid container spacing={isMiddle || (loading || error) ? 8 : 14}>
-                <Grid item xs={7}>
-                    <Stack spacing={4}>
-                        <Typography align={"center"} variant="h4">
-                            {t("pages.blogs.t_title_page")}
-                        </Typography>
+            <>
+                <ScrollRecovery recovery={!loading}/>
+                <Fade timeout={500} in={true}>
+                    <Grid container spacing={isMiddle || (loading || error) ? 8 : 14}>
+                        <Grid item xs={7}>
+                            <Stack spacing={4}>
+                                <Typography align={"center"} variant="h4">
+                                    {t("pages.blogs.t_title_page")}
+                                </Typography>
 
-                        <Typography align={"center"} variant="h2">
-                            {t("pages.blogs.t_subtitle")}
-                        </Typography>
-                        <Divider component="div" className={"Small"}/>
-                    </Stack>
-                </Grid>
-                <Grid item xs={12}>
-                    <Grid container spacing={isMiddle ? 3 : 6}>
-                        {loading || error ? (
-                            <Grid item xs={12}>
-                                <Zoom timeout={1000} in={true}>
-                                    <Stack alignItems={"center"}>
-                                        <CircularProgress/>
-                                    </Stack>
-                                </Zoom>
+                                <Typography align={"center"} variant="h2">
+                                    {t("pages.blogs.t_subtitle")}
+                                </Typography>
+                                <Divider component="div" className={"Small"}/>
+                            </Stack>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Grid container spacing={isMiddle ? 3 : 6}>
+                                {loading || error ? (
+                                    <Grid item xs={12}>
+                                        <Zoom timeout={1000} in={true}>
+                                            <Stack alignItems={"center"}>
+                                                <CircularProgress/>
+                                            </Stack>
+                                        </Zoom>
+                                    </Grid>
+                                ) : (
+                                    <>
+                                        {cards}
+                                    </>
+                                )}
                             </Grid>
-                        ) : (
-                            <>
-                                {cards}
-                            </>
-                        )}
-                    </Grid>
-                </Grid>
+                        </Grid>
 
-            </Grid>
+                    </Grid>
+                </Fade>
+            </>
         </Container>
     );
 }

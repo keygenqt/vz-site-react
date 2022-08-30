@@ -4,6 +4,7 @@ import {Route, Routes} from "react-router-dom";
 import {RouteType} from "./RouteType";
 import {ErrorPage} from "../../pages";
 import {BaseLayout} from "../../layouts/BaseLayout";
+import {ScrollRecovery} from "../../components/other/ScrollRecovery";
 
 export default class RouteCore {
 

@@ -7,7 +7,7 @@ import {
     CardContent,
     CardHeader,
     Container,
-    Divider,
+    Divider, Fade,
     Grid,
     Stack,
     Typography,
@@ -58,7 +58,7 @@ export function UtilsPage(props) {
     listData.forEach((data, index) => {
         cards.push(
             <Grid key={index + "item-utils"} item lg={3} md={6} sm={6} xs={12}>
-                <Zoom timeout={700} in={true}>
+                <Zoom timeout={500} in={true}>
                     <Card className={"CardBg"} variant="outlined" style={{
                         textAlign: 'center',
                     }}>
@@ -100,15 +100,17 @@ export function UtilsPage(props) {
         <Container maxWidth="lg" className={"Page PagePaddings UtilsList"}>
             <Grid container spacing={isMiddle ? 8 : 14}>
                 <Grid item xs={7}>
-                    <Stack spacing={4}>
-                        <Typography align={"center"} variant="h4">
-                            {t("pages.utils.t_title_page")}
-                        </Typography>
-                        <Typography align={"center"} variant="h2">
-                            {t("pages.utils.t_subtitle")}
-                        </Typography>
-                        <Divider component="div" className={"Small"}/>
-                    </Stack>
+                    <Fade timeout={500} in={true}>
+                        <Stack spacing={4}>
+                            <Typography align={"center"} variant="h4">
+                                {t("pages.utils.t_title_page")}
+                            </Typography>
+                            <Typography align={"center"} variant="h2">
+                                {t("pages.utils.t_subtitle")}
+                            </Typography>
+                            <Divider component="div" className={"Small"}/>
+                        </Stack>
+                    </Fade>
                 </Grid>
                 <Grid item xs={12}>
                     <Grid container spacing={isMiddle ? 3 : 6}>
