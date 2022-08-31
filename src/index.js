@@ -4,8 +4,10 @@ import "./base/localization/Localization";
 
 import './assets/css/base.css';
 import './assets/css/home.css';
-import './assets/css/blogs.css';
+import './assets/css/article.css';
+import './assets/css/articles.css';
 import './assets/css/projects.css';
+import './assets/css/prism-coldark-dark.css';
 
 import App from './App';
 import reportWebVitals from './tests/reportWebVitals';

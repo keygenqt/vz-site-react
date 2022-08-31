@@ -1,0 +1,69 @@
+.BlogView .ArticleContent {
+    font-family: 'Roboto', sans-serif;
+}
+
+.BlogView .ArticleContent img {
+    max-width: 100%;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 5%), 0 5px 8px 0 rgb(0 0 0 / 5%), 0 1px 14px 0 rgb(0 0 0 / 5%);
+}
+
+.BlogView .ArticleContent a {
+    color: #2298db;
+}
+
+.BlogView .ArticleContent pre {
+    white-space: break-spaces;
+}
+
+.BlogView .ArticleContent pre,
+.BlogView .ArticleContent .PrettyImage {
+    max-width: 100%;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 15%), 0 5px 8px 0 rgb(0 0 0 / 5%), 0 1px 14px 0 rgb(0 0 0 / 5%);
+    background: #161c1e;
+    box-sizing: border-box;
+    border-radius: 15px 15px 10px 10px;
+    position: relative;
+    border-top: 36px solid #E4E9EF;
+    overflow: inherit;
+    padding: 0;
+}
+
+.BlogView .ArticleContent .PrettyImage {
+    padding: 15px 15px 12px 15px;
+}
+
+.BlogView .ArticleContent pre:before,
+.BlogView .ArticleContent .PrettyImage:before {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: -22px;
+    width: 10px;
+    height: 10px;
+    background-color: #48CB6E;
+    border-radius: 50%;
+}
+
+.BlogView .ArticleContent pre:after,
+.BlogView .ArticleContent .PrettyImage:after {
+    content: "";
+    position: absolute;
+    right: 35px;
+    top: -22px;
+    width: 10px;
+    height: 10px;
+    background-color: #FBBC5B;
+    border-radius: 50%;
+}
+
+.BlogView .ArticleContent .PrettyImage img {
+    border-radius: 5px;
+}
+
+.BlogView .ArticleContent code {
+    overflow: auto;
+    display: block;
+    padding: 15px 15px 12px 15px;
+    font-size: 14px;
+}
+

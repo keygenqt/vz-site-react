@@ -7,6 +7,9 @@ import {ArrowBack, ArrowUpward, Favorite} from '@mui/icons-material';
 import ReactMarkdown from 'https://esm.sh/react-markdown@7'
 import {MethodsRequest} from "../../services/MethodsRequest";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
+import rehypeRaw from 'rehype-raw'
+import rehypePrismPlus from 'rehype-prism-plus'
+
 
 import Lottie from "lottie-react";
 import {ErrorPage} from "../error/ErrorPage";
@@ -44,17 +47,7 @@ export function ArticlePage(props) {
                 ) : (error ? (
                         <ErrorPage/>
                     ) : (
-                        <Container maxWidth="md" className={"Page PagePaddings BlogView"} sx={{
-                            '& img': {
-                                maxWidth: '100%'
-                            },
-                            '& a': {
-                                color: '#2298db'
-                            },
-                            '& pre': {
-                                whiteSpace: 'break-spaces'
-                            }
-                        }}>
+                        <Container maxWidth="md" className={"Page PagePaddings BlogView"}>
                             <Stack spacing={3}>
                                 <Paper elevation={0}>
                                     <Grid container>
@@ -71,7 +64,7 @@ export function ArticlePage(props) {
                                                         objectFit: 'cover',
                                                         backgroundPosition: 'center'
                                                     }}
-                                                    src={data.publicImage}
+                                                    src={data.viewImage}
                                                     alt={data.title}
                                                     loading="lazy"
                                                 />
@@ -100,7 +93,14 @@ export function ArticlePage(props) {
 
                                                 <Divider component="div" className={"Small"}/>
 
-                                                <ReactMarkdown>
+                                                <ReactMarkdown
+                                                    rehypePlugins={[rehypeRaw, rehypePrismPlus]}
+                                                    className={"ArticleContent"}
+                                                    skipHtml={false}
+                                                    linkTarget={(href, children, title) => {
+                                                        return `<a target={'_blank'} href=${href} >${title}</a>`
+                                                    }}
+                                                >
                                                     {data.content}
                                                 </ReactMarkdown>
 

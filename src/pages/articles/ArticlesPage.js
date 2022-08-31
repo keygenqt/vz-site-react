@@ -66,7 +66,7 @@ export function ArticlesPage(props) {
                         <CardMedia
                             component="img"
                             height="200"
-                            image={data.publicImage}
+                            image={data.listImage}
                             alt={data.title}
                         />
                         <CardHeader
