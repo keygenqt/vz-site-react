@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {useContext, useEffect, useState} from 'react';
 import {
+    Box,
+    Button,
     Card,
-    CardActionArea,
     CardActions,
     CardContent,
     CardHeader,
@@ -59,7 +60,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({theme}) => ({
 const pagesById = (id, conf) => {
     const pages = ProjectsCustomPages(conf)
     const key = Object.keys(pages).find(key => pages[key].id === id)
-    return pages[key].route ?? null
+    return pages[key]?.route ?? null
 }
 
 export function ProjectsPage(props) {
@@ -118,89 +119,132 @@ export function ProjectsPage(props) {
             cards.push(
                 <Grid style={{margin: 0}} key={"item-projects-" + index} item md={4} sm={6} xs={12}>
                     <Card variant="outlined" className={"CardBg"}>
-                        <CardActionArea disabled={pagesById(data.id, conf) === null} onClick={() => {
-                            route.toLocation(pagesById(data.id, conf))
-                        }}>
-                            <CardHeader
-                                title={
-                                    <Stack spacing={1}>
+
+                        <CardHeader
+                            title={
+                                <Stack
+                                    spacing={1}
+                                >
+                                    <Box sx={{
+                                        marginLeft: '7px'
+                                    }}>
                                         {getIcon(data)}
-                                        <Typography variant="h5">
-                                            {data.title}
-                                        </Typography>
+                                    </Box>
+
+                                    <Typography variant="h5">
+                                        {data.title}
+                                    </Typography>
+                                </Stack>
+                            }
+                            subheader={
+                                <Stack spacing={0}>
+                                    <Typography variant="body2" color="text.secondary" sx={{
+                                        marginTop: '3px'
+                                    }}>
+                                        {new Intl
+                                            .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
+                                                year: 'numeric',
+                                                month: 'long',
+                                                day: '2-digit',
+                                            })
+                                            .format(data.createAt)}
+                                    </Typography>
+
+                                    <Stack direction="row" sx={{
+                                        marginLeft: '2px',
+                                        marginTop: '1px'
+                                    }}>
+                                        {data.urlGitHub ? <Tooltip title={t("pages.projects.t_to_github")}>
+                                            <IconButton
+                                                sx={{
+                                                    height: '30px',
+                                                    width: '30px',
+                                                    '& svg': {
+                                                        fontSize: '16px'
+                                                    }
+                                                }}
+                                                onClick={() => {
+                                                    route.openUrlNewTab(data.urlGitHub)
+                                                }}
+                                            >
+                                                <GitHub/>
+                                            </IconButton>
+                                        </Tooltip> : null}
+
+                                        {data.url ? <Tooltip title={t("pages.projects.t_to_project")}>
+                                            <IconButton
+                                                sx={{
+                                                    height: '30px',
+                                                    width: '30px',
+                                                    '& svg': {
+                                                        fontSize: '16px'
+                                                    }
+                                                }}
+                                                onClick={() => {
+                                                    route.openUrlNewTab(data.url)
+                                                }}
+                                            >
+                                                <OpenInNew />
+                                            </IconButton>
+                                        </Tooltip> : null}
                                     </Stack>
-                                }
-                                subheader={
-                                    <Stack spacing={1}>
-                                        <Typography variant="body2" color="text.secondary">
-                                            {new Intl
-                                                .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
-                                                    year: 'numeric',
-                                                    month: 'long',
-                                                    day: '2-digit',
-                                                })
-                                                .format(data.createAt)}
-                                        </Typography>
-                                    </Stack>
-                                }
-                            />
-                            <CardMedia
-                                component="img"
-                                height="140"
-                                image={data.publicImage}
-                                alt={data.title}
-                            />
-                            <CardContent className={"ProjectsItemContent"}>
-                                <Typography className={"ProjectsItemSubtitle"} variant="textCard">
-                                    {data.description}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
+
+                                </Stack>
+                            }
+                        />
+                        <CardMedia
+                            component="img"
+                            height="140"
+                            image={data.publicImage}
+                            alt={data.title}
+                        />
+                        <CardContent className={"ProjectsItemContent"}>
+                            <Typography className={"ProjectsItemSubtitle"} variant="textCard">
+                                {data.description}
+                            </Typography>
+                        </CardContent>
 
                         <CardActions disableSpacing style={{
                             display: 'block'
                         }}>
 
-                            <Tooltip title={likes[data.id] === true ? t("common.t_unlike") : t("common.t_like")}>
-                                <IconButton
-                                    aria-label="Like"
+                            <Stack
+                                direction="row"
+                                justifyContent="space-between"
+                            >
+                                <Tooltip title={likes[data.id] === true ? t("common.t_unlike") : t("common.t_like")}>
+                                    <IconButton
+                                        aria-label="Like"
+                                        onClick={() => {
+                                            if (likes[data.id]) {
+                                                MethodsRequest.unlikeProject(data.id)
+                                            } else {
+                                                MethodsRequest.likeProject(data.id)
+                                            }
+                                            setLikes({...likes, [data.id]: !likes[data.id]})
+                                        }}
+                                    >
+                                        <Favorite
+                                            sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
+                                        />
+                                    </IconButton>
+                                </Tooltip>
+
+                                {pagesById(data.id, conf) ? <Button
+                                    size={'small'}
+                                    variant="outlined"
+                                    sx={{
+                                        height: '34px',
+                                        marginTop: '3px'
+                                    }}
                                     onClick={() => {
-                                        if (likes[data.id]) {
-                                            MethodsRequest.unlikeProject(data.id)
-                                        } else {
-                                            MethodsRequest.likeProject(data.id)
-                                        }
-                                        setLikes({...likes, [data.id]: !likes[data.id]})
+                                        route.toLocation(pagesById(data.id, conf))
                                     }}
                                 >
-                                    <Favorite
-                                        sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
-                                    />
-                                </IconButton>
-                            </Tooltip>
+                                    {t("pages.projects.t_open_btn")}
+                                </Button> : null}
 
-                            {data.url ? <Tooltip title={t("pages.projects.t_to_project")}>
-                                <IconButton
-                                    style={{float: 'right'}}
-                                    onClick={() => {
-                                        route.openUrlNewTab(data.url)
-                                    }}
-                                >
-                                    <OpenInNew/>
-                                </IconButton>
-                            </Tooltip> : null}
-
-                            {data.urlGitHub ? <Tooltip title={t("pages.projects.t_to_github")}>
-                                <IconButton
-                                    style={{float: 'right'}}
-                                    onClick={() => {
-                                        route.openUrlNewTab(data.urlGitHub)
-                                    }}
-                                >
-                                    <GitHub/>
-                                </IconButton>
-                            </Tooltip> : null}
-
+                            </Stack>
 
                         </CardActions>
                     </Card>
@@ -288,7 +332,7 @@ export function ProjectsPage(props) {
                                                             <Language/>
                                                         </ToggleButton>
                                                     </Tooltip>
-                                                    <Tooltip title="PC" value="OTHER">
+                                                    <Tooltip title="Other" value="OTHER">
                                                         <ToggleButton
                                                             size={"small"}
                                                             color={"primary"}

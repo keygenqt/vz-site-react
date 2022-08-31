@@ -171,7 +171,8 @@ a {
 
 /** CUSTOM CLASSES **/
 .App .CardBg {
-    background: #99e6ff0f
+    background: #99e6ff17;
+    border-radius: 10px;
 }
 
 .App .CardBg button.MuiCardActionArea-root {

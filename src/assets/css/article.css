@@ -48,7 +48,7 @@
 .BlogView .ArticleContent .PrettyImage:after {
     content: "";
     position: absolute;
-    right: 35px;
+    right: 38px;
     top: -22px;
     width: 10px;
     height: 10px;

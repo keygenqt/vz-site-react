@@ -1,3 +1,11 @@
+.ProjectsPage .CardBg .MuiCardHeader-root {
+    padding-left: 0;
+}
+
+.ProjectsPage .CardBg .MuiCardHeader-root:not(.MuiCardHeader-title) .MuiTypography-root {
+    padding-left: 8px;
+}
+
 .ProjectsPage .ProjectsItemContent .ProjectsItemSubtitle {
     overflow: hidden;
     text-overflow: ellipsis;

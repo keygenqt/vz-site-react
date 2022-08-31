@@ -2,8 +2,8 @@ import * as React from 'react';
 import {useContext, useEffect, useState} from 'react';
 
 import {
+    Button,
     Card,
-    CardActionArea,
     CardActions,
     CardContent,
     CardHeader,
@@ -22,13 +22,12 @@ import {
     Zoom
 } from "@mui/material";
 
-import {Favorite, InsertLink} from '@mui/icons-material';
+import {Favorite} from '@mui/icons-material';
 import {LanguageContext, NavigateContext, useRequest} from "../../base";
 import {MethodsRequest} from "../../services/MethodsRequest";
 import {ScrollRecovery} from "../../components/other/ScrollRecovery";
 import Lottie from "lottie-react";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
-import {ConstantConf} from "../../ConstantConf";
 
 export function ArticlesPage(props) {
 
@@ -59,32 +58,31 @@ export function ArticlesPage(props) {
     value.forEach((data, index) => {
         cards.push(
             <Grid style={{margin: 0}} key={"item-blog-" + index} item md={4} sm={6} xs={12}>
-                <Card variant="outlined" className={"CardBg"}>
-                    <CardActionArea onClick={() => {
-                        route.toLocation(conf.routes.ps.article, data.id)
-                    }}>
-                        <CardMedia
-                            component="img"
-                            height="200"
-                            image={data.listImage}
-                            alt={data.title}
-                        />
-                        <CardHeader
-                            title={data.title}
-                            subheader={new Intl
-                                .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: '2-digit',
-                                })
-                                .format(data.createAt)}
-                        />
-                        <CardContent className={"BlogItemContent"}>
-                            <Typography className={"BlogItemSubtitle"} variant="textCard">
-                                {data.description}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
+                <Card
+                    variant="outlined"
+                    className={"CardBg"}
+                >
+                    <CardMedia
+                        component="img"
+                        height="200"
+                        image={data.listImage}
+                        alt={data.title}
+                    />
+                    <CardHeader
+                        title={data.title}
+                        subheader={new Intl
+                            .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: '2-digit',
+                            })
+                            .format(data.createAt)}
+                    />
+                    <CardContent className={"BlogItemContent"}>
+                        <Typography className={"BlogItemSubtitle"} variant="textCard">
+                            {data.description}
+                        </Typography>
+                    </CardContent>
                     <CardActions disableSpacing sx={{
                         background: "#ffffff",
                         display: 'block'
@@ -111,16 +109,19 @@ export function ArticlesPage(props) {
                                 </IconButton>
                             </Tooltip>
 
-                            <Tooltip title={t("pages.blogs.t_copy_link")}>
-                                <IconButton
-                                    onClick={() => {
-                                        const url = `${ConstantConf.publicPath}${route.createLink(conf.routes.ps.article, data.id)}`
-                                        navigator.clipboard.writeText(url)
-                                    }}
-                                >
-                                    <InsertLink/>
-                                </IconButton>
-                            </Tooltip>
+                            <Button
+                                size={'small'}
+                                variant="outlined"
+                                sx={{
+                                    height: '34px',
+                                    marginTop: '3px'
+                                }}
+                                onClick={() => {
+                                    route.toLocation(conf.routes.ps.article, data.id)
+                                }}
+                            >
+                                {t("pages.blogs.t_open_btn")}
+                            </Button>
 
                         </Stack>
                     </CardActions>

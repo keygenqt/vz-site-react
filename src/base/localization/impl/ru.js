@@ -87,12 +87,13 @@ export const ruLocalization = {
                 t_empty: "Пока нет, работаю над этим",
                 t_to_project: 'Перейти на сайт проекта',
                 t_to_github: 'Перейти на GitHub',
+                t_open_btn: 'About',
             },
             blogs: {
                 t_title: "@keygenqt | Блог",
                 t_title_page: "Мой Блог",
                 t_subtitle: "Знания и опыт в тексте",
-                t_copy_link: 'Копировать ссылку',
+                t_open_btn: 'Перейти',
             },
             blog: {
                 t_title: "@keygenqt | Блог",

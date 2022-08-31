@@ -85,12 +85,13 @@ export const enLocalization = {
                 t_empty: "Not yet, I'm working on it",
                 t_to_project: 'To Project',
                 t_to_github: 'To GitHub',
+                t_open_btn: 'About',
             },
             blogs: {
                 t_title: "@keygenqt | Blog",
                 t_title_page: "My Blog",
                 t_subtitle: "Knowledge and experience",
-                t_copy_link: 'Copy Link',
+                t_open_btn: 'To Article',
             },
             blog: {
                 t_title: "@keygenqt | Blog",
