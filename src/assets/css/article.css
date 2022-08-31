@@ -12,7 +12,7 @@
 }
 
 .BlogView .ArticleContent pre {
-    white-space: break-spaces;
+    display: grid;
 }
 
 .BlogView .ArticleContent pre,
