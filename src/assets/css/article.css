@@ -103,6 +103,13 @@
     font-size: 15px;
 }
 
+.BlogView .ArticleContent h1,
+.BlogView .ArticleContent h2,
+.BlogView .ArticleContent h3,
+.BlogView .ArticleContent h4 {
+    margin-top: 32px;
+}
+
 .BlogView .ArticleContent pre > code {
     overflow: auto;
     display: block;
