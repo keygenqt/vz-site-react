@@ -26,9 +26,19 @@ import {
 } from "@mui/material";
 import Lottie from "lottie-react";
 
-import {Android, Apple, DesktopWindows, Favorite, GitHub, Language, OpenInNew} from "@mui/icons-material";
+import {
+    Android,
+    Apple,
+    DesktopWindows,
+    Download,
+    Favorite,
+    GitHub,
+    Language,
+    OpenInNew,
+    YouTube
+} from "@mui/icons-material";
 
-import {LanguageContext, NavigateContext, ProjectsCustomPages, useRequest} from "../../base";
+import {ConstantImages, LanguageContext, NavigateContext, ProjectsCustomPages, useRequest} from "../../base";
 import {styled} from '@mui/material/styles';
 import {useParams} from "react-router-dom";
 import {MethodsRequest} from "../../services/MethodsRequest";
@@ -98,16 +108,29 @@ export function ProjectsPage(props) {
         }
     }, [data]);
 
+    const getColor = (data) => {
+        switch (data.category) {
+            case 'ANDROID':
+                return '#3BD580'
+            case 'IOS':
+                return '#a1a1a1'
+            case 'WEB':
+                return '#3198c1'
+            default:
+                return '#2468d1'
+        }
+    }
+
     const getIcon = (data) => {
         switch (data.category) {
             case 'ANDROID':
-                return <Android sx={{fontSize: 20, color: '#3BD580'}}/>
+                return <Android sx={{fontSize: 20, color: getColor(data)}}/>
             case 'IOS':
-                return <Apple sx={{fontSize: 20, color: '#a1a1a1'}}/>
+                return <Apple sx={{fontSize: 20, color: getColor(data)}}/>
             case 'WEB':
-                return <Language sx={{fontSize: 20, color: '#3198c1'}}/>
+                return <Language sx={{fontSize: 20, color: getColor(data)}}/>
             default:
-                return <DesktopWindows sx={{fontSize: 18, padding: '2px', color: '#2468d1'}}/>
+                return <DesktopWindows sx={{fontSize: 18, padding: '2px', color: getColor(data)}}/>
         }
     }
 
@@ -118,7 +141,9 @@ export function ProjectsPage(props) {
         if (formats.includes(data.category) || formats.length === 0) {
             cards.push(
                 <Grid style={{margin: 0}} key={"item-projects-" + index} item md={4} sm={6} xs={12}>
-                    <Card variant="outlined" className={"CardBg"}>
+                    <Card variant="outlined" className={"CardBg"} sx={{
+                        backgroundColor: `${getColor(data)}14`
+                    }}>
 
                         <CardHeader
                             title={
@@ -154,6 +179,57 @@ export function ProjectsPage(props) {
                                         marginLeft: '2px',
                                         marginTop: '1px'
                                     }}>
+                                        {data.urlYouTube ? <Tooltip title={t("pages.projects.t_to_youtube")}>
+                                            <IconButton
+                                                sx={{
+                                                    height: '30px',
+                                                    width: '30px',
+                                                    '& svg': {
+                                                        fontSize: '16px'
+                                                    }
+                                                }}
+                                                onClick={() => {
+                                                    route.openUrlNewTab(data.urlYouTube)
+                                                }}
+                                            >
+                                                <YouTube />
+                                            </IconButton>
+                                        </Tooltip> : null}
+
+                                        {data.urlDownload ? <Tooltip title={t("pages.projects.t_download")}>
+                                            <IconButton
+                                                sx={{
+                                                    height: '30px',
+                                                    width: '30px',
+                                                    '& svg': {
+                                                        fontSize: '16px'
+                                                    }
+                                                }}
+                                                onClick={() => {
+                                                    route.openUrl(data.urlDownload)
+                                                }}
+                                            >
+                                                <Download/>
+                                            </IconButton>
+                                        </Tooltip> : null}
+
+                                        {data.urlSnapcraft ? <Tooltip title={t("pages.projects.t_to_snapcraft")}>
+                                            <IconButton
+                                                sx={{
+                                                    height: '30px',
+                                                    width: '30px',
+                                                    '& svg': {
+                                                        fontSize: '16px',
+                                                    }
+                                                }}
+                                                onClick={() => {
+                                                    route.openUrlNewTab(data.urlSnapcraft)
+                                                }}
+                                            >
+                                                <ConstantImages.projects.snapcraft fill={'#0000008a'}/>
+                                            </IconButton>
+                                        </Tooltip> : null}
+
                                         {data.urlGitHub ? <Tooltip title={t("pages.projects.t_to_github")}>
                                             <IconButton
                                                 sx={{
@@ -194,7 +270,7 @@ export function ProjectsPage(props) {
                         />
                         <CardMedia
                             component="img"
-                            height="140"
+                            height="219"
                             image={data.publicImage}
                             alt={data.title}
                         />

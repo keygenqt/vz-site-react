@@ -13,7 +13,7 @@ Finally, I mustered up the courage to rewrite it from the currently obsolete [Yi
 **Used:** [React](https://reactjs.org/) + [MUI](https://mui.com/) :heart:
 
 ### Preview
-![alt text](data/vokoscreenNG-2022-07-23_03-04-30.gif)
+![alt text](data/preview-1000.png)
 _(18mb)_
 
 # License

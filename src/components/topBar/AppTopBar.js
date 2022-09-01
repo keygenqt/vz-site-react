@@ -6,16 +6,25 @@ import {AppBarElement} from "./elements/AppBarElement";
 import {AppBarListElement} from "./elements/AppBarListElement";
 
 const onClickMenu = (route, conf, page) => {
-    let pagesBack = [conf.routes.ps.article]
+    let pagesBackArticle = [conf.routes.ps.article]
+    let pagesBackProject = []
 
     // load custom page projects
     const pages = ProjectsCustomPages(conf)
     Object.keys(pages).forEach(function (key) {
-        pagesBack.push(pages[key].route)
+        pagesBackProject.push(pages[key].route)
     });
 
     // Route menu
-    if (route.isPages(pagesBack)) {
+    if (route.isPages(pagesBackArticle)
+        && page.route === conf.routes.ps.articles
+        && route.isBack(conf.routes.ps.articles)
+    ) {
+        route.toBack()
+    } else if (route.isPages(pagesBackProject)
+        && page.route === conf.routes.ps.projects
+        && route.isBack(conf.routes.ps.projects)
+    ) {
         route.toBack()
     } else if (route.isPages([page.route, conf.routes.ps.projectsFilter /* custom logic page with filter */])) {
         AppCache.clearAll()

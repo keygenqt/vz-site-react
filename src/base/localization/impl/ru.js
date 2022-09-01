@@ -87,6 +87,9 @@ export const ruLocalization = {
                 t_empty: "Пока нет, работаю над этим",
                 t_to_project: 'Перейти на сайт проекта',
                 t_to_github: 'Перейти на GitHub',
+                t_to_snapcraft: 'Перейти на Snapcraft',
+                t_to_youtube: 'Перейти на YouTube',
+                t_download: 'Скачать',
                 t_open_btn: 'About',
             },
             blogs: {

@@ -8,22 +8,26 @@ import {BaseLayout} from "../../layouts/BaseLayout";
 export default class RouteCore {
 
     /**
-     * @param location {H.LocationState}
+     * @param pathname {String}
      * @param navigate {NavigateFunction}
      * @param conf route object with params
      */
-    constructor(location, navigate, conf) {
-        this.location = location;
+    constructor(pathname, navigate, conf) {
         this.navigate = navigate;
         this.conf = conf;
-    }
-
-    updateLocation(location) {
-        this.location = location;
+        this.pathname = pathname;
+        this.backPathname = pathname;
     }
 
     updateNavigate(navigate) {
         this.navigate = navigate;
+    }
+
+    updatePathname(pathname) {
+        if (this.pathname !== pathname) {
+            this.backPathname = this.pathname
+            this.pathname = pathname
+        }
     }
 
     /**
@@ -212,6 +216,7 @@ export default class RouteCore {
     /**
      * Check location by path
      *
+     * @param route
      * @returns {boolean}
      */
     isPage(...route) {
@@ -221,7 +226,26 @@ export default class RouteCore {
 
         for (let i = 0; i < route.length; i++) {
             const path = this.getPathFromObject(route[i])
-            if (this.location.pathname.replaceAll(regexLoc, "__id__") === path.replaceAll(regexPath, "__id__")) {
+            if (this.pathname.replaceAll(regexLoc, "__id__") === path.replaceAll(regexPath, "__id__")) {
+                return true
+            }
+        }
+        return false
+    }
+
+    /**
+     * Check location by path
+     *
+     * @param route
+     * @return {boolean}
+     */
+    isBack(...route) {
+        const regexPath = /:\w+/ig;
+        const regexLoc = /(\d+)|(\w+:\w+)/ig;
+
+        for (let i = 0; i < route.length; i++) {
+            const path = this.getPathFromObject(route[i])
+            if (this.backPathname.replaceAll(regexLoc, "__id__") === path.replaceAll(regexPath, "__id__")) {
                 return true
             }
         }
@@ -282,7 +306,7 @@ export default class RouteCore {
                 if (render !== undefined) {
                     if (match) {
                         const clearPath = path.slice(0, path.indexOf(':'))
-                        const paramsUrl = this.location.pathname.replace(clearPath, '').split("/")
+                        const paramsUrl = this.pathname.replace(clearPath, '').split("/")
                         const paramsPath = path.replace(clearPath, '').split("/").map((e) => e.replace(':', ''))
                         const validate = []
                         paramsPath.forEach((key, index) => {
@@ -371,6 +395,6 @@ export default class RouteCore {
      * Refresh location
      */
     refreshLocation() {
-        this.navigate(this.location);
+        this.navigate(this.pathname);
     }
 }

@@ -85,6 +85,9 @@ export const enLocalization = {
                 t_empty: "Not yet, I'm working on it",
                 t_to_project: 'To Project',
                 t_to_github: 'To GitHub',
+                t_to_snapcraft: 'To Snapcraft',
+                t_to_youtube: 'To YouTube',
+                t_download: 'Download',
                 t_open_btn: 'About',
             },
             blogs: {
