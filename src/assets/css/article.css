@@ -1,5 +1,6 @@
 .BlogView .ArticleContent {
     font-family: 'Roboto', sans-serif;
+    font-size: 17px;
 }
 
 .BlogView .ArticleContent img {
@@ -29,7 +30,8 @@
 }
 
 .BlogView .ArticleContent .PrettyImage {
-    padding: 15px 15px 12px 15px;
+    padding: 4px 3px 0 3px;
+    background-color: #7b8183;
 }
 
 .BlogView .ArticleContent pre:before,
@@ -57,10 +59,51 @@
 }
 
 .BlogView .ArticleContent .PrettyImage img {
-    border-radius: 5px;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
 }
 
-.BlogView .ArticleContent code {
+.BlogView .ArticleContent h1 > code,
+.BlogView .ArticleContent h2 > code,
+.BlogView .ArticleContent h3 > code,
+.BlogView .ArticleContent h4 > code,
+.BlogView .ArticleContent p > code {
+    background: #646464;
+    color: #fff;
+    font-weight: bold;
+    padding: 3px 6px 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-family: monospace;
+    font-size: 12px;
+    margin-right: 2px;
+}
+
+.BlogView .ArticleContent h1 > code,
+.BlogView .ArticleContent h2 > code,
+.BlogView .ArticleContent h3 > code,
+.BlogView .ArticleContent h4 > code {
+    background: #e3e3e3;
+    color: black;
+}
+
+.BlogView .ArticleContent h1 > code {
+    font-size: 23px;
+}
+
+.BlogView .ArticleContent h2 > code {
+    font-size: 20px;
+}
+
+.BlogView .ArticleContent h3 > code {
+    font-size: 17px;
+}
+
+.BlogView .ArticleContent h4 > code {
+    font-size: 15px;
+}
+
+.BlogView .ArticleContent pre > code {
     overflow: auto;
     display: block;
     padding: 15px 15px 12px 15px;
