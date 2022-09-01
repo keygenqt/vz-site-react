@@ -1,6 +1,7 @@
 .BlogView .ArticleContent {
     font-family: 'Roboto', sans-serif;
     font-size: 17px;
+    line-height: 22px;
 }
 
 .BlogView .ArticleContent img {
