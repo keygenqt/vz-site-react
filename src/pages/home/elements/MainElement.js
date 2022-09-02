@@ -1,38 +1,29 @@
 import * as React from 'react';
-import {useContext} from 'react';
-import {Alert, Box, Button, Collapse, Container, Fab, Grid, IconButton, TextField, Typography} from "@mui/material";
-import {Close, ExpandMore} from "@mui/icons-material";
+import {useContext, useEffect} from 'react';
+import {Button, Container, Fab, FormGroup, Grid, TextField, Typography} from "@mui/material";
+import {ExpandMore} from "@mui/icons-material";
 import {LanguageContext, useWindowResize} from "../../../base";
+import {Formik, useFormikContext} from "formik";
+import * as Yup from 'yup';
+import {MethodsRequest} from "../../../services/MethodsRequest";
+import {AlertError, AlertSuccess} from "../../../components";
 
-function isBlankOrNull(string) {
-    return typeof string !== 'string' || string.trim().length === 0
-}
+const BusinessLogic = () => {
+
+    const {isLocEn} = useContext(LanguageContext)
+    const {resetForm} = useFormikContext();
+
+    useEffect(() => {
+        resetForm()
+    }, [resetForm, isLocEn]);
+
+    return null;
+};
 
 function MainElement(prop) {
 
-    const {t, i18n} = useContext(LanguageContext)
+    const {t, i18n, isLocEn} = useContext(LanguageContext)
     const {height} = useWindowResize();
-
-    const [collapseSuccess, setCollapseSuccess] = React.useState(null);
-    const [collapseError, setCollapseError] = React.useState(null);
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        setCollapseSuccess(null);
-        setCollapseError(null);
-
-        const data = new FormData(event.currentTarget);
-        const email = data.get('email')
-
-        if (isBlankOrNull(email)) {
-            setCollapseError("Error");
-        } else {
-            setCollapseSuccess(email);
-        }
-
-        event.target.reset();
-    };
 
     return (
         <div style={{height: height}} className={"BlockMain AppTable"}>
@@ -58,80 +49,120 @@ function MainElement(prop) {
                         <Container maxWidth="sm">
                             <Grid container spacing={2}>
                                 <Grid item sm={12}>
-                                    <Collapse in={!isBlankOrNull(collapseSuccess)}>
-                                        <Alert
-                                            color={"success"}
-                                            action={
-                                                <IconButton
-                                                    aria-label="close"
-                                                    color="inherit"
-                                                    size="small"
-                                                    onClick={() => {
-                                                        setCollapseSuccess(null);
-                                                    }}
-                                                >
-                                                    <Close fontSize="inherit"/>
-                                                </IconButton>
-                                            }
-                                        >
-                                            <Typography gutterBottom variant="text3">
-                                                {t("pages.home.t_main_success")}
-                                            </Typography>
-                                        </Alert>
-                                    </Collapse>
 
-                                    <Collapse in={!isBlankOrNull(collapseError)}>
-                                        <Alert
-                                            color={"error"}
-                                            action={
-                                                <IconButton
-                                                    aria-label="close"
-                                                    color="inherit"
-                                                    size="small"
-                                                    onClick={() => {
-                                                        setCollapseError(null);
-                                                    }}
-                                                >
-                                                    <Close fontSize="inherit"/>
-                                                </IconButton>
+                                    <Formik
+                                        initialValues={{
+                                            email: '',
+                                            submit: null
+                                        }}
+                                        validationSchema={Yup.object().shape({
+                                            email: Yup.string().email(t('pages.home.t_validate_email')),
+                                        })}
+                                        onSubmit={async (values, {setErrors, setStatus, setSubmitting, resetForm}) => {
+
+                                            setStatus({success: null});
+                                            setErrors({});
+
+                                            try {
+
+                                                await new Promise(r => setTimeout(r, 1000));
+
+                                                await MethodsRequest.connect({
+                                                    email: values.email,
+                                                    locale: isLocEn ? 'EN-en' : 'RU-ru',
+                                                })
+
+                                                resetForm({})
+                                                setStatus({success: true});
+                                                setSubmitting(false);
+
+                                            } catch (error) {
+
+                                                setErrors({
+                                                    email: error.findError('email') === 'Must not be null and not blank'
+                                                        ? t('pages.home.t_validate_required')
+                                                        : error.findError('email'),
+                                                    submit: error.message
+                                                });
+
+                                                setStatus({success: false});
+                                                setSubmitting(false);
                                             }
-                                        >
-                                            <Typography gutterBottom variant="text3">
-                                                {t("pages.home.t_main_error")}
-                                            </Typography>
-                                        </Alert>
-                                    </Collapse>
-                                </Grid>
-                                <Grid item sm={12}>
-                                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 1}}>
-                                        <Grid container spacing={2} wrap={"nowrap"}>
-                                            <Grid item sm={8}>
-                                                <TextField
-                                                    style={{
-                                                        background: "#ffffff70"
-                                                    }}
-                                                    variant="outlined"
-                                                    autoComplete="email"
-                                                    name="email"
-                                                    required
-                                                    fullWidth
-                                                    id="email"
-                                                    label={t("pages.home.t_main_email_label")}
-                                                />
-                                            </Grid>
-                                            <Grid item sm={4}>
-                                                <Button
-                                                    type="submit"
-                                                    style={{height: 55}}
-                                                    fullWidth
-                                                    size="large"
-                                                    variant="outlined"
-                                                >
-                                                    {t("pages.home.t_main_btn")}
-                                                </Button>
-                                            </Grid>
-                                        </Grid>
-                                    </Box>
+                                        }}
+                                    >
+                                        {({
+                                              status,
+                                              errors,
+                                              handleBlur,
+                                              handleChange,
+                                              handleSubmit,
+                                              isSubmitting,
+                                              touched,
+                                              values,
+                                              setErrors
+                                          }) => (
+                                            <form noValidate onSubmit={handleSubmit}>
+
+                                                <BusinessLogic/>
+
+                                                {errors.submit && !errors.email && (
+                                                    <AlertError>
+                                                        {t('pages.home.t_common_error')}
+                                                    </AlertError>
+                                                )}
+
+                                                {errors.email && (
+                                                    <AlertError>
+                                                        {errors.email}
+                                                    </AlertError>
+                                                )}
+
+                                                {status && status.success && (
+                                                    <AlertSuccess>
+                                                        {t('pages.home.t_main_success')}
+                                                    </AlertSuccess>
+                                                )}
+
+                                                <FormGroup>
+                                                    <Grid container spacing={2} wrap={"nowrap"}>
+                                                        <Grid item sm={8}>
+                                                            <TextField
+                                                                disabled={isSubmitting}
+                                                                type={'email'}
+                                                                name={'email'}
+                                                                value={values.email}
+                                                                error={Boolean(touched.email && errors.email)}
+                                                                onBlur={handleBlur}
+                                                                onChange={(e) => {
+                                                                    setErrors({});
+                                                                    handleChange(e)
+                                                                }}
+                                                                variant="outlined"
+                                                                autoComplete="email"
+                                                                fullWidth
+                                                                id="email"
+                                                                label={t("pages.home.t_main_email_label")}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item sm={4}>
+                                                            <Button
+                                                                disabled={isSubmitting || Boolean(errors.email)}
+                                                                type="submit"
+                                                                style={{height: 55}}
+                                                                fullWidth
+                                                                size="large"
+                                                                variant="outlined"
+                                                            >
+                                                                {t("pages.home.t_main_btn")}
+                                                            </Button>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                </FormGroup>
+                                            </form>
+                                        )}
+                                    </Formik>
+
                                 </Grid>
                                 <Grid item sm={12}>
                                     <Typography align={"left"} variant="subtitle1">

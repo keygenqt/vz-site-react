@@ -8,6 +8,7 @@ import likeArticle from "./impl/likeArticle";
 import unlikeArticle from "./impl/unlikeArticle";
 import likeProject from "./impl/likeProject";
 import unlikeProject from "./impl/unlikeProject";
+import connect from "./impl/connect";
 
 export const MethodsRequest = {
     //////////////////////
@@ -26,4 +27,8 @@ export const MethodsRequest = {
     // likes
     likeProject: likeProject,
     unlikeProject: unlikeProject,
+    //////////////////////
+    // Projects
+    // send connect
+    connect: connect,
 }

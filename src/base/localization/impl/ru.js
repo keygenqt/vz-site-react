@@ -79,6 +79,10 @@ export const ruLocalization = {
                 t_skills_db_text: "Долгое время работал с MySql. Был проект на базе данных Vertica. Писали магазин использующий только лишь Elasticsearch как базу данных.",
                 t_skills_web_text: "Основным рабочим инструментом по написанию сайтов был Yii. Писал API на Java/Spring, Ktor/Kotlin. Пишу сайты на React (вы на него смотрите).",
                 t_skills_linux_text: "Я из тех бородатых любителей Linux. Долгое время собирал Gentoo и кайфовал от циклических зависимостей, но понял что OS это просто инструмент.",
+                // errors
+                t_common_error: "Что-то пошло не так, попробуйте позже",
+                t_validate_email: "Должен быть действительный адрес электронной почты",
+                t_validate_required: "Заполните почту, еще не умею вычислять по IP",
             },
             projects: {
                 t_title: "@keygenqt | Проекты",

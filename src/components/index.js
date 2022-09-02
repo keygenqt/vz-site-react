@@ -7,3 +7,7 @@ export * from './animation/RootAnimationBg';
 export * from './animation/TitleSquareAnimation';
 // other
 export * from './other/ScrollToTop';
+// alerts
+export * from './alerts/AlertError';
+export * from './alerts/AlertInfo';
+export * from './alerts/AlertSuccess';
