@@ -66,10 +66,10 @@ export function ArticlesPage(props) {
                         component="img"
                         height="200"
                         image={data.listImage}
-                        alt={data.title}
+                        alt={isLocEn ? data.title : data.titleRu}
                     />
                     <CardHeader
-                        title={data.title}
+                        title={isLocEn ? data.title : data.titleRu}
                         subheader={new Intl
                             .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
                                 year: 'numeric',
@@ -80,7 +80,7 @@ export function ArticlesPage(props) {
                     />
                     <CardContent className={"BlogItemContent"}>
                         <Typography className={"BlogItemSubtitle"} variant="textCard">
-                            {data.description}
+                            {isLocEn ? data.description : data.descriptionRu}
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing sx={{

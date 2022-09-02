@@ -157,7 +157,7 @@ export function ProjectsPage(props) {
                                     </Box>
 
                                     <Typography variant="h5">
-                                        {data.title}
+                                        {isLocEn ? data.title : data.titleRu}
                                     </Typography>
                                 </Stack>
                             }
@@ -272,11 +272,11 @@ export function ProjectsPage(props) {
                             component="img"
                             height="219"
                             image={data.publicImage}
-                            alt={data.title}
+                            alt={isLocEn ? data.title : data.titleRu}
                         />
                         <CardContent className={"ProjectsItemContent"}>
                             <Typography className={"ProjectsItemSubtitle"} variant="textCard">
-                                {data.description}
+                                {isLocEn ? data.description : data.descriptionRu}
                             </Typography>
                         </CardContent>
 

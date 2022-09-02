@@ -65,7 +65,7 @@ export function ArticlePage(props) {
                                                         backgroundPosition: 'center'
                                                     }}
                                                     src={data.viewImage}
-                                                    alt={data.title}
+                                                    alt={isLocEn ? data.title : data.title}
                                                     loading="lazy"
                                                 />
                                             </Paper>
@@ -78,9 +78,10 @@ export function ArticlePage(props) {
 
                                                 <Zoom timeout={500} in={true}>
                                                     <Typography align={"center"} variant="h2">
-                                                        {data.title}
+                                                        {isLocEn ? data.title : data.titleRu}
                                                     </Typography>
                                                 </Zoom>
+
                                                 <Typography align={"center"} variant="h7">
                                                     {t('pages.blog.t_date')} {new Intl
                                                     .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
@@ -101,7 +102,7 @@ export function ArticlePage(props) {
                                                         return `<a target={'_blank'} href=${href} >${title}</a>`
                                                     }}
                                                 >
-                                                    {data.content}
+                                                    {isLocEn ? data.content : data.contentRu}
                                                 </ReactMarkdown>
 
                                             </Stack>
