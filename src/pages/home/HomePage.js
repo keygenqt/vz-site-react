@@ -9,6 +9,9 @@ import ResumeElement from "./elements/ResumeElement";
 import ProjectsElement from "./elements/ProjectsElement";
 import SkillsElement from "./elements/SkillsElement";
 import {LanguageContext} from "../../base";
+import {AppUtils} from "../../base/utils/AppUtils";
+import {enLocalization} from "../../base/localization/impl/en";
+import {ruLocalization} from "../../base/localization/impl/ru";
 
 export function HomePage(props) {
 
@@ -19,6 +22,9 @@ export function HomePage(props) {
 
     useEffect(() => {
         document.title = t('pages.home.t_title');
+
+        // console.log(AppUtils.getListLocalization(enLocalization).join('\n\n-----------------------------\n\n'))
+        // console.log(AppUtils.getListLocalization(ruLocalization).join('\n\n-----------------------------\n\n'))
     });
 
     return (
