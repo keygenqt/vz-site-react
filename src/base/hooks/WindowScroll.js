@@ -7,7 +7,6 @@ import {useLayoutEffect, useState} from 'react';
  */
 export function useWindowScroll(effect = undefined) {
 
-
     const [position, setPosition] = useState({
         x: window.scrollX,
         y: window.scrollY,

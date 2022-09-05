@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {useContext, useEffect} from 'react';
-import {Button, Container, Stack, Typography, Zoom} from "@mui/material";
-import {SentimentVeryDissatisfied} from "@mui/icons-material";
+import {Button, Container, Stack, Typography} from "@mui/material";
 import {LanguageContext, NavigateContext} from "../../base";
 import Lottie from "lottie-react";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";

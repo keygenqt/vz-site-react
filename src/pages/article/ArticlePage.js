@@ -7,11 +7,6 @@ import {ArrowBack, ArrowUpward, Favorite} from '@mui/icons-material';
 import ReactMarkdown from 'https://esm.sh/react-markdown@7'
 import {MethodsRequest} from "../../services/MethodsRequest";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
-import rehypeRaw from 'rehype-raw'
-import rehypePrismPlus from 'rehype-prism-plus'
-import emoji from 'remark-emoji';
-
-
 import Lottie from "lottie-react";
 import {ErrorPage} from "../error/ErrorPage";
 
@@ -96,7 +91,6 @@ export function ArticlePage(props) {
                                                 <Divider component="div" className={"Small"}/>
 
                                                 <ReactMarkdown
-                                                    rehypePlugins={[rehypeRaw, rehypePrismPlus, emoji]}
                                                     className={"ArticleContent"}
                                                     skipHtml={false}
                                                     linkTarget={(href, children, title) => {
