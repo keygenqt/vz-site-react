@@ -29,16 +29,6 @@ export function ArticlePage(props) {
     useEffect(() => {
         if (data) {
             setLike(data.isLike)
-
-            // Update meta
-            document.querySelector("meta[property='og:title']")
-                ?.setAttribute('content', (isLocEn ? data.title : data.titleRu))
-
-            document.querySelector("meta[property='og:description']")
-                ?.setAttribute('content', (isLocEn ? data.description : data.descriptionRu))
-
-            document.querySelector("meta[property='og:image']")
-                ?.setAttribute('content', data.listImage)
         }
     }, [data]);
 
