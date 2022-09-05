@@ -9,6 +9,7 @@ import {MethodsRequest} from "../../services/MethodsRequest";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
 import rehypeRaw from 'rehype-raw'
 import rehypePrismPlus from 'rehype-prism-plus'
+import emoji from 'remark-emoji';
 
 
 import Lottie from "lottie-react";
@@ -95,7 +96,7 @@ export function ArticlePage(props) {
                                                 <Divider component="div" className={"Small"}/>
 
                                                 <ReactMarkdown
-                                                    rehypePlugins={[rehypeRaw, rehypePrismPlus]}
+                                                    rehypePlugins={[rehypeRaw, rehypePrismPlus, emoji]}
                                                     className={"ArticleContent"}
                                                     skipHtml={false}
                                                     linkTarget={(href, children, title) => {

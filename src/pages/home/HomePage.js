@@ -9,9 +9,6 @@ import ResumeElement from "./elements/ResumeElement";
 import ProjectsElement from "./elements/ProjectsElement";
 import SkillsElement from "./elements/SkillsElement";
 import {LanguageContext} from "../../base";
-import {AppUtils} from "../../base/utils/AppUtils";
-import {enLocalization} from "../../base/localization/impl/en";
-import {ruLocalization} from "../../base/localization/impl/ru";
 
 export function HomePage(props) {
 
