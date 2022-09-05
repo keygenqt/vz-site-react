@@ -4,7 +4,7 @@ import {Container, Divider, Grid, IconButton, Paper, Stack, Tooltip, Typography,
 import {useParams} from "react-router-dom";
 import {AppCache, LanguageContext, NavigateContext, useRequest} from "../../base";
 import {ArrowBack, ArrowUpward, Favorite} from '@mui/icons-material';
-import ReactMarkdown from 'https://esm.sh/react-markdown@7'
+import ReactMarkdown from 'react-markdown'
 import {MethodsRequest} from "../../services/MethodsRequest";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
 import Lottie from "lottie-react";
