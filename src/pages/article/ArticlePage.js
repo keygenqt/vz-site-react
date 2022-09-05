@@ -12,7 +12,6 @@ import rehypePrismPlus from 'rehype-prism-plus'
 import emoji from 'remark-emoji';
 import Lottie from "lottie-react";
 import {ErrorPage} from "../error/ErrorPage";
-import DocumentMeta from 'react-document-meta';
 
 export function ArticlePage(props) {
 
@@ -30,20 +29,21 @@ export function ArticlePage(props) {
     useEffect(() => {
         if (data) {
             setLike(data.isLike)
+
+            // Update meta
+            document.querySelector("meta[property='og:title']")
+                ?.setAttribute('content', (isLocEn ? data.title : data.titleRu))
+
+            document.querySelector("meta[property='og:description']")
+                ?.setAttribute('content', (isLocEn ? data.description : data.descriptionRu))
+
+            document.querySelector("meta[property='og:image']")
+                ?.setAttribute('content', data.listImage)
         }
     }, [data]);
 
     return (
         <>
-            <DocumentMeta {...{
-                title: t('pages.blog.t_title'),
-                description: (isLocEn ? data.description : data.descriptionRu),
-                meta: {
-                    charset: 'utf-8',
-                    image: 'https://keygenqt.com/images/blog/601076d399c15.jpg',
-                }
-            }} />
-
             {
                 loading ? (
                     <Container maxWidth={"sm"}>
