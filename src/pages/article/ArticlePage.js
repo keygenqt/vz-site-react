@@ -12,6 +12,7 @@ import rehypePrismPlus from 'rehype-prism-plus'
 import emoji from 'remark-emoji';
 import Lottie from "lottie-react";
 import {ErrorPage} from "../error/ErrorPage";
+import DocumentMeta from 'react-document-meta';
 
 export function ArticlePage(props) {
 
@@ -34,6 +35,15 @@ export function ArticlePage(props) {
 
     return (
         <>
+            <DocumentMeta {...{
+                title: t('pages.blog.t_title'),
+                description: (isLocEn ? data.description : data.descriptionRu),
+                meta: {
+                    charset: 'utf-8',
+                    image: 'https://keygenqt.com/images/blog/601076d399c15.jpg',
+                }
+            }} />
+
             {
                 loading ? (
                     <Container maxWidth={"sm"}>
