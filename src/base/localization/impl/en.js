@@ -48,8 +48,8 @@ export const enLocalization = {
                 t_projects_pc_title: "Other",
                 t_projects_android_text: "I have been developing Android for about 7 years and working with Jetpack Compose for one year.",
                 t_projects_ios_text: "Swift is very similar to Kotlin and SwiftUI is very similar to Jetpack Compose. I have projects on GitHub.",
-                t_projects_web_text: "Web projects used to be my main occupation. Now I write for the my soul and soul my friends.", // @todo
-                t_projects_pc_text: "Linux is my main OS. Whenever possible (and if not possible), I write Open Source for people.", // @todo
+                t_projects_web_text: "Web projects used to be my main occupation. Now I write for the my soul and souls of my friends.",
+                t_projects_pc_text: "Linux is my main OS. Whenever possible (and if not possible), I write Open Source for people.",
                 // Resume
                 t_resume_title: "Experience",
                 t_resume_role_android: "Android Developer",
@@ -87,10 +87,10 @@ export const enLocalization = {
                 t_title_page: "Open Source",
                 t_subtitle: "For development and people",
                 t_empty: "Not yet, I'm working on it",
-                t_to_project: 'To Project', // @todo
-                t_to_github: 'To GitHub', // @todo
-                t_to_snapcraft: 'To Snapcraft', // @todo
-                t_to_youtube: 'To YouTube', // @todo
+                t_to_project: 'To Project',
+                t_to_github: 'To GitHub',
+                t_to_snapcraft: 'To Snapcraft',
+                t_to_youtube: 'To YouTube',
                 t_download: 'Download',
                 t_open_btn: 'About',
             },
@@ -98,7 +98,7 @@ export const enLocalization = {
                 t_title: "@keygenqt | Blog",
                 t_title_page: "My Blog",
                 t_subtitle: "Knowledge and experience",
-                t_open_btn: 'To Article', // @todo
+                t_open_btn: 'To Article',
             },
             blog: {
                 t_title: "@keygenqt | Blog",
