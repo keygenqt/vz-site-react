@@ -3,10 +3,6 @@ My Personal Site
 
 ![alt text](data/logo160.png)
 
-The site is in production, not everything is ready yet, demo:
-
-[https://version2.keygenqt.com](https://version2.keygenqt.com/)
-
 Finally, I mustered up the courage to rewrite it from the currently obsolete [Yii2](https://www.yiiframework.com/) framework to modern
 [React](https://reactjs.org/). It was not easy to come up with a design, as always, do not judge strictly :)
 
