@@ -65,7 +65,7 @@ function MainElement(prop) {
                                             {}
                                         ) : (
                                             {
-                                                '@media (max-width: 700px)': {
+                                                '@media (min-width: 700px)': {
                                                     fontSize: '32px',
                                                 }
                                             }
