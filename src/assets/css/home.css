@@ -1,42 +1,4 @@
 /** Main **/
-.HomePage .BlockMain .Title-ru {
-    font-size: 135px;
-}
-
-@media (max-width: 700px) {
-    .HomePage .BlockMain .Title-ru {
-        font-size: 80px;
-    }
-}
-
-@media (max-width: 450px) {
-    .HomePage .BlockMain .Title-ru {
-        font-size: 64px;
-    }
-}
-
-.HomePage .BlockMain .Title-en {
-    font-size: 186px;
-}
-
-@media (max-width: 700px) {
-    .HomePage .BlockMain .Title-en {
-        font-size: 105px;
-    }
-}
-
-@media (max-width: 400px) {
-    .HomePage .BlockMain .Title-en {
-        font-size: 80px;
-    }
-}
-
-@media (min-width: 700px) {
-    .HomePage .BlockMain .Subtitle-ru {
-        font-size: 32px;
-    }
-}
-
 .HomePage .BlockMain .AppTableCell {
     position: relative;
     padding-bottom: 130px;

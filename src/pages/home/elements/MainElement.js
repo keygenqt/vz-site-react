@@ -33,12 +33,44 @@ function MainElement(prop) {
                         <Container maxWidth="lg">
                             <Grid container columns={12} spacing={1}>
                                 <Grid item sm={12} xs={12}>
-                                    <Typography align={"center"} variant="h1" className={"Title-" + i18n.language}>
+                                    <Typography align={"center"} variant="h1" sx={{
+                                        ...(isLocEn ? (
+                                            {
+                                                fontSize: '186px',
+                                                '@media (max-width: 700px)': {
+                                                    fontSize: '105px',
+                                                },
+                                                '@media (max-width: 400px)': {
+                                                    fontSize: '80px',
+                                                }
+                                            }
+                                        ) : (
+                                            {
+                                                fontSize: '135px',
+                                                '@media (max-width: 700px)': {
+                                                    fontSize: '80px',
+                                                },
+                                                '@media (max-width: 450px)': {
+                                                    fontSize: '64px',
+                                                }
+                                            }
+                                        ))
+                                    }}>
                                         {t("pages.home.t_main_hello")}
                                     </Typography>
                                 </Grid>
                                 <Grid item sm={12} xs={12}>
-                                    <Typography align={"center"} variant="h2" className={"Subtitle-" + i18n.language}>
+                                    <Typography align={"center"} variant="h2" sx={{
+                                        ...(isLocEn ? (
+                                            {}
+                                        ) : (
+                                            {
+                                                '@media (max-width: 700px)': {
+                                                    fontSize: '32px',
+                                                }
+                                            }
+                                        ))
+                                    }}>
                                         {t("pages.home.t_main_subtitle")}
                                     </Typography>
                                 </Grid>
