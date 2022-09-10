@@ -14,7 +14,7 @@ export function AppFooter() {
     return (
         <Container maxWidth="lg" className={"Footer"}>
 
-            {route.isPage(conf.routes.home) ? <React.Fragment>
+            {route.isPage(conf.routes.ps.home) ? <React.Fragment>
                 <div className={"Text"}>
                     <div>
                         {t("components.footer.t_questions")}
