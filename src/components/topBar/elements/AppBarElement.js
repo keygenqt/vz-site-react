@@ -68,6 +68,7 @@ export function AppBarElement(props) {
                                     color="inherit"
                                     sx={{
                                         display: {xs: 'flex', md: 'none', sm: 'none'},
+                                        marginRight: '-10px'
                                     }}
                                 >
                                     <Menu/>

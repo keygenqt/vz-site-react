@@ -16,7 +16,10 @@ export function ErrorPage(props) {
 
     return (
         <Container maxWidth={"sm"} className={"Page UtilsList"}>
-            <Stack alignItems={"center"} spacing={2}>
+            <Stack alignItems={"center"} spacing={2} sx={{
+                paddingTop: 5,
+                paddingBottom: 8
+            }}>
 
                 <Lottie style={{
                     width: 250,
