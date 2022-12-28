@@ -72,7 +72,7 @@ export const enLocalization = {
                 t_skills_web_title: "Web",
                 t_skills_linux_title: "Linux",
                 t_skills_android_text: "Which I just didn't write on this platform for many years of work. I have hundreds of applications on my account, and I led most of them.",
-                t_skills_ios_text: "I write applications on SwiftUI. Little experience with UIkit, only used it to create missing elements in SwiftUI.",
+                t_skills_ios_text: "I write applications on SwiftUI. Little experience with UIkit, only used it to create missing elements. After Jetpack Compose SwiftUI as native.",
                 t_skills_markup_text: "I designed hundreds of websites. My job was to write websites from scratch on my own, they often didn’t even provide a design.",
                 t_skills_db_text: "I have been working with MySql for a long time. There was a project based on the Vertica database. We wrote a store using only Elasticsearch as a database.",
                 t_skills_web_text: "Yii used to be the main my working tool for writing websites. I wrote API in Java/Spring, Ktor/Kotlin. I also write sites on React, now you are looking at one of them.",
