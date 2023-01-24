@@ -68,6 +68,7 @@
 .BlogView .ArticleContent .PrettyImage img {
     border-bottom-right-radius: 9px;
     border-bottom-left-radius: 9px;
+    margin-bottom: -2px;
 }
 
 .BlogView .ArticleContent h1 > code,
