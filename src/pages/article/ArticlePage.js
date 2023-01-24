@@ -52,6 +52,7 @@ export function ArticlePage(props) {
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <Paper elevation={0} sx={{
+                                                width: '100%',
                                                 overflow: 'hidden',
                                                 display: 'flex',
                                                 maxHeight: 400,
