@@ -16,6 +16,7 @@ export const useRequest = (method, refresh = false, ...params) => {
     const {type} = useContext(NavigateContext)
     const [arg] = useState(params)
     const [update, setUpdate] = useState(refresh)
+    const cacheKey = `${method}${params}`
 
     const initialState = {
         status: 'idle',
@@ -44,15 +45,15 @@ export const useRequest = (method, refresh = false, ...params) => {
         const fetchData = async () => {
 
             if (type === 'PUSH' || update) {
-                AppCache.requestClear(method)
+                AppCache.requestClear(cacheKey)
                 if (update) {
                     await new Promise(r => setTimeout(r, 500));
                 }
                 setUpdate(false)
             }
 
-            if (AppCache.requestIsHas(method)) {
-                dispatch({type: 'FETCHED', payload: AppCache.requestGet(method)});
+            if (AppCache.requestIsHas(cacheKey)) {
+                dispatch({type: 'FETCHED', payload: AppCache.requestGet(cacheKey)});
             } else {
                 dispatch({type: 'FETCHING'});
                 try {
@@ -61,7 +62,7 @@ export const useRequest = (method, refresh = false, ...params) => {
 
                     const response = await method.apply(this, arg)
 
-                    AppCache.requestSet(method, response)
+                    AppCache.requestSet(cacheKey, response)
                     dispatch({type: 'FETCHED', payload: response});
 
                 } catch (error) {
