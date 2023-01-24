@@ -10,7 +10,6 @@ Finally, I mustered up the courage to rewrite it from the currently obsolete [Yi
 
 ### Preview
 ![alt text](data/preview-1000.png)
-_(18mb)_
 
 # License
 
