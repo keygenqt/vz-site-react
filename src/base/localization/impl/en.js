@@ -55,7 +55,7 @@ export const enLocalization = {
                 t_resume_role_android: "Android Developer",
                 t_resume_role_web: "Web Full-Stack",
                 t_resume_surf_date: "Aug 2021 - Jan 2023 · 1 yr 6 mos",
-                t_resume_clowder_date1: "Aug 2015 - Aug 2021 · 6 yrs 1 mo",
+                t_resume_clowder_date1: "Aug 2015 - Aug 2021 · 6 yrs 1 mos",
                 t_resume_clowder_date2: "Sep 2014 - Aug 2015 · 1 yr",
                 t_resume_privezem_date: "Nov 2013 - Sep 2014 · 11 mos",
                 t_resume_agamaya_date: "May 2013 - Nov 2013 · 7 mos",
