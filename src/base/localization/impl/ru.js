@@ -56,7 +56,7 @@ export const ruLocalization = {
                 t_resume_title: "Мой путь",
                 t_resume_role_android: "Android Developer",
                 t_resume_role_web: "Web Full-Stack",
-                t_resume_surf_date: "Авг 2021 - И сейчас",
+                t_resume_surf_date: "Авг 2021 - Янв 2023 · 1 г 6 м",
                 t_resume_clowder_date1: "Авг 2015 - Авг 2021 · 6 г 1 м",
                 t_resume_clowder_date2: "Сен 2014 - Авг 2015 · 1 г",
                 t_resume_privezem_date: "Ноя 2013 - Сен 2014 · 11 м",
