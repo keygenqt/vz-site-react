@@ -19,7 +19,7 @@ export function ArticlePage(props) {
 
     const {route} = useContext(NavigateContext)
     const {t, isLocEn} = useContext(LanguageContext)
-    const {loading, data, error} = useRequest(MethodsRequest.article, false, id);
+    const {loading, data, error} = useRequest(MethodsRequest.article, true, id);
     const [like, setLike] = useState(false)
 
     useEffect(() => {
