@@ -53,7 +53,7 @@ export const ruLocalization = {
                 t_projects_web_text: "Web проекты раньше были основным моим занятием. Сейчас я пишу для души.",
                 t_projects_pc_text: "Linux основная моя OS. По мере возможностей пишу Open Source для людей.",
                 // Resume
-                t_resume_title: "Мой путь",
+                t_resume_title: "Опыт",
                 t_resume_role_android: "Android Developer",
                 t_resume_role_web: "Web Full-Stack",
                 t_resume_surf_date: "Авг 2021 - Янв 2023 · 1 г 6 м",
