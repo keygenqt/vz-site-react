@@ -6,6 +6,7 @@ import img_agamaya from "../../assets/images/index/img_agamaya.jpg";
 import img_clowder from "../../assets/images/index/img_clowder.jpg";
 import img_privezem from "../../assets/images/index/img_privezem.jpg";
 import img_surf from "../../assets/images/index/img_surf.jpg";
+import img_omp from "../../assets/images/index/img_omp.png";
 import { ReactComponent as Snapcraft } from "../../assets/images/projects/snapcraft.svg";
 
 /**
@@ -17,6 +18,7 @@ export const ConstantImages = {
         clowder: img_clowder,
         privezem: img_privezem,
         surf: img_surf,
+        omp: img_omp,
     },
     platform: {
         android: img_android,

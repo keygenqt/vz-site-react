@@ -5,6 +5,17 @@ import {useContext} from "react";
 
 const listData = [
     {
+        image: ConstantImages.company.omp,
+        company: "ОМП",
+        text: "pages.home.t_resume_omp_text",
+        works: [
+            {
+                title: "pages.home.t_resume_role_engineer",
+                period: "pages.home.t_resume_omp_date",
+            }
+        ]
+    },
+    {
         image: ConstantImages.company.surf,
         company: "Surf",
         text: "pages.home.t_resume_surf_text",
