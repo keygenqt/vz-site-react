@@ -125,7 +125,8 @@
     font-size: 14px;
 }
 
-.BlogView .ArticleContent pre.language-javascript > code:before {
+.BlogView .ArticleContent pre.language-js > code:before,
+    .BlogView .ArticleContent pre.language-javascript > code:before {
     content: "JavaScript";
     position: absolute;
     top: -27px;
@@ -158,3 +159,139 @@
     font-weight: bold;
 }
 
+.BlogView .ArticleContent pre.language-shell > code:before {
+    content: "Shell";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-java > code:before {
+    content: "Java";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-toml > code:before {
+    content: "TOML";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-rust > code:before {
+    content: "Rust";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-python > code:before {
+    content: "Python";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-json > code:before {
+    content: "Json";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-php > code:before {
+    content: "PHP";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-c > code:before {
+    content: "C";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-cmake > code:before {
+    content: "CMake";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-yaml > code:before {
+    content: "YAML";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent pre.language-dart > code:before {
+    content: "Dart";
+    position: absolute;
+    top: -27px;
+    left: 15px;
+    z-index: 100;
+    color: #727272;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BlogView .ArticleContent blockquote {
+    margin: 0 0 0 27px;
+    padding: 0 0 0 13px;
+    border-left: 2px solid #2298db;
+    position: relative;
+}
+
+.BlogView .ArticleContent blockquote::before {
+    content: "‟";
+    position: absolute;
+    top: 11px;
+    left: -30px;
+    color: #2298db;
+    font-size: 60px
+}

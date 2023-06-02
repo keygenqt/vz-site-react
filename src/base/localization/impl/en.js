@@ -14,8 +14,8 @@ export const enLocalization = {
             },
         },
         common: {
-          t_like: 'Like',
-          t_unlike: 'Unlike',
+          t_copy_link: 'Copy link',
+          t_copy_link_done: 'Copied to clipboard',
           t_back: 'Back to list',
           t_up: 'Scroll to top',
         },

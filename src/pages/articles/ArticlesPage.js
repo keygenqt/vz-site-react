@@ -2,6 +2,7 @@ import * as React from 'react';
 import {useContext, useEffect, useState} from 'react';
 
 import {
+    Snackbar,
     Button,
     Card,
     CardActions,
@@ -19,15 +20,17 @@ import {
     Typography,
     useMediaQuery,
     useTheme,
-    Zoom
+    Zoom,
+    Alert
 } from "@mui/material";
 
-import {Favorite} from '@mui/icons-material';
+import {ShareOutlined} from '@mui/icons-material';
 import {LanguageContext, NavigateContext, useRequest} from "../../base";
 import {MethodsRequest} from "../../services/MethodsRequest";
 import {ScrollRecovery} from "../../components/other/ScrollRecovery";
 import Lottie from "lottie-react";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
+import {ConstantConf} from "../../ConstantConf";
 
 export function ArticlesPage(props) {
 
@@ -36,21 +39,11 @@ export function ArticlesPage(props) {
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
     const {loading, data, error} = useRequest(MethodsRequest.articles);
-    const [likes, setLikes] = useState({})
+    const [copy, setCopy] = React.useState(false);
 
     useEffect(() => {
         document.title = t('pages.blogs.t_title');
     });
-
-    useEffect(() => {
-        if (data) {
-            let likes = {}
-            data.forEach((item) => {
-                likes[item.id] = item.isLike
-            })
-            setLikes(likes)
-        }
-    }, [data]);
 
     const cards = []
     const value = data ?? []
@@ -91,20 +84,16 @@ export function ArticlesPage(props) {
                             direction="row"
                             justifyContent="space-between"
                         >
-                            <Tooltip title={likes[data.id] === true ? t("common.t_unlike") : t("common.t_like")}>
+                            <Tooltip title={t("common.t_copy_link")}>
                                 <IconButton
-                                    aria-label="Like"
-                                    onClick={() => {
-                                        if (likes[data.id]) {
-                                            MethodsRequest.unlikeArticle(data.id)
-                                        } else {
-                                            MethodsRequest.likeArticle(data.id)
-                                        }
-                                        setLikes({...likes, [data.id]: !likes[data.id]})
+                                    aria-label="Copy"
+                                    onClick={async (i, e) => {
+                                        await navigator.clipboard.writeText(ConstantConf.publicPath + route.createLink(conf.routes.ps.article, data.id));
+                                        setCopy(true);
                                     }}
                                 >
-                                    <Favorite
-                                        sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
+                                    <ShareOutlined
+                                        sx={{color: '#2298db'}}
                                     />
                                 </IconButton>
                             </Tooltip>
@@ -133,6 +122,19 @@ export function ArticlesPage(props) {
     return (
         <Container maxWidth="lg" className={"Page PagePaddings BlogsPage"}>
             <>
+            <Snackbar 
+                open={copy} 
+                autoHideDuration={1500} 
+                onClose={() => { setCopy(false) }}
+                anchorOrigin={{ 
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                }}
+            >
+                <Alert severity="success" sx={{ width: '100%' }}>
+                    {t("common.t_copy_link_done")}
+                </Alert>
+            </Snackbar>
                 <ScrollRecovery recovery={!loading}/>
                 <Fade timeout={500} in={true}>
                     <Grid container spacing={isMiddle || (loading) ? 8 : 14}>

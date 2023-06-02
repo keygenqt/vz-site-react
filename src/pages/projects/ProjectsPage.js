@@ -79,7 +79,6 @@ export function ProjectsPage(props) {
     const {route, conf} = useContext(NavigateContext)
     const {t, isLocEn} = useContext(LanguageContext)
     const {loading, data, error} = useRequest(MethodsRequest.projects);
-    const [likes, setLikes] = useState({})
 
     let {filter} = useParams();
 
@@ -97,16 +96,6 @@ export function ProjectsPage(props) {
     useEffect(() => {
         document.title = t('pages.projects.t_title');
     });
-
-    useEffect(() => {
-        if (data) {
-            let likes = {}
-            data.forEach((item) => {
-                likes[item.id] = item.isLike
-            })
-            setLikes(likes)
-        }
-    }, [data]);
 
     const getColor = (data) => {
         switch (data.category) {
@@ -175,96 +164,6 @@ export function ProjectsPage(props) {
                                             .format(data.createAt)}
                                     </Typography>
 
-                                    <Stack direction="row" sx={{
-                                        marginLeft: '2px',
-                                        marginTop: '1px'
-                                    }}>
-                                        {data.urlYouTube ? <Tooltip title={t("pages.projects.t_to_youtube")}>
-                                            <IconButton
-                                                sx={{
-                                                    height: '30px',
-                                                    width: '30px',
-                                                    '& svg': {
-                                                        fontSize: '16px'
-                                                    }
-                                                }}
-                                                onClick={() => {
-                                                    route.openUrlNewTab(data.urlYouTube)
-                                                }}
-                                            >
-                                                <YouTube />
-                                            </IconButton>
-                                        </Tooltip> : null}
-
-                                        {data.urlDownload ? <Tooltip title={t("pages.projects.t_download")}>
-                                            <IconButton
-                                                sx={{
-                                                    height: '30px',
-                                                    width: '30px',
-                                                    '& svg': {
-                                                        fontSize: '16px'
-                                                    }
-                                                }}
-                                                onClick={() => {
-                                                    route.openUrl(data.urlDownload)
-                                                }}
-                                            >
-                                                <Download/>
-                                            </IconButton>
-                                        </Tooltip> : null}
-
-                                        {data.urlSnapcraft ? <Tooltip title={t("pages.projects.t_to_snapcraft")}>
-                                            <IconButton
-                                                sx={{
-                                                    height: '30px',
-                                                    width: '30px',
-                                                    '& svg': {
-                                                        fontSize: '16px',
-                                                    }
-                                                }}
-                                                onClick={() => {
-                                                    route.openUrlNewTab(data.urlSnapcraft)
-                                                }}
-                                            >
-                                                <ConstantImages.projects.snapcraft fill={'#0000008a'}/>
-                                            </IconButton>
-                                        </Tooltip> : null}
-
-                                        {data.urlGitHub ? <Tooltip title={t("pages.projects.t_to_github")}>
-                                            <IconButton
-                                                sx={{
-                                                    height: '30px',
-                                                    width: '30px',
-                                                    '& svg': {
-                                                        fontSize: '16px'
-                                                    }
-                                                }}
-                                                onClick={() => {
-                                                    route.openUrlNewTab(data.urlGitHub)
-                                                }}
-                                            >
-                                                <GitHub/>
-                                            </IconButton>
-                                        </Tooltip> : null}
-
-                                        {data.url ? <Tooltip title={t("pages.projects.t_to_project")}>
-                                            <IconButton
-                                                sx={{
-                                                    height: '30px',
-                                                    width: '30px',
-                                                    '& svg': {
-                                                        fontSize: '16px'
-                                                    }
-                                                }}
-                                                onClick={() => {
-                                                    route.openUrlNewTab(data.url)
-                                                }}
-                                            >
-                                                <OpenInNew />
-                                            </IconButton>
-                                        </Tooltip> : null}
-                                    </Stack>
-
                                 </Stack>
                             }
                         />
@@ -286,32 +185,74 @@ export function ProjectsPage(props) {
 
                             <Stack
                                 direction="row"
-                                justifyContent="space-between"
+                                sx={{position: 'relative'}}
                             >
-                                <Tooltip title={likes[data.id] === true ? t("common.t_unlike") : t("common.t_like")}>
-                                    <IconButton
-                                        aria-label="Like"
-                                        onClick={() => {
-                                            if (likes[data.id]) {
-                                                MethodsRequest.unlikeProject(data.id)
-                                            } else {
-                                                MethodsRequest.likeProject(data.id)
-                                            }
-                                            setLikes({...likes, [data.id]: !likes[data.id]})
-                                        }}
-                                    >
-                                        <Favorite
-                                            sx={{color: likes[data.id] === true ? '#c13131' : undefined}}
-                                        />
-                                    </IconButton>
-                                </Tooltip>
+                                        {data.urlYouTube ? <Tooltip title={t("pages.projects.t_to_youtube")}>
+                                            <IconButton
+                                                onClick={() => {
+                                                    route.openUrlNewTab(data.urlYouTube)
+                                                }}
+                                            >
+                                                <YouTube sx={{color: '#F60001'}}/>
+                                            </IconButton>
+                                        </Tooltip> : null}
+
+                                        {data.urlSnapcraft ? <Tooltip title={t("pages.projects.t_to_snapcraft")}>
+                                            <IconButton
+                                                sx={{
+                                                    height: '40px',
+                                                    width: '40px',
+                                                    '& svg': {
+                                                        fontSize: '20px',
+                                                    }
+                                                }}
+                                                onClick={() => {
+                                                    route.openUrlNewTab(data.urlSnapcraft)
+                                                }}
+                                            >
+                                                <ConstantImages.projects.snapcraft fill={'#7BB398'}/>
+                                            </IconButton>
+                                        </Tooltip> : null}
+
+                                        {data.urlGitHub ? <Tooltip title={t("pages.projects.t_to_github")}>
+                                            <IconButton
+                                                onClick={() => {
+                                                    route.openUrlNewTab(data.urlGitHub)
+                                                }}
+                                            >
+                                                <GitHub sx={{color: '#444444'}}/>
+                                            </IconButton>
+                                        </Tooltip> : null}
+
+                                        {data.url ? <Tooltip title={t("pages.projects.t_to_project")}>
+                                            <IconButton
+                                                onClick={() => {
+                                                    route.openUrlNewTab(data.url)
+                                                }}
+                                            >
+                                                <OpenInNew sx={{color: '#2298db'}} />
+                                            </IconButton>
+                                        </Tooltip> : null}
+
+                                        {data.urlDownload ? <Tooltip title={t("pages.projects.t_download")}>
+                                            <IconButton
+                                                onClick={() => {
+                                                    route.openUrl(data.urlDownload)
+                                                }}
+                                            >
+                                                <Download sx={{color: '#2298db'}}/>
+                                            </IconButton>
+                                        </Tooltip> : null}
 
                                 {pagesById(data.id, conf) ? <Button
                                     size={'small'}
                                     variant="outlined"
                                     sx={{
                                         height: '34px',
-                                        marginTop: '3px'
+                                        marginTop: '3px',
+                                        paddingTop: '6px',
+                                        position: 'absolute',
+                                        right: 4
                                     }}
                                     onClick={() => {
                                         route.toLocation(pagesById(data.id, conf))

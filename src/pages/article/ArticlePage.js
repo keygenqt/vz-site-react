@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {useContext, useEffect, useState} from 'react';
-import {Container, Divider, Grid, IconButton, Paper, Stack, Tooltip, Typography, Zoom} from "@mui/material";
+import {useContext, useEffect} from 'react';
+import {Container, Divider, Grid, IconButton, Paper, Stack, Tooltip, Typography, Zoom, Snackbar, Alert} from "@mui/material";
 import {useParams} from "react-router-dom";
-import {AppCache, LanguageContext, NavigateContext, useRequest} from "../../base";
-import {ArrowBack, ArrowUpward, Favorite} from '@mui/icons-material';
+import {LanguageContext, NavigateContext, useRequest} from "../../base";
+import {ArrowBack, ArrowUpward} from '@mui/icons-material';
 import ReactMarkdown from 'react-markdown'
 import {MethodsRequest} from "../../services/MethodsRequest";
 import {ConstantLottie} from "../../base/constants/ConstantLottie";
@@ -12,28 +12,37 @@ import rehypePrismPlus from 'rehype-prism-plus'
 import emoji from 'remark-emoji';
 import Lottie from "lottie-react";
 import {ErrorPage} from "../error/ErrorPage";
+import {ConstantConf} from "../../ConstantConf";
+import {ShareOutlined} from '@mui/icons-material';
 
 export function ArticlePage(props) {
 
     let {id} = useParams();
 
-    const {route} = useContext(NavigateContext)
+    const {route, conf} = useContext(NavigateContext)
     const {t, isLocEn} = useContext(LanguageContext)
     const {loading, data, error} = useRequest(MethodsRequest.article, false, id);
-    const [like, setLike] = useState(false)
+    const [copy, setCopy] = React.useState(false);
 
     useEffect(() => {
         document.title = t('pages.blog.t_title');
     });
 
-    useEffect(() => {
-        if (data) {
-            setLike(data.isLike)
-        }
-    }, [data]);
-
     return (
         <>
+            <Snackbar 
+                open={copy} 
+                autoHideDuration={1500} 
+                onClose={() => { setCopy(false) }}
+                anchorOrigin={{ 
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                }}
+            >
+                <Alert severity="success" sx={{ width: '100%' }}>
+                    {t("common.t_copy_link_done")}
+                </Alert>
+            </Snackbar>
             {
                 loading ? (
                     <Container maxWidth={"sm"}>
@@ -134,22 +143,17 @@ export function ArticlePage(props) {
                                         </IconButton>
                                     </Tooltip>
 
-                                    <Tooltip
-                                        title={like ? t("common.t_unlike") : t("common.t_like")}>
+                                    <Tooltip title={t("common.t_copy_link")}>
                                         <IconButton
                                             style={{float: 'right'}}
-                                            onClick={() => {
-                                                if (like) {
-                                                    MethodsRequest.unlikeArticle(data.id)
-                                                } else {
-                                                    MethodsRequest.likeArticle(data.id)
-                                                }
-                                                setLike(!like)
-                                                AppCache.requestClear(MethodsRequest.articles)
+                                            aria-label="Copy"
+                                            onClick={async (i, e) => {
+                                                await navigator.clipboard.writeText(ConstantConf.publicPath + route.createLink(conf.routes.ps.article, id));
+                                                setCopy(true);
                                             }}
                                         >
-                                            <Favorite
-                                                sx={{color: like ? '#c13131' : undefined}}
+                                            <ShareOutlined
+                                                sx={{color: '#2298db'}}
                                             />
                                         </IconButton>
                                     </Tooltip>

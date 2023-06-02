@@ -14,8 +14,8 @@ export const ruLocalization = {
             },
         },
         common: {
-            t_like: 'Нравится',
-            t_unlike: 'Отменить',
+            t_copy_link: 'Копировать ссылку',
+            t_copy_link_done: 'Скопировано в буфер обмена',
             t_back: 'Назад',
             t_up: 'В начало',
         },
