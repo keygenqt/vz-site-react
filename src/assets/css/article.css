@@ -281,17 +281,9 @@
 }
 
 .BlogView .ArticleContent blockquote {
-    margin: 0 0 0 27px;
-    padding: 0 0 0 13px;
-    border-left: 2px solid #2298db;
+    border-left: 3px solid #2298db;
+    margin: 0;
+    padding: 0 0 0 10px;
     position: relative;
-}
-
-.BlogView .ArticleContent blockquote::before {
-    content: "‟";
-    position: absolute;
-    top: 11px;
-    left: -30px;
-    color: #2298db;
-    font-size: 60px
+    font-style: italic;
 }
