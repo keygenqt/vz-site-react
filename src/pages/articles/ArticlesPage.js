@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import {
     Snackbar,
@@ -21,24 +21,31 @@ import {
     useMediaQuery,
     useTheme,
     Zoom,
-    Alert
+    Alert,
+    Box
 } from "@mui/material";
 
-import {ShareOutlined} from '@mui/icons-material';
-import {LanguageContext, NavigateContext, useRequest} from "../../base";
-import {MethodsRequest} from "../../services/MethodsRequest";
-import {ScrollRecovery} from "../../components/other/ScrollRecovery";
+import {
+    YouTube,
+    Article
+} from "@mui/icons-material";
+
+import { ShareOutlined } from '@mui/icons-material';
+import { LanguageContext, NavigateContext, useRequest } from "../../base";
+import { MethodsRequest } from "../../services/MethodsRequest";
+import { ScrollRecovery } from "../../components/other/ScrollRecovery";
 import Lottie from "lottie-react";
-import {ConstantLottie} from "../../base/constants/ConstantLottie";
-import {ConstantConf} from "../../ConstantConf";
+import { ConstantLottie } from "../../base/constants/ConstantLottie";
+import { ConstantConf } from "../../ConstantConf";
 
 export function ArticlesPage(props) {
 
-    const {route, conf} = useContext(NavigateContext)
-    const {t, isLocEn} = useContext(LanguageContext)
+    const { route, conf } = useContext(NavigateContext)
+    const { t, isLocEn } = useContext(LanguageContext)
     const theme = useTheme();
     const isMiddle = useMediaQuery(theme.breakpoints.down('md'));
-    const {loading, data, error} = useRequest(MethodsRequest.articles);
+    const request1 = useRequest(MethodsRequest.articles);
+    const request2 = useRequest(MethodsRequest.videos);
     const [copy, setCopy] = React.useState(false);
 
     useEffect(() => {
@@ -46,34 +53,53 @@ export function ArticlesPage(props) {
     });
 
     const cards = []
-    const value = data ?? []
 
-    value.forEach((data, index) => {
+    const data1 = request1.data;
+    const data2 = request2.data;
+    const value = Array.isArray(data1) && Array.isArray(data2) ? data1.concat(data2) : []
+    value.sort((a, b) => b.createAt - a.createAt);
+
+    value.forEach((item, index) => {
         cards.push(
-            <Grid style={{margin: 0}} key={"item-blog-" + index} item md={4} sm={6} xs={12}>
+            <Grid style={{ margin: 0 }} key={"item-blog-" + index} item md={4} sm={6} xs={12}>
                 <Card
+                    sx={{ position: 'relative' }}
                     variant="outlined"
                     className={"CardBg"}
                 >
+
+                    <Box
+                        sx={{ position: 'absolute', top: 8, left: 8, background: 'white', width: 34, height: 33, borderRadius: '50%' }}
+                    >
+                        {item.url ?
+                            <YouTube sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#F60001' }} /> :
+                            <Article sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#966FE3' }} />
+                        }
+                    </Box>
+
+
+
                     <CardMedia
                         component="img"
                         height="200"
-                        image={data.listImage}
-                        alt={isLocEn ? data.title : data.titleRu}
+                        image={item.listImage ?? item.image}
+                        alt={isLocEn ? item.title : item.titleRu}
                     />
+
                     <CardHeader
-                        title={isLocEn ? data.title : data.titleRu}
+                        sx={{ paddingTop: 1 }}
+                        title={isLocEn ? item.title : item.titleRu}
                         subheader={new Intl
                             .DateTimeFormat(isLocEn ? 'en-US' : 'ru-RU', {
                                 year: 'numeric',
                                 month: 'long',
                                 day: '2-digit',
                             })
-                            .format(data.createAt)}
+                            .format(item.createAt)}
                     />
                     <CardContent className={"BlogItemContent"}>
                         <Typography className={"BlogItemSubtitle"} variant="textCard">
-                            {isLocEn ? data.description : data.descriptionRu}
+                            {isLocEn ? item.description : item.descriptionRu}
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing sx={{
@@ -88,12 +114,16 @@ export function ArticlesPage(props) {
                                 <IconButton
                                     aria-label="Copy"
                                     onClick={async (i, e) => {
-                                        await navigator.clipboard.writeText(ConstantConf.publicPath + route.createLink(conf.routes.ps.article, data.id));
+                                        if (item.url) {
+                                            await navigator.clipboard.writeText(item.url);
+                                        } else {
+                                            await navigator.clipboard.writeText(ConstantConf.publicPath + route.createLink(conf.routes.ps.article, item.id));
+                                        }
                                         setCopy(true);
                                     }}
                                 >
                                     <ShareOutlined
-                                        sx={{color: '#2298db'}}
+                                        sx={{ color: '#2298db' }}
                                     />
                                 </IconButton>
                             </Tooltip>
@@ -106,10 +136,14 @@ export function ArticlesPage(props) {
                                     marginTop: '3px'
                                 }}
                                 onClick={() => {
-                                    route.toLocation(conf.routes.ps.article, data.id)
+                                    if (item.url) {
+                                        route.openUrlNewTab(item.url)
+                                    } else {
+                                        route.toLocation(conf.routes.ps.article, item.id)
+                                    }
                                 }}
                             >
-                                {t("pages.blogs.t_open_btn")}
+                                {item.url ? t("pages.blogs.t_open_video_btn") : t("pages.blogs.t_open_btn")}
                             </Button>
 
                         </Stack>
@@ -122,22 +156,22 @@ export function ArticlesPage(props) {
     return (
         <Container maxWidth="lg" className={"Page PagePaddings BlogsPage"}>
             <>
-            <Snackbar 
-                open={copy} 
-                autoHideDuration={1500} 
-                onClose={() => { setCopy(false) }}
-                anchorOrigin={{ 
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                }}
-            >
-                <Alert severity="success" sx={{ width: '100%' }}>
-                    {t("common.t_copy_link_done")}
-                </Alert>
-            </Snackbar>
-                <ScrollRecovery recovery={!loading}/>
+                <Snackbar
+                    open={copy}
+                    autoHideDuration={1500}
+                    onClose={() => { setCopy(false) }}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                >
+                    <Alert severity="success" sx={{ width: '100%' }}>
+                        {t("common.t_copy_link_done")}
+                    </Alert>
+                </Snackbar>
+                <ScrollRecovery recovery={!(request1.loading && request2.loading)} />
                 <Fade timeout={500} in={true}>
-                    <Grid container spacing={isMiddle || (loading) ? 8 : 14}>
+                    <Grid container spacing={isMiddle || (request1.loading && request2.loading) ? 8 : 14}>
                         <Grid item xs={7}>
                             <Stack spacing={4}>
                                 <Typography align={"center"} variant="h4">
@@ -147,29 +181,29 @@ export function ArticlesPage(props) {
                                 <Typography align={"center"} variant="h2">
                                     {t("pages.blogs.t_subtitle")}
                                 </Typography>
-                                <Divider component="div" className={"Small"}/>
+                                <Divider component="div" className={"Small"} />
                             </Stack>
                         </Grid>
                         <Grid item xs={12}>
                             <Grid container spacing={isMiddle ? 3 : 6}>
-                                {loading ? (
+                                {request1.loading || request1.loading ? (
                                     <Grid item xs={12}>
                                         <Zoom timeout={1000} in={true}>
                                             <Stack alignItems={"center"}>
-                                                <CircularProgress/>
+                                                <CircularProgress />
                                             </Stack>
                                         </Zoom>
                                     </Grid>
                                 ) : (
                                     <>
-                                        {cards.length !== 0 && !error ? cards : <Grid item xs={12}>
+                                        {cards.length !== 0 && !(request1.error && request2.error) ? cards : <Grid item xs={12}>
                                             <Zoom timeout={200} in={true}>
                                                 <Stack alignItems={"center"}>
 
                                                     <Stack alignItems={"center"} spacing={2}>
                                                         <Lottie style={{
                                                             width: 250,
-                                                        }} animationData={ConstantLottie.work_from_home}/>
+                                                        }} animationData={ConstantLottie.work_from_home} />
                                                     </Stack>
 
                                                     <Typography align={"center"} variant="h6">

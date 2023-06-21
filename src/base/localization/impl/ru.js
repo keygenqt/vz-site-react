@@ -104,6 +104,7 @@ export const ruLocalization = {
                 t_title_page: "Мой Блог",
                 t_subtitle: "Знания и опыт в тексте",
                 t_open_btn: 'Перейти',
+                t_open_video_btn: 'Перейти'
             },
             blog: {
                 t_title: "@keygenqt | Блог",

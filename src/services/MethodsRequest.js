@@ -9,6 +9,7 @@ import unlikeArticle from "./impl/unlikeArticle";
 import likeProject from "./impl/likeProject";
 import unlikeProject from "./impl/unlikeProject";
 import connect from "./impl/connect";
+import videos from "./impl/videos";
 
 export const MethodsRequest = {
     //////////////////////
@@ -31,4 +32,8 @@ export const MethodsRequest = {
     // Projects
     // send connect
     connect: connect,
+    //////////////////////
+    // Videos
+    // get list
+    videos: videos,
 }

@@ -102,6 +102,7 @@ export const enLocalization = {
                 t_title_page: "My Blog",
                 t_subtitle: "Knowledge and experience",
                 t_open_btn: 'To Article',
+                t_open_video_btn: 'To Video'
             },
             blog: {
                 t_title: "@keygenqt | Blog",

@@ -31,7 +31,6 @@ import {
     Apple,
     DesktopWindows,
     Download,
-    Favorite,
     GitHub,
     Language,
     OpenInNew,
