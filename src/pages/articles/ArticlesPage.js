@@ -67,17 +67,22 @@ export function ArticlesPage(props) {
                     variant="outlined"
                     className={"CardBg"}
                 >
-
                     <Box
-                        sx={{ position: 'absolute', top: 8, left: 8, background: 'white', width: 34, height: 33, borderRadius: '50%' }}
+                        sx={{ 
+                            position: 'absolute', 
+                            top: 8, 
+                            left: 8, 
+                            background: 'white', 
+                            width: 34, 
+                            height: 33, 
+                            borderRadius: '50%'
+                        }}
                     >
                         {item.url ?
                             <YouTube sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#F60001' }} /> :
                             <Article sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#966FE3' }} />
                         }
                     </Box>
-
-
 
                     <CardMedia
                         component="img"
