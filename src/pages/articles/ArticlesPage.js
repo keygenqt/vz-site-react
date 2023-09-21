@@ -27,7 +27,8 @@ import {
 
 import {
     YouTube,
-    Article
+    Article,
+    ArrowOutward
 } from "@mui/icons-material";
 
 import { ShareOutlined } from '@mui/icons-material';
@@ -78,9 +79,12 @@ export function ArticlesPage(props) {
                             borderRadius: '50%'
                         }}
                     >
-                        {item.url ?
-                            <YouTube sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#F60001' }} /> :
-                            <Article sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#966FE3' }} />
+                        {item.type ?
+                            (item.type === 'BLOG' ?
+                                <Article sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#967cc8' }} /> :
+                                <ArrowOutward sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#2298db' }} />
+                            ) :
+                            <YouTube sx={{ fontSize: 24, position: 'absolute', top: 4, left: 5, color: '#F60001' }} />
                         }
                     </Box>
 
@@ -141,14 +145,14 @@ export function ArticlesPage(props) {
                                     marginTop: '3px'
                                 }}
                                 onClick={() => {
-                                    if (item.url) {
+                                    if (item.url && item.type !== 'BLOG') {
                                         route.openUrlNewTab(item.url)
                                     } else {
                                         route.toLocation(conf.routes.ps.article, item.id)
                                     }
                                 }}
                             >
-                                {item.url ? t("pages.blogs.t_open_video_btn") : t("pages.blogs.t_open_btn")}
+                                {item.type ? t("pages.blogs.t_open_btn") : t("pages.blogs.t_open_video_btn")}
                             </Button>
 
                         </Stack>
