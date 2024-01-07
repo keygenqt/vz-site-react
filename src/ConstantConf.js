@@ -4,6 +4,6 @@
  * @todo change for prod
  */
 export const ConstantConf = {
-    publicPath: 'http://localhost:3001',
-    apiPath: 'http://localhost:8085'
+    publicPath: 'https://keygenqt.com',
+    apiPath: 'https://api.keygenqt.com'
 };

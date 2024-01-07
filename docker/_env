@@ -1,0 +1,4 @@
+COMPOSE_PROJECT_NAME=nws # new web site
+
+# Ports
+PORT_WEBSITE=4005
