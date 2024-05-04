@@ -61,7 +61,7 @@ export const enLocalization = {
                 t_resume_clowder_date2: "Sep 2014 - Aug 2015 · 1 yr",
                 t_resume_privezem_date: "Nov 2013 - Sep 2014 · 11 mos",
                 t_resume_agamaya_date: "May 2013 - Nov 2013 · 7 mos",
-                t_resume_omp_text: "The \"Open Mobile Platform\" company is developing the Aurora operating system. I started by developing a reference application (KMP, React, Qt). At the moment I am adapting the Flutter framework for Aurora OS.",
+                t_resume_omp_text: "The \"Open Mobile Platform\" company is developing the Aurora operating system and other projects. I started working at the company by developing reference applications (KMP, React, Qt). At the moment I am adapting the Flutter framework for Aurora OS.",
                 t_resume_surf_text: "Developed an Android application on Jetpack Compose. It was not easy, but I got invaluable experience. Few people can now boast of developing an application from scratch on the latest stack.",
                 t_resume_clowder_text: "Here I have spent most of my life, I think. I wrote hundreds of websites and at least Android applications. I grew up from Front-end Jun to Android Tech Lead.",
                 t_resume_privezem_text: "We wrote websites for the sale of goods with delivery, when it was not mainstream yet. I was young, I could still afford to sleep for 4 hours trying to catch up with colleagues with higher education.",
