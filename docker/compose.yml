@@ -1,9 +1,9 @@
 version: "3"
+name: new-website
 
 services:
-  # https://nodejs.org
   node:
-    container_name: nws-node
+    container_name: new-website-node
     restart: no
     build:
       context: .
@@ -16,11 +16,12 @@ services:
         npm run build
     working_dir: /var/www/src
     volumes:
+      # React configuration files
+      - ./configurations/website/ConstantConf.js:/var/www/src/src/ConstantConf.js
       - ../:/var/www/src
 
-  # https://nginx.org/
   nginx:
-    container_name: nws-nginx
+    container_name: new-website-nginx
     depends_on:
       - node
     build:
